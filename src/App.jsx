@@ -8,33 +8,33 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('landing');
 
   return (
-    <div className="min-h-screen bg-[#0c0f12] text-slate-100 flex flex-col font-sans selection:bg-orange-500/30 selection:text-orange-200">
-      {/* Top Navigation Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#0f1317]/90 border-b border-[#232c37] px-4 sm:px-8 py-2.5 flex items-center justify-between">
+    <div className="min-h-screen bg-[#EAE6DE] text-[#182836] flex flex-col font-sans selection:bg-[#EF8557]/30 selection:text-[#226192]">
+      {/* Top Editorial Navigation Header */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#F6F4F0]/90 border-b border-[#D8D2C5] px-4 sm:px-8 py-2.5 flex items-center justify-between shadow-xs">
         <div className="flex items-center gap-3">
           <img 
             src="/voltnexus_logo_transparent.png" 
             alt="VoltNexus Logo" 
-            className="h-9 sm:h-10 object-contain hover:opacity-95 transition-opacity" 
+            className="h-9 sm:h-10 object-contain hover:opacity-90 transition-opacity" 
           />
-          <div className="hidden sm:block pl-2 border-l border-[#263342]">
-            <span className="text-[10px] font-mono text-slate-400 block tracking-wider uppercase">
+          <div className="hidden sm:block pl-3 border-l border-[#D0C9BA]">
+            <span className="text-[10px] font-mono text-[#485E70] block tracking-widest uppercase font-semibold">
               TATA ELXSI TELIPORT S4
             </span>
-            <span className="text-[11px] font-bold text-slate-300">
-              IDV Case Study 2 • MBSE Platform
+            <span className="text-[11px] font-bold text-[#226192]">
+              Case Study 2 • Reusable MBSE Platform
             </span>
           </div>
         </div>
 
         {/* Tab Switcher Navigation */}
-        <nav className="flex items-center gap-1.5 p-1 rounded-xl bg-[#14191f] border border-[#232c37]">
+        <nav className="flex items-center gap-1.5 p-1 rounded-xl bg-[#E2DDD3] border border-[#D0C8B8]">
           <button
             onClick={() => setActiveTab('landing')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
               activeTab === 'landing'
-                ? 'bg-[#ea580c] text-white font-bold shadow-md shadow-orange-900/30'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-[#1a2027]'
+                ? 'bg-[#226192] text-white shadow-sm'
+                : 'text-[#485E70] hover:text-[#182836] hover:bg-[#D4CDBC]'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -43,10 +43,10 @@ export default function App() {
 
           <button
             onClick={() => setActiveTab('workbench')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
               activeTab === 'workbench'
-                ? 'bg-[#ea580c] text-white font-bold shadow-md shadow-orange-900/30'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-[#1a2027]'
+                ? 'bg-[#226192] text-white shadow-sm'
+                : 'text-[#485E70] hover:text-[#182836] hover:bg-[#D4CDBC]'
             }`}
           >
             <Sliders className="w-3.5 h-3.5" />
@@ -55,10 +55,10 @@ export default function App() {
 
           <button
             onClick={() => setActiveTab('compare')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
               activeTab === 'compare'
-                ? 'bg-[#ea580c] text-white font-bold shadow-md shadow-orange-900/30'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-[#1a2027]'
+                ? 'bg-[#226192] text-white shadow-sm'
+                : 'text-[#485E70] hover:text-[#182836] hover:bg-[#D4CDBC]'
             }`}
           >
             <Scale className="w-3.5 h-3.5" />
@@ -66,10 +66,10 @@ export default function App() {
           </button>
         </nav>
 
-        {/* Status Pill */}
-        <div className="hidden md:flex items-center gap-2 text-xs font-mono text-slate-400 bg-[#14191f] px-3 py-1.5 rounded-lg border border-[#232c37]">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>v1.2 LIVE</span>
+        {/* Status Pill with Coral Accent */}
+        <div className="hidden md:flex items-center gap-2 text-xs font-mono text-[#226192] bg-[#FDFBF7] px-3 py-1.5 rounded-lg border border-[#D8D2C5] shadow-2xs">
+          <span className="w-2 h-2 rounded-full bg-[#EF8557] animate-pulse" />
+          <span className="font-semibold">EXPERIMENTAL THEME</span>
         </div>
       </header>
 
@@ -80,9 +80,9 @@ export default function App() {
         {activeTab === 'compare' && <CompareView />}
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-[#1e2631] py-4 px-6 text-center text-xs text-slate-500 font-mono">
-        VoltNexus MBSE Platform • Tata Elxsi TELIPORT Season 4 Hackathon • 13S8P 1.57 kWh Baseline
+      {/* Editorial Footer */}
+      <footer className="border-t border-[#D8D2C5] py-4 px-6 text-center text-xs text-[#5C7285] font-mono bg-[#F2EFEA]">
+        VoltNexus MBSE Platform • Warm Ivory, Deep Editorial Blue & Coral Orange Palette • 13S8P 1.57 kWh Baseline
       </footer>
     </div>
   );
