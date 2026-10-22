@@ -1,6 +1,6 @@
 import React from 'react';
 import { simulatePack } from '../engine/batterySimulator';
-import { Scale, FileCheck } from 'lucide-react';
+import { CheckCircle2, XCircle, AlertTriangle, Scale, Zap, Shield, FileCheck } from 'lucide-react';
 
 export default function CompareView() {
   const baseline = simulatePack({
@@ -48,54 +48,54 @@ export default function CompareView() {
   return (
     <div className="space-y-8 pb-16">
       {/* Header */}
-      <div className="p-6 rounded-3xl bg-[#FDFBF7] border border-[#D8D2C5] flex flex-wrap items-center justify-between gap-4 shadow-2xs">
+      <div className="p-6 rounded-2xl bg-[#14191f] border border-[#232c37] flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-[#182836] flex items-center gap-2 font-serif">
-            <Scale className="w-5 h-5 text-[#226192]" />
+          <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
+            <Scale className="w-5 h-5 text-emerald-400" />
             Multi-Design MDO Trade-Off Benchmark
           </h2>
-          <p className="text-sm text-[#485E70]">
+          <p className="text-sm text-slate-400">
             Side-by-side trade-off matrix: Baseline vs. Option A vs. Option B at continuous 70A cruise load
           </p>
         </div>
-        <div className="text-xs font-mono font-bold px-3 py-1.5 rounded-xl bg-[#EAE6DE] border border-[#D0C8B8] text-[#226192]">
+        <div className="text-xs font-mono px-3 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
           Evaluated Against 13 MBSE Rules
         </div>
       </div>
 
       {/* Comparison Table */}
-      <div className="rounded-3xl bg-[#FDFBF7] border border-[#D8D2C5] overflow-hidden shadow-2xs">
+      <div className="rounded-2xl bg-[#14191f] border border-[#232c37] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-[#D8D2C5] bg-[#F4F1EA] font-mono text-[#3E5263]">
-                <th className="py-3.5 px-4 w-1/4 font-bold">Evaluated Metric / Subsystem</th>
-                <th className="py-3.5 px-4 w-1/4 font-bold text-rose-700">Baseline Design [A]</th>
-                <th className="py-3.5 px-4 w-1/4 font-bold text-[#226192]">Option A (Optimized NMC) [A]</th>
-                <th className="py-3.5 px-4 w-1/4 font-bold text-[#EF8557]">Option B (High-Safety LFP) [A]</th>
+              <tr className="border-b border-[#232c37] bg-[#101418] font-mono text-slate-300">
+                <th className="py-3 px-4 w-1/4">Evaluated Metric / Subsystem</th>
+                <th className="py-3 px-4 w-1/4 text-rose-300">Baseline Design [A]</th>
+                <th className="py-3 px-4 w-1/4 text-emerald-300">Option A (Optimized NMC) [A]</th>
+                <th className="py-3 px-4 w-1/4 text-teal-300">Option B (High-Safety LFP) [A]</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#EBE7DF]">
+            <tbody className="divide-y divide-[#1e2631]">
               {rows.map((row, idx) => (
-                <tr key={idx} className="hover:bg-[#F6F3EC] transition-colors">
-                  <td className="py-3 px-4 font-semibold text-[#182836]">{row.label}</td>
-                  <td className="py-3 px-4 font-mono text-[#3E5263]">
+                <tr key={idx} className="hover:bg-[#182028] transition-colors">
+                  <td className="py-3 px-4 font-medium text-slate-200">{row.label}</td>
+                  <td className="py-3 px-4 font-mono text-slate-300">
                     {row.base.includes("FAIL") ? (
-                      <span className="text-rose-700 font-bold bg-rose-100/70 px-2 py-0.5 rounded border border-rose-300">{row.base}</span>
+                      <span className="text-rose-400 font-bold">{row.base}</span>
                     ) : (
                       row.base
                     )}
                   </td>
-                  <td className="py-3 px-4 font-mono text-[#182836]">
+                  <td className="py-3 px-4 font-mono text-slate-300">
                     {row.optA.includes("PASS") || row.optA.includes("+5.6%") ? (
-                      <span className="text-[#226192] font-bold bg-[#E6EFF6] px-2 py-0.5 rounded border border-[#BDD6EC]">{row.optA}</span>
+                      <span className="text-emerald-400 font-bold">{row.optA}</span>
                     ) : (
                       row.optA
                     )}
                   </td>
-                  <td className="py-3 px-4 font-mono text-[#182836]">
+                  <td className="py-3 px-4 font-mono text-slate-300">
                     {row.optB.includes("PASS") ? (
-                      <span className="text-[#D35400] font-bold bg-[#FDF0EA] px-2 py-0.5 rounded border border-[#FADBD0]">{row.optB}</span>
+                      <span className="text-teal-400 font-bold">{row.optB}</span>
                     ) : (
                       row.optB
                     )}
@@ -108,21 +108,21 @@ export default function CompareView() {
       </div>
 
       {/* Engineering Takeaways Box */}
-      <div className="p-6 rounded-3xl bg-[#F6F4F0] border border-[#D8D2C5] space-y-3">
-        <h3 className="text-sm font-bold text-[#182836] flex items-center gap-2">
-          <FileCheck className="w-4 h-4 text-[#226192]" />
+      <div className="p-6 rounded-2xl bg-[#12161b] border border-[#232c37] space-y-3">
+        <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
+          <FileCheck className="w-4 h-4 text-emerald-400" />
           Key Design Trade-off Insights
         </h3>
-        <p className="text-xs text-[#3E5263] leading-relaxed">
+        <p className="text-xs text-slate-300 leading-relaxed">
           <strong>1. Baseline Failure Root Cause:</strong> The baseline design fails 4 critical rules: peak cell temperature exceeds 58°C, 
           temperature spread ΔT reaches 6.8°C (violating Cloos & Wetzel's 5°C threshold), thin nickel strips cause a 26.4% current imbalance, 
           and fuse clearing energy exceeds the busbar adiabatic limit.
         </p>
-        <p className="text-xs text-[#3E5263] leading-relaxed">
+        <p className="text-xs text-slate-300 leading-relaxed">
           <strong>2. The Option A Sweetspot:</strong> Upgrading to a 3.5 m/s forced air duct and 1.2mm pure copper busbars resolves all 4 failures, 
           cuts peak core temperature to 43.2°C, and unlocks <strong>+5.6% more usable energy</strong> for only a 0.9 kg mass and $43 cost delta.
         </p>
-        <p className="text-xs text-[#3E5263] leading-relaxed">
+        <p className="text-xs text-slate-300 leading-relaxed">
           <strong>3. Option B Longevity Trade-off:</strong> Cylindrical LFP with cold plate provides the highest thermal safety margin (37.1°C), 
           but increases dry module mass to 11.8 kg and requires a precision ±1.5mV AFE (TI BQ76952) to avoid flat-plateau SOC estimation errors.
         </p>

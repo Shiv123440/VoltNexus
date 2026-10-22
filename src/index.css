@@ -2,49 +2,35 @@
 
 @layer base {
   :root {
-    /* Palette from User Inspiration (Picture 1) */
-    --warm-ivory: #EAE6DE;
-    --warm-ivory-light: #F6F4F0;
-    --warm-ivory-subtle: #E2DDD3;
-    --deep-editorial-blue: #226192;
-    --deep-editorial-blue-dark: #164366;
-    --coral-orange: #EF8557;
-    --coral-orange-hover: #E3703E;
-    
-    /* Text & Neutral Bases */
-    --text-primary: #182836;
-    --text-secondary: #485E70;
-    --border-card: #D8D2C5;
-    --card-surface: #FDFBF7;
-    
-    /* Functional Status Accents (Picture 2) */
-    --status-emerald: #10B981;
-    --status-amber: #F59E0B;
-    --status-rose: #F43F5E;
-    --status-teal: #0D9488;
+    --bg-main: #0c0f12;
+    --card-bg: #14191f;
+    --card-border: #232c37;
+    --accent-emerald: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-rose: #f43f5e;
   }
 }
 
 body {
   margin: 0;
-  background-color: var(--warm-ivory);
-  color: var(--text-primary);
+  background-color: #0c0f12;
+  color: #e2e8f0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Editorial Scrollbar */
+/* Custom scrollbars */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #E0DBD0;
+  background: #0f141a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B8B0A2;
-  border-radius: 4px;
+  background: #232d38;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8F8575;
+  background: #334155;
 }
