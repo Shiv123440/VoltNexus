@@ -106,3 +106,13 @@ flowchart TD
   - VoltNexus brand logo: Preserved custom circuit typography with transparent background.
 - **Branch:** Maintained strictly on `experimental` branch (commit `10582c7`).
 - **Production Refresh:** Deployed live to [https://batterylabweb.vercel.app](https://batterylabweb.vercel.app) (Deployment ID: `dpl_GizEtMu1LPwxZDpogr9mdCHGGtD5`).
+
+
+## 8. Liquid-Morphing Navigation Dock
+- **Architecture:** Implemented `LiquidNavbar.jsx` with an SVG gooey filter (`feGaussianBlur` + `feColorMatrix`), spring physics dynamics, and dual interaction modalities.
+- **Glowing Bead:** Warm amber/orange radial gradient (`#fed7aa` to `#ea580c`) with specular highlight and ambient glow (`box-shadow: 0 0 16px rgba(234, 88, 12, 0.7)`).
+- **Dual Interactions:**
+  - **Click-to-Select:** Smooth liquid melting transition with horizontal stretch and connected liquid bridge between origin and destination tabs.
+  - **Drag-to-Select:** Pointer capture tracking with velocity-proportional elastic deformation (`scaleX(stretch)` / `scaleY(squash)`), snapping to the nearest valid tab on pointer release.
+- **Preservation:** 100% preservation of all 3 tabs (`Overview & Research`, `Interactive Workbench`, `3-Design Trade-offs`), icons, business logic, and dark industrial theme.
+- **Deployment:** Synchronized across `experimental` and `main` branches and deployed live to production at [https://batterylabweb.vercel.app](https://batterylabweb.vercel.app) (Deployment ID: `dpl_C1UcM1crjQJnZJTYmFedkZBWM824`).
