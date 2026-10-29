@@ -2,35 +2,111 @@
 
 @layer base {
   :root {
-    --bg-main: #0c0f12;
+    --bg-warm-ivory: #F5F0EA;
+    --bg-platinum: #E5E4E2;
+    --accent-mocha: #6F4E37;
+    --accent-lavender: #E6E0F0;
+    --accent-electric-blue: #246BFD;
+    --accent-orange: #F47721;
+    --accent-espresso: #2B211D;
     --card-bg: #14191f;
     --card-border: #232c37;
-    --accent-emerald: #10b981;
-    --accent-amber: #f59e0b;
-    --accent-rose: #f43f5e;
   }
 }
 
 body {
   margin: 0;
-  background-color: #0c0f12;
+  background-color: #F5F0EA;
   color: #e2e8f0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* Custom scrollbars */
+/* Custom scrollbars with warm engineering accents */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f141a;
+  background: #E5E4E2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232d38;
+  background: #6F4E37;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #2B211D;
+}
+
+/* Battery Energy Flow Continuous Circuit Animations */
+@keyframes energyPulseForward {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes energyPulseReverse {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1000;
+  }
+}
+
+@keyframes nodeGlowOrange {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes nodeGlowBlue {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes thermalShift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate(30px, -20px) scale(1.1);
+    opacity: 0.42;
+  }
+}
+
+@keyframes schematicBreathe {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
