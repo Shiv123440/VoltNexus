@@ -122,3 +122,17 @@ flowchart TD
 - **User Feedback:** Liquid-morphing navigation bar effect did not match user preferences for the clean, crisp industrial telemetry interface.
 - **Action Taken:** Reverted navigation in `App.jsx` to the clean industrial telemetry button dock (`#14191f` surface, `#232c37` border, bold orange `#ea580c` active tab pill with high-contrast text and icons). Removed experimental `LiquidNavbar.jsx`.
 - **Status:** Verified and restored across `experimental` and `main` branches.
+
+
+## 10. Battery Energy Flow Dynamic Background Redesign
+- **Design Inspiration:** 3D Battery Digital Twin workstation (warm ivory, platinum silver, mocha brown, pale lavender, electric blue, warm orange, espresso).
+- **Component:** Created `BatteryFlowBackground.jsx` mounted behind all page layers with `pointer-events: none`.
+- **Key Features:**
+  - **Base Palette:** Warm Ivory (`#F5F0EA`) & Platinum Silver (`#E5E4E2`) foundation with subtle espresso vignette and CAD grid.
+  - **Energy Flow Circuits:** High-voltage busbar routes in Warm Orange (`#F47721`) and BMS AFE sensing lines in Electric Blue (`#246BFD`).
+  - **Animated Continuous Pulses:** Hardware-accelerated CSS `stroke-dashoffset` keyframes and traveling energy packets.
+  - **Illuminated Nodes:** Circuit vias and solder pads pulsing with radiant coronas when energy passes through them.
+  - **Technical Schematics:** 13S8P cylindrical cell array outlines (21700 form factor), busbar bridges, and convection duct flow markings.
+  - **Thermal Atmosphere:** Pale Lavender (`#E6E0F0`) and Warm Orange breathing simulation fields.
+  - **Section Adaptability:** Full expressive paths on Landing, dimmed quiet version on Workbench for chart legibility, and 3-track comparative circuits on Compare view.
+- **Strict Scope Preservation:** Zero alterations to component placement, existing telemetry cards, navigation, calculations, models, or data.
