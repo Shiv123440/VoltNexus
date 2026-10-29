@@ -136,3 +136,14 @@ flowchart TD
   - **Thermal Atmosphere:** Pale Lavender (`#E6E0F0`) and Warm Orange breathing simulation fields.
   - **Section Adaptability:** Full expressive paths on Landing, dimmed quiet version on Workbench for chart legibility, and 3-track comparative circuits on Compare view.
 - **Strict Scope Preservation:** Zero alterations to component placement, existing telemetry cards, navigation, calculations, models, or data.
+
+
+## 11. Liquid Glass Navbar Integration (Waterline)
+- **Component:** Integrated the WebGL-powered `LiquidNavbar` ("Waterline") into `src/components/ui/liquid-glass-navbar.tsx`.
+- **Items:** Configured the 3 VoltNexus navigation tabs:
+  1. `Overview & Research` (Icon `Layers`, FX `glow`)
+  2. `Interactive Workbench` (Icon `Sliders`, FX `drop`)
+  3. `3-Design Trade-offs` (Icon `Scale`, FX `wave`)
+- **State Synchronization:** Fully two-way synchronized with `activeTab` via controlled `active={activeIndex}` and `onChange={(idx) => setActiveTab(...)}`.
+- **Preservation:** Preserved VoltNexus branding, Tata Elxsi Teleport S4 subtitle, `v1.2 LIVE` status pill, and background telemetry flow.
+- **Path Resolution:** Added standard `@/` alias in `vite.config.js` pointing to `./src`.

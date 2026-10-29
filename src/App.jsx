@@ -3,10 +3,38 @@ import LandingView from './components/LandingView';
 import WorkbenchView from './components/WorkbenchView';
 import CompareView from './components/CompareView';
 import BatteryFlowBackground from './components/BatteryFlowBackground';
+import { LiquidNavbar } from '@/components/ui/liquid-glass-navbar';
 import { Layers, Sliders, Scale } from 'lucide-react';
+
+const NAV_ITEMS = [
+  { 
+    label: 'Overview & Research', 
+    icon: <Layers className="w-4 h-4" />, 
+    fx: 'glow' 
+  },
+  { 
+    label: 'Interactive Workbench', 
+    icon: <Sliders className="w-4 h-4" />, 
+    fx: 'drop' 
+  },
+  { 
+    label: '3-Design Trade-offs', 
+    icon: <Scale className="w-4 h-4" />, 
+    fx: 'wave' 
+  },
+];
+
+const TAB_INDEX_MAP = {
+  landing: 0,
+  workbench: 1,
+  compare: 2,
+};
+
+const INDEX_TAB_MAP = ['landing', 'workbench', 'compare'];
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('landing');
+  const activeIndex = TAB_INDEX_MAP[activeTab] ?? 0;
 
   return (
     <div className="min-h-screen relative text-slate-100 flex flex-col font-sans selection:bg-orange-500/30 selection:text-orange-200">
@@ -31,44 +59,19 @@ export default function App() {
           </div>
         </div>
 
-        {/* Tab Switcher Navigation */}
-        <nav className="flex items-center gap-1.5 p-1 rounded-xl bg-[#14191f] border border-[#232c37]">
-          <button
-            onClick={() => setActiveTab('landing')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-              activeTab === 'landing'
-                ? 'bg-[#ea580c] text-white font-bold shadow-md shadow-orange-900/30'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-[#1a2027]'
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5" />
-            Overview & Research
-          </button>
-
-          <button
-            onClick={() => setActiveTab('workbench')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-              activeTab === 'workbench'
-                ? 'bg-[#ea580c] text-white font-bold shadow-md shadow-orange-900/30'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-[#1a2027]'
-            }`}
-          >
-            <Sliders className="w-3.5 h-3.5" />
-            Interactive Workbench
-          </button>
-
-          <button
-            onClick={() => setActiveTab('compare')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-              activeTab === 'compare'
-                ? 'bg-[#ea580c] text-white font-bold shadow-md shadow-orange-900/30'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-[#1a2027]'
-            }`}
-          >
-            <Scale className="w-3.5 h-3.5" />
-            3-Design Trade-offs
-          </button>
-        </nav>
+        {/* Liquid Glass Navbar (Nimbus Waterline) */}
+        <div className="flex items-center justify-center">
+          <LiquidNavbar
+            items={NAV_ITEMS}
+            active={activeIndex}
+            onChange={(idx) => {
+              const tab = INDEX_TAB_MAP[idx];
+              if (tab) setActiveTab(tab);
+            }}
+            tone="dark"
+            className="border border-[#263445]/60 shadow-lg shadow-black/40"
+          />
+        </div>
 
         {/* Status Pill */}
         <div className="hidden md:flex items-center gap-2 text-xs font-mono text-slate-400 bg-[#14191f] px-3 py-1.5 rounded-lg border border-[#232c37]">
