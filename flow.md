@@ -116,3 +116,9 @@ flowchart TD
   - **Drag-to-Select:** Pointer capture tracking with velocity-proportional elastic deformation (`scaleX(stretch)` / `scaleY(squash)`), snapping to the nearest valid tab on pointer release.
 - **Preservation:** 100% preservation of all 3 tabs (`Overview & Research`, `Interactive Workbench`, `3-Design Trade-offs`), icons, business logic, and dark industrial theme.
 - **Deployment:** Synchronized across `experimental` and `main` branches and deployed live to production at [https://batterylabweb.vercel.app](https://batterylabweb.vercel.app) (Deployment ID: `dpl_C1UcM1crjQJnZJTYmFedkZBWM824`).
+
+
+## 9. Reversion of Navigation Bar
+- **User Feedback:** Liquid-morphing navigation bar effect did not match user preferences for the clean, crisp industrial telemetry interface.
+- **Action Taken:** Reverted navigation in `App.jsx` to the clean industrial telemetry button dock (`#14191f` surface, `#232c37` border, bold orange `#ea580c` active tab pill with high-contrast text and icons). Removed experimental `LiquidNavbar.jsx`.
+- **Status:** Verified and restored across `experimental` and `main` branches.

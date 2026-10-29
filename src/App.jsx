@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import LandingView from './components/LandingView';
 import WorkbenchView from './components/WorkbenchView';
 import CompareView from './components/CompareView';
-import LiquidNavbar from './components/LiquidNavbar';
+import { Layers, Sliders, Scale } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('landing');
@@ -27,8 +27,44 @@ export default function App() {
           </div>
         </div>
 
-        {/* Liquid-Morphing Tab Switcher Navigation */}
-        <LiquidNavbar activeTab={activeTab} onChange={setActiveTab} />
+        {/* Tab Switcher Navigation */}
+        <nav className="flex items-center gap-1.5 p-1 rounded-xl bg-[#14191f] border border-[#232c37]">
+          <button
+            onClick={() => setActiveTab('landing')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+              activeTab === 'landing'
+                ? 'bg-[#ea580c] text-white font-bold shadow-md shadow-orange-900/30'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-[#1a2027]'
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            Overview & Research
+          </button>
+
+          <button
+            onClick={() => setActiveTab('workbench')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+              activeTab === 'workbench'
+                ? 'bg-[#ea580c] text-white font-bold shadow-md shadow-orange-900/30'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-[#1a2027]'
+            }`}
+          >
+            <Sliders className="w-3.5 h-3.5" />
+            Interactive Workbench
+          </button>
+
+          <button
+            onClick={() => setActiveTab('compare')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+              activeTab === 'compare'
+                ? 'bg-[#ea580c] text-white font-bold shadow-md shadow-orange-900/30'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-[#1a2027]'
+            }`}
+          >
+            <Scale className="w-3.5 h-3.5" />
+            3-Design Trade-offs
+          </button>
+        </nav>
 
         {/* Status Pill */}
         <div className="hidden md:flex items-center gap-2 text-xs font-mono text-slate-400 bg-[#14191f] px-3 py-1.5 rounded-lg border border-[#232c37]">
