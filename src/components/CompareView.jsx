@@ -46,9 +46,9 @@ export default function CompareView() {
   ];
 
   return (
-    <div className="space-y-8 pb-16">
+    <div className="space-y-8 pb-16 transition-opacity duration-500 ease-out">
       {/* Header */}
-      <div className="p-6 rounded-2xl bg-[#14191f] border border-[#232c37] flex flex-wrap items-center justify-between gap-4">
+      <div className="p-6 rounded-2xl bg-[#14191f] border border-[#232c37] flex flex-wrap card-lift-3d items-center justify-between gap-4">
         <div>
           <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
             <Scale className="w-5 h-5 text-emerald-400" />
@@ -108,7 +108,7 @@ export default function CompareView() {
       </div>
 
       {/* Engineering Takeaways Box */}
-      <div className="p-6 rounded-2xl bg-[#12161b] border border-[#232c37] space-y-3">
+      <div className="p-6 rounded-2xl bg-[#12161b] border border-[#232c37] space-y-3 card-lift-3d">
         <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
           <FileCheck className="w-4 h-4 text-emerald-400" />
           Key Design Trade-off Insights

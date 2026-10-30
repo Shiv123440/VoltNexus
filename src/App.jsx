@@ -4,7 +4,8 @@ import WorkbenchView from './components/WorkbenchView';
 import CompareView from './components/CompareView';
 import BatteryFlowBackground from './components/BatteryFlowBackground';
 import { LiquidNavbar } from '@/components/ui/liquid-glass-navbar';
-import { Layers, Sliders, Scale, Activity } from 'lucide-react';
+import { Layers, Sliders, Scale } from 'lucide-react';
+import { useSystemBoot, useMouseParallax } from './components/ui/useCinematicMotion';
 
 const NAV_ITEMS = [
   { 
@@ -36,15 +37,23 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('landing');
   const activeIndex = TAB_INDEX_MAP[activeTab] ?? 0;
 
+  // Cinematic Initial Page Load & Mouse Parallax System
+  const bootStage = useSystemBoot(500);
+  const mouseCoords = useMouseParallax(1);
+
   return (
     <div className="min-h-screen relative text-slate-100 flex flex-col font-sans selection:bg-orange-500/30 selection:text-orange-200">
-      {/* Dynamic Battery Energy Flow Background Environment */}
-      <BatteryFlowBackground activeTab={activeTab} />
+      {/* Dynamic Battery Energy Flow Background Environment with Parallax Tracking */}
+      <BatteryFlowBackground activeTab={activeTab} mouseCoords={mouseCoords} />
 
       {/* Top Integrated Engineering Control Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#0e1217]/95 border-b border-[#232c37] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5),0_1px_0_0_rgba(245,240,234,0.06)] px-4 sm:px-6 md:px-8 py-2 flex items-center justify-between">
-        {/* 1. Left Refined Branding Area */}
-        <div className="flex items-center gap-3.5 group">
+      <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#0e1217]/95 border-b border-[#232c37] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5),0_1px_0_0_rgba(245,240,234,0.06)] px-4 sm:px-6 md:px-8 py-2 flex items-center justify-between overflow-hidden">
+        {/* 1. Left Refined Branding Area: Enters from left on bootStage >= 1 */}
+        <div 
+          className={`flex items-center gap-3.5 group transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10 pointer-events-none'
+          }`}
+        >
           <div className="relative flex items-center justify-center p-1 rounded-xl bg-gradient-to-b from-[#182029]/80 to-[#10141a]/90 border border-[#2b3848]/60 shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
             <img 
               src="/voltnexus_logo_transparent.png" 
@@ -72,8 +81,12 @@ export default function App() {
           </div>
         </div>
 
-        {/* 2. Central Liquid Glass Navbar (Nimbus Waterline) */}
-        <div className="flex items-center justify-center px-2">
+        {/* 2. Central Liquid Glass Navbar: Expands horizontally from center on bootStage >= 1 */}
+        <div 
+          className={`flex items-center justify-center px-2 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] origin-center ${
+            bootStage >= 1 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0 pointer-events-none'
+          }`}
+        >
           <LiquidNavbar
             items={NAV_ITEMS}
             active={activeIndex}
@@ -86,8 +99,12 @@ export default function App() {
           />
         </div>
 
-        {/* 3. Right Technical Status Capsule */}
-        <div className="flex items-center">
+        {/* 3. Right Technical Status Capsule: Enters from right on bootStage >= 1 */}
+        <div 
+          className={`flex items-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 pointer-events-none'
+          }`}
+        >
           <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-[#12171e]/85 backdrop-blur-md border border-[#2b3746]/70 shadow-[0_2px_12px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.06)]">
             {/* Segment A: Version Tag */}
             <div className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">
@@ -115,7 +132,13 @@ export default function App() {
 
       {/* Main Container */}
       <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8">
-        {activeTab === 'landing' && <LandingView onNavigateToWorkbench={() => setActiveTab('workbench')} />}
+        {activeTab === 'landing' && (
+          <LandingView 
+            onNavigateToWorkbench={() => setActiveTab('workbench')} 
+            bootStage={bootStage}
+            mouseCoords={mouseCoords}
+          />
+        )}
         {activeTab === 'workbench' && <WorkbenchView />}
         {activeTab === 'compare' && <CompareView />}
       </main>

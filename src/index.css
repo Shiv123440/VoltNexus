@@ -178,3 +178,80 @@ body {
     transition: none;
   }
 }
+
+
+/* ---------------------------------------------------- */
+/* Cinematic System Activation & Scroll Animation Suite */
+/* ---------------------------------------------------- */
+@keyframes batteryFloat {
+  0%, 100% {
+    transform: translateY(0px) rotateX(14deg) rotateY(-12deg);
+  }
+  50% {
+    transform: translateY(-8px) rotateX(15deg) rotateY(-10deg);
+  }
+}
+
+@keyframes laserScan {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%);
+    opacity: 0;
+  }
+}
+
+@keyframes cardGlowPulse {
+  0%, 100% {
+    border-color: rgba(35, 44, 55, 0.8);
+  }
+  50% {
+    border-color: rgba(244, 119, 33, 0.4);
+  }
+}
+
+.animate-laser-scan {
+  animation: laserScan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Stagger transition delay utilities */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+.delay-800 { transition-delay: 800ms; }
+
+/* 3D Interactive Card Lift */
+.card-lift-3d {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+}
+.card-lift-3d:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5), 0 0 16px rgba(244, 119, 33, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-laser-scan,
+  .card-lift-3d {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
