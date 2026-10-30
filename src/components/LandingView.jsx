@@ -41,13 +41,16 @@ export default function LandingView({ onNavigateToWorkbench }) {
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-2">
-            <button
-              onClick={onNavigateToWorkbench}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-orange-500/20 active:scale-95 cursor-pointer"
-            >
-              Open Interactive Workbench
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <div className="voltnexus-3d-button">
+              <button
+                type="button"
+                onClick={onNavigateToWorkbench}
+                className="voltnexus-primary-cta"
+              >
+                Open Interactive Workbench
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </button>
+            </div>
             <div className="text-xs text-slate-400 font-mono px-3 py-2 rounded-lg bg-[#14191f] border border-[#232c37]">
               Frozen Scope: 46.8V Nom, 1.57 kWh (13S8P NMC) • 35°C Ambient
             </div>

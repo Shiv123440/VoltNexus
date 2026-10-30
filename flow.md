@@ -160,3 +160,15 @@ flowchart TD
   - Clear segmentation: `v1.2` build tag separated by hairline divider from the live telemetry indicator.
   - Restrained dual-layer emerald breathing dot (`animate-ping` + solid core with drop shadow).
 - **Strict Scope Preservation:** Central Liquid Glass Navbar, WebGL shader, navigation items, background animations, and page layouts left 100% untouched.
+
+
+## 13. 3D Physical Push-Button Effect (Main CTA)
+- **Objective:** Transform the primary "Open Interactive Workbench" CTA into a physical 3D push-button inspired by mechanical industrial switches.
+- **Visual Styling:**
+  - Surface: `#FFA12B` with hover `#FFAB3D` and active `#F78900`.
+  - Top highlight: `inset 0 1px 0 #FFE5C4`.
+  - Bottom extrusion depth: `0 9px 0 #6F4E37` (mocha-brown solid extrusion) with ambient drop shadow `0 12px 20px rgba(70, 42, 20, 0.28)`.
+  - Active press: `transform: translateY(8px)` with extrusion collapsing to `0 1px 0 #6F4E37`.
+  - Keyboard focus: `outline: 3px solid #246BFD; outline-offset: 5px;`.
+- **Component Updated:** Wrapped primary CTA in `src/components/LandingView.jsx` with `.voltnexus-3d-button` and styled with `.voltnexus-primary-cta`.
+- **Strict Scope Preservation:** Preserved `onNavigateToWorkbench` handler, `ArrowRight` icon, label text, and zero changes to other components or background.
