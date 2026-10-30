@@ -10,7 +10,9 @@ import React from 'react';
  * - Technical Schematics: 13S8P battery module footprints, 21700 cell arrays, duct flow vector marks, PCB vias
  * - Section-Aware: Adjusts opacity and focal areas between Landing (Hero), Workbench (Quiet), and Compare (Trade-off)
  */
-export default function BatteryFlowBackground({ activeTab = 'landing' }) {
+export default function BatteryFlowBackground({ activeTab = 'landing', mouseCoords = { x: 0, y: 0 } }) {
+  const mx = mouseCoords?.x || 0;
+  const my = mouseCoords?.y || 0;
   // Section-dependent opacity and intensity multipliers
   const isLanding = activeTab === 'landing';
   const isWorkbench = activeTab === 'workbench';
@@ -83,7 +85,8 @@ export default function BatteryFlowBackground({ activeTab = 'landing' }) {
       {/* 3. DYNAMIC VECTOR CIRCUIT PATHS & ANIMATED ENERGY FLOWS   */}
       {/* ======================================================== */}
       <svg 
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full transition-transform duration-300 ease-out"
+        style={{ transform: `translate3d(${mx * 15}px, ${my * 12}px, 0)` }}
         viewBox="0 0 1920 1080"
         preserveAspectRatio="xMidYMid slice"
       >
