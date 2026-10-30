@@ -48,7 +48,7 @@ export default function CompareView() {
   return (
     <div className="space-y-8 pb-16 transition-opacity duration-500 ease-out">
       {/* Header */}
-      <div className="p-6 rounded-2xl bg-[#14191f] border border-[#232c37] flex flex-wrap card-lift-3d items-center justify-between gap-4">
+      <div className="p-6 rounded-2xl glass-card-standard flex flex-wrap card-lift-3d items-center justify-between gap-4">
         <div>
           <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
             <Scale className="w-5 h-5 text-emerald-400" />
@@ -64,11 +64,11 @@ export default function CompareView() {
       </div>
 
       {/* Comparison Table */}
-      <div className="rounded-2xl bg-[#14191f] border border-[#232c37] overflow-hidden">
+      <div className="rounded-2xl glass-card-dense overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-[#232c37] bg-[#101418] font-mono text-slate-300">
+              <tr className="border-b border-[#232c37]/80 bg-[#101418]/60 font-mono text-slate-300">
                 <th className="py-3 px-4 w-1/4">Evaluated Metric / Subsystem</th>
                 <th className="py-3 px-4 w-1/4 text-rose-300">Baseline Design [A]</th>
                 <th className="py-3 px-4 w-1/4 text-emerald-300">Option A (Optimized NMC) [A]</th>
@@ -77,7 +77,7 @@ export default function CompareView() {
             </thead>
             <tbody className="divide-y divide-[#1e2631]">
               {rows.map((row, idx) => (
-                <tr key={idx} className="hover:bg-[#182028] transition-colors">
+                <tr key={idx} className="hover:bg-white/[0.04] transition-colors">
                   <td className="py-3 px-4 font-medium text-slate-200">{row.label}</td>
                   <td className="py-3 px-4 font-mono text-slate-300">
                     {row.base.includes("FAIL") ? (
@@ -108,7 +108,7 @@ export default function CompareView() {
       </div>
 
       {/* Engineering Takeaways Box */}
-      <div className="p-6 rounded-2xl bg-[#12161b] border border-[#232c37] space-y-3 card-lift-3d">
+      <div className="p-6 rounded-2xl glass-card-standard space-y-3 card-lift-3d">
         <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
           <FileCheck className="w-4 h-4 text-emerald-400" />
           Key Design Trade-off Insights

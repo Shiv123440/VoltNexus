@@ -61,7 +61,7 @@ export default function BatteryFlowBackground({ activeTab = 'landing', mouseCoor
           background: `
             radial-gradient(circle at 50% 45%, rgba(43, 33, 29, 0.35) 0%, rgba(43, 33, 29, 0.52) 65%, rgba(25, 20, 18, 0.68) 100%)
           `,
-          opacity: isWorkbench ? 0.88 : isCompare ? 0.82 : 0.74,
+          opacity: isWorkbench ? 0.60 : isCompare ? 0.52 : 0.44,
         }}
       />
 
