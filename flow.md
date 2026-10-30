@@ -147,3 +147,16 @@ flowchart TD
 - **State Synchronization:** Fully two-way synchronized with `activeTab` via controlled `active={activeIndex}` and `onChange={(idx) => setActiveTab(...)}`.
 - **Preservation:** Preserved VoltNexus branding, Tata Elxsi Teleport S4 subtitle, `v1.2 LIVE` status pill, and background telemetry flow.
 - **Path Resolution:** Added standard `@/` alias in `vite.config.js` pointing to `./src`.
+
+
+## 12. Header Control Panel Refinement (Branding & Status Areas)
+- **Objective:** Harmonize left branding and right status areas with the central Liquid Glass Navbar into a unified, premium engineering control interface.
+- **Left Branding Area:**
+  - Framed logo housing with subtle drop-shadow and hover elevation.
+  - Precision vertical divider with an illuminated orange technical accent tick (`bg-gradient-to-b from-orange-400 to-amber-500`).
+  - Refined technical typography: uppercase `TATA ELXSI TELIPORT S4` with `IDV-CS2` badge and `Case Study 2 • MBSE Battery Platform`.
+- **Right Status Area:**
+  - Compact glass status capsule with subtle warm-silver border and inner shadow.
+  - Clear segmentation: `v1.2` build tag separated by hairline divider from the live telemetry indicator.
+  - Restrained dual-layer emerald breathing dot (`animate-ping` + solid core with drop shadow).
+- **Strict Scope Preservation:** Central Liquid Glass Navbar, WebGL shader, navigation items, background animations, and page layouts left 100% untouched.
