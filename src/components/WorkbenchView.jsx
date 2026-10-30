@@ -85,7 +85,7 @@ export default function WorkbenchView() {
   return (
     <div className="space-y-8 pb-16 transition-opacity duration-500 ease-out">
       {/* Top Presets & Summary Pill */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-[#14191f] border border-[#232c37]">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl glass-card-standard">
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono text-slate-400">DESIGN PRESETS:</span>
           <button
@@ -125,7 +125,7 @@ export default function WorkbenchView() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Parameter Controls (4 Cols) */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="p-5 rounded-2xl bg-[#14191f] border border-[#232c37] space-y-5">
+          <div className="p-5 rounded-2xl glass-card-dense space-y-5">
             <div className="flex items-center justify-between border-b border-[#232c37] pb-3">
               <div className="flex items-center gap-2 text-sm font-bold text-slate-200">
                 <Sliders className="w-4 h-4 text-emerald-400" />
@@ -281,7 +281,7 @@ export default function WorkbenchView() {
         <div className="lg:col-span-8 space-y-6">
           {/* Key Metric Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="p-4 rounded-xl bg-[#14191f] border border-[#232c37] space-y-1 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-subtle space-y-1 card-lift-3d">
               <span className="text-[11px] font-mono text-slate-400">USABLE ENERGY</span>
               <div className="text-lg sm:text-xl font-bold text-slate-100">
                 {results.usableEnergyKwh} <span className="text-xs font-normal text-slate-400">kWh</span>
@@ -291,7 +291,7 @@ export default function WorkbenchView() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#14191f] border border-[#232c37] space-y-1 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-subtle space-y-1 card-lift-3d">
               <span className="text-[11px] font-mono text-slate-400">PEAK CORE TEMP</span>
               <div className={`text-lg sm:text-xl font-bold ${results.maxCoreTempC > 55.0 ? 'text-rose-400' : 'text-slate-100'}`}>
                 {results.maxCoreTempC} <span className="text-xs font-normal text-slate-400">°C</span>
@@ -301,7 +301,7 @@ export default function WorkbenchView() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#14191f] border border-[#232c37] space-y-1 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-subtle space-y-1 card-lift-3d">
               <span className="text-[11px] font-mono text-slate-400">TEMP SPREAD (ΔT)</span>
               <div className={`text-lg sm:text-xl font-bold ${results.tempSpreadC > 5.0 ? 'text-amber-400' : 'text-slate-100'}`}>
                 {results.tempSpreadC} <span className="text-xs font-normal text-slate-400">°C</span>
@@ -311,7 +311,7 @@ export default function WorkbenchView() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#14191f] border border-[#232c37] space-y-1 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-subtle space-y-1 card-lift-3d">
               <span className="text-[11px] font-mono text-slate-400">MODULE MASS & BOM</span>
               <div className="text-lg sm:text-xl font-bold text-slate-100">
                 {results.totalMassKg} <span className="text-xs font-normal text-slate-400">kg</span>
@@ -325,7 +325,7 @@ export default function WorkbenchView() {
           {/* Coupled Telemetry Charts */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Voltage Response */}
-            <div className="p-4 rounded-xl bg-[#14191f] border border-[#232c37] space-y-2 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-dense space-y-2 card-lift-3d">
               <div className="flex items-center justify-between text-xs font-bold text-slate-200">
                 <span>Terminal Voltage vs. Time</span>
                 <span className="text-emerald-400 font-mono">{results.nominalVoltageV}V Nom</span>
@@ -344,7 +344,7 @@ export default function WorkbenchView() {
             </div>
 
             {/* Thermal Response */}
-            <div className="p-4 rounded-xl bg-[#14191f] border border-[#232c37] space-y-2 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-dense space-y-2 card-lift-3d">
               <div className="flex items-center justify-between text-xs font-bold text-slate-200">
                 <span>Thermal Response (Core vs. Min)</span>
                 <span className="text-rose-400 font-mono">60°C Ceiling</span>
@@ -365,7 +365,7 @@ export default function WorkbenchView() {
           </div>
 
           {/* Automated Cross-Subsystem Conflict Rules Table */}
-          <div className="p-5 rounded-2xl bg-[#14191f] border border-[#232c37] space-y-3">
+          <div className="p-5 rounded-2xl glass-card-dense space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-sm font-bold text-slate-200">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
@@ -390,7 +390,7 @@ export default function WorkbenchView() {
                 </thead>
                 <tbody className="divide-y divide-[#1e2631]">
                   {results.rules.map((r) => (
-                    <tr key={r.id} className="hover:bg-[#182028] transition-colors">
+                    <tr key={r.id} className="hover:bg-white/[0.04] transition-colors">
                       <td className="py-2.5 px-2 font-mono font-bold text-slate-300">{r.id}</td>
                       <td className="py-2.5 px-2 text-slate-400">{r.subsystems}</td>
                       <td className="py-2.5 px-2 text-slate-200">{r.name}</td>

@@ -31,7 +31,7 @@ export default function LandingView({
       {/* ======================================================== */}
       {/* 1. CINEMATIC HERO SECTION & 3D BATTERY MODULE REVEAL     */}
       {/* ======================================================== */}
-      <section className="relative rounded-3xl bg-gradient-to-b from-[#18212a]/95 via-[#12171e]/90 to-[#0b0e12]/95 border border-[#263547] p-6 sm:p-8 md:p-12 overflow-hidden shadow-[0_24px_60px_-12px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.08)]">
+      <section className="relative rounded-3xl glass-panel-hero p-6 sm:p-8 md:p-12 overflow-hidden">
         {/* Ambient Top Glow Accents */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-orange-500/10 via-amber-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-blue-500/8 rounded-full blur-3xl pointer-events-none" />
@@ -118,7 +118,7 @@ export default function LandingView({
                 </button>
               </div>
 
-              <div className="text-xs text-slate-300 font-mono px-3.5 py-2.5 rounded-xl bg-[#12171e]/90 border border-[#2b394a] shadow-sm flex items-center gap-2">
+              <div className="text-xs text-slate-300 font-mono px-3.5 py-2.5 rounded-xl glass-card-subtle flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 <span>Frozen Scope: 46.8V Nom, 1.57 kWh (13S8P NMC) • 35°C Ambient</span>
               </div>
@@ -168,7 +168,7 @@ export default function LandingView({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Card 1: Cell-to-Cell Variation */}
           <div 
-            className={`p-6 rounded-2xl bg-[#14191f]/95 border border-[#232c37] space-y-3 relative overflow-hidden group hover:border-amber-500/40 card-lift-3d transition-all duration-700 delay-100 ${
+            className={`p-6 rounded-2xl glass-card-standard space-y-3 relative overflow-hidden group hover:border-amber-500/40 card-lift-3d transition-all duration-700 delay-100 ${
               isProblemRevealed 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 -translate-x-6'
@@ -190,7 +190,7 @@ export default function LandingView({
 
           {/* Card 2: Non-Uniform Thermal Gradients */}
           <div 
-            className={`p-6 rounded-2xl bg-[#14191f]/95 border border-[#232c37] space-y-3 relative overflow-hidden group hover:border-rose-500/40 card-lift-3d transition-all duration-700 delay-200 ${
+            className={`p-6 rounded-2xl glass-card-standard space-y-3 relative overflow-hidden group hover:border-rose-500/40 card-lift-3d transition-all duration-700 delay-200 ${
               isProblemRevealed 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 translate-x-6'
@@ -211,7 +211,7 @@ export default function LandingView({
 
           {/* Card 3: Interacting Physical Constraints */}
           <div 
-            className={`p-6 rounded-2xl bg-[#14191f]/95 border border-[#232c37] space-y-3 relative overflow-hidden group hover:border-teal-500/40 card-lift-3d transition-all duration-700 delay-300 ${
+            className={`p-6 rounded-2xl glass-card-standard space-y-3 relative overflow-hidden group hover:border-teal-500/40 card-lift-3d transition-all duration-700 delay-300 ${
               isProblemRevealed 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 -translate-x-6'
@@ -232,7 +232,7 @@ export default function LandingView({
 
           {/* Card 4: Costly Prototyping Loops */}
           <div 
-            className={`p-6 rounded-2xl bg-[#14191f]/95 border border-[#232c37] space-y-3 relative overflow-hidden group hover:border-orange-500/40 card-lift-3d transition-all duration-700 delay-400 ${
+            className={`p-6 rounded-2xl glass-card-standard space-y-3 relative overflow-hidden group hover:border-orange-500/40 card-lift-3d transition-all duration-700 delay-400 ${
               isProblemRevealed 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 translate-x-6'
@@ -258,7 +258,7 @@ export default function LandingView({
       {/* ======================================================== */}
       <section 
         ref={researchSectionRef} 
-        className="p-6 sm:p-8 rounded-3xl bg-[#12161b]/95 border border-[#232c37] space-y-6 relative overflow-hidden shadow-xl"
+        className="p-6 sm:p-8 rounded-3xl glass-card-dense space-y-6 relative overflow-hidden"
       >
         {/* Subtle Laser Accent Scanning Across Header */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-orange-500 to-transparent animate-laser-scan opacity-70" />
@@ -283,7 +283,7 @@ export default function LandingView({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Paper 1: Cloos & Wetzel */}
           <div 
-            className={`p-4.5 rounded-2xl bg-[#161d24]/90 border border-[#283340] space-y-2 card-lift-3d transition-all duration-700 delay-100 ${
+            className={`p-4.5 rounded-2xl glass-card-subtle space-y-2 card-lift-3d transition-all duration-700 delay-100 ${
               isResearchRevealed 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-6'
@@ -298,7 +298,7 @@ export default function LandingView({
 
           {/* Paper 2: Bruen & Marco */}
           <div 
-            className={`p-4.5 rounded-2xl bg-[#161d24]/90 border border-[#283340] space-y-2 card-lift-3d transition-all duration-700 delay-200 ${
+            className={`p-4.5 rounded-2xl glass-card-subtle space-y-2 card-lift-3d transition-all duration-700 delay-200 ${
               isResearchRevealed 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-6'
@@ -313,7 +313,7 @@ export default function LandingView({
 
           {/* Paper 3: Zhou et al. */}
           <div 
-            className={`p-4.5 rounded-2xl bg-[#161d24]/90 border border-[#283340] space-y-2 card-lift-3d transition-all duration-700 delay-300 ${
+            className={`p-4.5 rounded-2xl glass-card-subtle space-y-2 card-lift-3d transition-all duration-700 delay-300 ${
               isResearchRevealed 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-6'
@@ -328,7 +328,7 @@ export default function LandingView({
 
           {/* Paper 4: Pan et al. */}
           <div 
-            className={`p-4.5 rounded-2xl bg-[#161d24]/90 border border-[#283340] space-y-2 card-lift-3d transition-all duration-700 delay-400 ${
+            className={`p-4.5 rounded-2xl glass-card-subtle space-y-2 card-lift-3d transition-all duration-700 delay-400 ${
               isResearchRevealed 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-6'
@@ -343,7 +343,7 @@ export default function LandingView({
 
           {/* Paper 5: Chang et al. */}
           <div 
-            className={`p-4.5 rounded-2xl bg-[#161d24]/90 border border-[#283340] space-y-2 card-lift-3d transition-all duration-700 delay-500 ${
+            className={`p-4.5 rounded-2xl glass-card-subtle space-y-2 card-lift-3d transition-all duration-700 delay-500 ${
               isResearchRevealed 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-6'
@@ -358,7 +358,7 @@ export default function LandingView({
 
           {/* Core Engine Card */}
           <div 
-            className={`p-4.5 rounded-2xl bg-[#161d24]/90 border border-orange-500/35 flex flex-col justify-center items-start space-y-2 card-lift-3d transition-all duration-700 delay-600 ${
+            className={`p-4.5 rounded-2xl glass-card-subtle border-orange-500/35 hover:border-orange-500/60 flex flex-col justify-center items-start space-y-2 card-lift-3d transition-all duration-700 delay-600 ${
               isResearchRevealed 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-6'

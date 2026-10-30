@@ -172,3 +172,15 @@ flowchart TD
   - Keyboard focus: `outline: 3px solid #246BFD; outline-offset: 5px;`.
 - **Component Updated:** Wrapped primary CTA in `src/components/LandingView.jsx` with `.voltnexus-3d-button` and styled with `.voltnexus-primary-cta`.
 - **Strict Scope Preservation:** Preserved `onNavigateToWorkbench` handler, `ArrowRight` icon, label text, and zero changes to other components or background.
+
+
+## 14. Premium Translucent Glass Cards Across VoltNexus
+- **Objective:** Upgrade card surfaces from opaque dark blocks to a sophisticated translucent smoked-glass aesthetic, revealing the dynamic battery energy-flow background beneath them while maintaining maximum text readability.
+- **Transparency & Depth Hierarchy:**
+  - `glass-panel-hero`: Hero container with `rgba(22, 28, 36, 0.78)`, `backdrop-filter: blur(14px) saturate(120%)`, and fine warm-platinum border `rgba(220, 210, 200, 0.20)`.
+  - `glass-card-standard`: Engineering narrative & problem cards with `rgba(22, 28, 35, 0.76)`, `backdrop-filter: blur(12px) saturate(115%)`, delicate hover border highlight, and subtle shadow transition.
+  - `glass-card-subtle`: Smaller metric cards, frozen scope pill, and literature cards with `rgba(22, 28, 35, 0.68)`, `blur(10px)`.
+  - `glass-card-dense`: High-contrast technical panels, workbench controls, telemetry charts, and 13-rule compliance tables with `rgba(18, 24, 31, 0.84)`, `blur(16px)`.
+- **Restrained 3D Card Lift:** Polished `.card-lift-3d` to smooth `translateY(-2px)` elevation without excessive scaling or glow.
+- **Graceful Fallback:** Added `@supports not (backdrop-filter)` fallback to ensure clean solid contrast on unsupported browsers.
+- **Strict Scope Preservation:** Zero alterations to component placement, card content, engineering calculations, 3D battery digital twin, or navigation.
