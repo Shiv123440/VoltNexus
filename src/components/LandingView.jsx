@@ -9,7 +9,7 @@ import {
   Activity,
   Sparkles
 } from 'lucide-react';
-import BatteryModule3D from './ui/BatteryModule3D';
+import BatteryModuleVideo from './ui/BatteryModuleVideo';
 import { useScrollReveal } from './ui/useCinematicMotion';
 
 export default function LandingView({ 
@@ -125,11 +125,10 @@ export default function LandingView({
             </div>
           </div>
 
-          {/* Right Column: 3D Battery Module Digital Twin Reveal (Cols 8-12) */}
+          {/* Right Column: Transparent Battery Module Animation (Cols 8-12) */}
           <div className="lg:col-span-5 flex justify-center">
-            <BatteryModule3D 
+            <BatteryModuleVideo 
               bootStage={bootStage} 
-              mouseCoords={mouseCoords} 
             />
           </div>
         </div>

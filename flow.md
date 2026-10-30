@@ -184,3 +184,16 @@ flowchart TD
 - **Restrained 3D Card Lift:** Polished `.card-lift-3d` to smooth `translateY(-2px)` elevation without excessive scaling or glow.
 - **Graceful Fallback:** Added `@supports not (backdrop-filter)` fallback to ensure clean solid contrast on unsupported browsers.
 - **Strict Scope Preservation:** Zero alterations to component placement, card content, engineering calculations, 3D battery digital twin, or navigation.
+
+
+## 15. Transparent Battery Animation Hero Integration
+- **Objective:** Integrate the transparent battery module animation (`/videos/battery-module.webm`) into the hero section of VoltNexus.
+- **Implementation Details:**
+  - Created `src/components/ui/BatteryModuleVideo.jsx` utilizing an HTML5 `<video>` element referencing `/videos/battery-module.webm`.
+  - Maintained complete alpha transparency with zero opaque containers or bounding cards; the underlying `BatteryFlowBackground` circuit paths and energy pulses flow visibly around and behind the module.
+  - Positioned within the right hero column (cols 8–12), maintaining balanced proportions against the left typography and 3D push-button CTA.
+  - Configured with `autoPlay`, `muted`, `playsInline`, and `preload="auto"`.
+  - Implemented single-play entrance assembly animation: upon completion (`onEnded`), transitions into a stable resting state paused at the final assembled frame rather than looping indefinitely.
+  - Added an interactive translucent "Replay" action button to allow re-triggering the assembly animation on demand.
+  - Integrated static fallback for users with `prefers-reduced-motion: reduce` and fallback handling for video playback failures using `battery-module-poster.png`.
+- **Strict Scope Preservation:** Zero alterations to hero typography, CTA button styling, Liquid Glass Navbar, MBSE calculations, or other website components.
