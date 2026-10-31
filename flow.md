@@ -197,3 +197,18 @@ flowchart TD
     - Active dot highlights on the nearest data point for each series with dark center and luminous ring.
     - Floating translucent glass tooltip (`VoltNexusChartTooltip.jsx`) displaying the selected time in a rounded pill badge, alongside individual series indicator dots, titles, and bold formatted values.
   - **Strict Scope Preservation:** Preserved chart titles, `46.8V Nom` metric pill, `60°C Ceiling` metric pill, card positioning, card dimensions, glass-card-dense styling, all input sliders, and 13-rule automated conflict checker.
+
+---
+
+## 7. Scroll-Responsive Navbar Transformation (SwiftPieces Floating Capsule)
+
+### 7.1 Concept & Requirements
+- **Top State (scrollY <= 35px):** Full-width edge-to-edge engineering header with left branding (VoltNexus logo + Tata Elxsi Telport S4 IDV-CS2 MBSE Battery Platform), centered 3-button Liquid Navbar, and right technical status capsule (v1.2 + live pulsing dot).
+- **Scrolled State (scrollY > 55px):** Transforms smoothly into a compact floating capsule (
+ounded-full, max-w-[1120px], g-[#0c1015]/85 backdrop-blur-2xl, order border-[#2b394b]/80, shadow-[0_16px_38px_rgba(0,0,0,0.65)]).
+- **Section Kinetics:**
+  - Left branding glides inward smoothly from the left screen edge.
+  - Right status capsule glides inward smoothly from the right screen edge.
+  - Central 3-button Liquid Navbar remains centered with identical styling, active water drop physics, and interactions.
+- **Hysteresis & Throttling:** 20px deadband (55px trigger, 35px reverse) with 
+equestAnimationFrame prevents boundary flickering.
