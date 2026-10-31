@@ -74,7 +74,7 @@ export default function App() {
           <div 
             className={`flex items-center group transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10 pointer-events-none'
-            } ${isScrolled ? 'gap-2 sm:gap-2.5' : 'gap-3.5'}`}
+            } ${isScrolled ? 'gap-0' : 'gap-3.5'}`}
           >
             <div className={`relative flex items-center justify-center rounded-xl bg-gradient-to-b from-[#182029]/80 to-[#10141a]/90 border border-[#2b3848]/60 shadow-[0_2px_8px_rgba(0,0,0,0.4)] transition-all duration-500 ${
               isScrolled ? 'p-0.5 sm:p-1' : 'p-1'
@@ -88,11 +88,22 @@ export default function App() {
               />
             </div>
 
-            <div className={`hidden ${isScrolled ? 'md:flex' : 'sm:flex'} flex-col justify-center pl-3 border-l border-orange-500/35 relative transition-all duration-500`}>
+            <div 
+              aria-hidden={isScrolled}
+              className={`hidden sm:flex flex-col justify-center relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                isScrolled 
+                  ? 'max-w-0 opacity-0 pl-0 border-l border-transparent pointer-events-none select-none' 
+                  : 'max-w-[320px] opacity-100 pl-3 border-l border-orange-500/35 pointer-events-auto'
+              }`}
+            >
               {/* Subtle technical accent tick on the separator */}
-              <span className="absolute -left-[2px] top-1/2 -translate-y-1/2 w-[3px] h-3 bg-gradient-to-b from-orange-400 to-amber-500 rounded-full shadow-[0_0_6px_rgba(244,119,33,0.6)]" />
+              <span 
+                className={`absolute -left-[2px] top-1/2 -translate-y-1/2 w-[3px] h-3 bg-gradient-to-b from-orange-400 to-amber-500 rounded-full shadow-[0_0_6px_rgba(244,119,33,0.6)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  isScrolled ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+                }`} 
+              />
               
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 whitespace-nowrap">
                 <span className="text-[9.5px] font-mono tracking-[0.16em] uppercase text-slate-400 font-semibold leading-tight">
                   TATA ELXSI TELIPORT S4
                 </span>
@@ -101,7 +112,7 @@ export default function App() {
                 </span>
               </div>
               
-              <span className="text-[11.5px] font-medium tracking-tight text-slate-200 leading-snug">
+              <span className="text-[11.5px] font-medium tracking-tight text-slate-200 leading-snug whitespace-nowrap">
                 Case Study 2 <span className="text-slate-500 mx-0.5">•</span> <span className="text-slate-300 font-semibold">MBSE Battery Platform</span>
               </span>
             </div>
