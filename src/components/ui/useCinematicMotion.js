@@ -126,3 +126,44 @@ export function useScrollReveal(threshold = 0.15, rootMargin = '0px 0px -50px 0p
 
   return [ref, isRevealed];
 }
+
+/**
+ * useScrollThreshold
+ * High-performance, hysteresis-damped scroll hook for responsive navbar transitions.
+ * Prevents rapid flickering around the scroll boundary with requestAnimationFrame throttling.
+ *
+ * @param {number} threshold - Scroll Y position (in px) to activate scrolled state (default: 55)
+ * @param {number} hysteresis - Deadband offset (in px) required to reverse back to top (default: 20)
+ * @returns {boolean} isScrolled
+ */
+export function useScrollThreshold(threshold = 55, hysteresis = 20) {
+  const isQueryScrolled = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('scrolled') === '1';
+  const [isScrolled, setIsScrolled] = useState(isQueryScrolled);
+
+  useEffect(() => {
+    if (isQueryScrolled) return;
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentY = window.scrollY || document.documentElement.scrollTop;
+          setIsScrolled((prev) => {
+            if (!prev && currentY > threshold) return true;
+            if (prev && currentY < threshold - hysteresis) return false;
+            return prev;
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [threshold, hysteresis, isQueryScrolled]);
+
+  return isScrolled;
+}
