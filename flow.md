@@ -212,3 +212,11 @@ ounded-full, max-w-[1120px], g-[#0c1015]/85 backdrop-blur-2xl, order border-[#
   - Central 3-button Liquid Navbar remains centered with identical styling, active water drop physics, and interactions.
 - **Hysteresis & Throttling:** 20px deadband (55px trigger, 35px reverse) with 
 equestAnimationFrame prevents boundary flickering.
+
+### 7.2 Project Metadata Collapse on Scroll
+- **Problem Solved:** When transitioning into the compact floating capsule, displaying the full project metadata ("TATA ELXSI TELIPORT S4 · IDV-CS2 · Case Study 2 • MBSE Battery Platform") between the logo and central navbar crowded the floating pill.
+- **Solution:**
+  - In top state (`!isScrolled`): Metadata is fully visible (`max-w-[320px] opacity-100 pl-3 border-l border-orange-500/35`) with its orange accent tick.
+  - In scrolled state (`isScrolled`): Fades and collapses smoothly (`max-w-0 opacity-0 pl-0 border-l border-transparent`) with `transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]`, `overflow-hidden`, `whitespace-nowrap`, and `aria-hidden={isScrolled}`.
+  - Parent branding flex gap collapses from `gap-3.5` to `gap-0` to ensure zero phantom whitespace.
+  - Results in a spacious, perfectly centered floating glass pill where the VoltNexus logo, central 3-button LiquidNavbar, and right LIVE capsule have balanced breathing room.
