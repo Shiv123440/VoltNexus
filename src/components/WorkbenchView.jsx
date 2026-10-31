@@ -6,8 +6,9 @@ import {
   COOLING_PRESETS 
 } from '../engine/batterySimulator';
 import { 
-  LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend 
+  AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid 
 } from 'recharts';
+import VoltNexusChartTooltip from './ui/VoltNexusChartTooltip';
 import { 
   Sliders, 
   AlertTriangle, 
@@ -325,40 +326,140 @@ export default function WorkbenchView() {
           {/* Coupled Telemetry Charts */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Voltage Response */}
-            <div className="p-4 rounded-xl glass-card-dense space-y-2 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-dense space-y-3 card-lift-3d">
               <div className="flex items-center justify-between text-xs font-bold text-slate-200">
-                <span>Terminal Voltage vs. Time</span>
-                <span className="text-emerald-400 font-mono">{results.nominalVoltageV}V Nom</span>
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]" />
+                  <span>Terminal Voltage vs. Time</span>
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-500/35 text-emerald-400 font-mono text-[11px] font-semibold">
+                  {results.nominalVoltageV}V Nom
+                </span>
               </div>
-              <div className="h-44 w-full">
+              <div className="h-48 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={results.timeSeries}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#232c37" />
-                    <XAxis dataKey="timeMin" stroke="#64748b" tick={{ fontSize: 10 }} />
-                    <YAxis stroke="#64748b" domain={['auto', 'auto']} tick={{ fontSize: 10 }} />
-                    <Tooltip contentStyle={{ backgroundColor: '#0f1317', borderColor: '#232c37', fontSize: '11px' }} />
-                    <Line type="monotone" dataKey="voltageV" stroke="#10b981" strokeWidth={2} dot={false} />
-                  </LineChart>
+                  <AreaChart data={results.timeSeries} margin={{ top: 8, right: 12, left: -16, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="voltageGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#10b981" stopOpacity={0.32} />
+                        <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.07)" vertical={false} />
+                    <XAxis 
+                      dataKey="timeMin" 
+                      stroke="#64748b" 
+                      axisLine={false}
+                      tickLine={false}
+                      tick={{ fontSize: 10, fill: '#94a3b8' }} 
+                      tickFormatter={(v) => `${v}m`}
+                    />
+                    <YAxis 
+                      stroke="#64748b" 
+                      axisLine={false}
+                      tickLine={false}
+                      domain={['auto', 'auto']} 
+                      tick={{ fontSize: 10, fill: '#94a3b8' }} 
+                      tickFormatter={(v) => `${v}V`}
+                    />
+                    <Tooltip 
+                      content={<VoltNexusChartTooltip unit="V" />}
+                      cursor={{ stroke: 'rgba(148, 163, 184, 0.3)', strokeWidth: 1.5, strokeDasharray: '4 4' }}
+                    />
+                    <Area 
+                      type="monotone" 
+                      dataKey="voltageV" baseValue="dataMin" 
+                      name="Terminal Voltage"
+                      stroke="#10b981" 
+                      strokeWidth={2.5} 
+                      fillOpacity={1} 
+                      fill="url(#voltageGradient)" 
+                      dot={false} isAnimationActive={false}
+                      activeDot={{ r: 5, stroke: '#10b981', strokeWidth: 2, fill: '#0a0e14' }}
+                    />
+                  </AreaChart>
                 </ResponsiveContainer>
               </div>
             </div>
 
             {/* Thermal Response */}
-            <div className="p-4 rounded-xl glass-card-dense space-y-2 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-dense space-y-3 card-lift-3d">
               <div className="flex items-center justify-between text-xs font-bold text-slate-200">
-                <span>Thermal Response (Core vs. Min)</span>
-                <span className="text-rose-400 font-mono">60°C Ceiling</span>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-rose-400 shadow-[0_0_8px_#f43f5e]" />
+                  <span>Thermal Response (Core vs. Min)</span>
+                  <div className="hidden sm:flex items-center gap-2 ml-2 text-[10px] font-mono text-slate-400">
+                    <span className="flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
+                      Core
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      Min
+                    </span>
+                  </div>
+                </div>
+                <span className="px-2.5 py-0.5 rounded-full bg-rose-950/60 border border-rose-500/35 text-rose-400 font-mono text-[11px] font-semibold">
+                  60°C Ceiling
+                </span>
               </div>
-              <div className="h-44 w-full">
+              <div className="h-48 w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={results.tempSeries}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#232c37" />
-                    <XAxis dataKey="timeMin" stroke="#64748b" tick={{ fontSize: 10 }} />
-                    <YAxis stroke="#64748b" domain={[30, 70]} tick={{ fontSize: 10 }} />
-                    <Tooltip contentStyle={{ backgroundColor: '#0f1317', borderColor: '#232c37', fontSize: '11px' }} />
-                    <Line type="monotone" dataKey="tempMaxC" stroke="#f43f5e" strokeWidth={2} dot={false} name="Max Core °C" />
-                    <Line type="monotone" dataKey="tempMinC" stroke="#059669" strokeWidth={1.5} dot={false} name="Min Cell °C" />
-                  </LineChart>
+                  <AreaChart data={results.tempSeries} margin={{ top: 8, right: 12, left: -16, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="tempCoreGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.28} />
+                        <stop offset="95%" stopColor="#f43f5e" stopOpacity={0.0} />
+                      </linearGradient>
+                      <linearGradient id="tempMinGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#059669" stopOpacity={0.20} />
+                        <stop offset="95%" stopColor="#059669" stopOpacity={0.0} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.07)" vertical={false} />
+                    <XAxis 
+                      dataKey="timeMin" 
+                      stroke="#64748b" 
+                      axisLine={false}
+                      tickLine={false}
+                      tick={{ fontSize: 10, fill: '#94a3b8' }} 
+                      tickFormatter={(v) => `${v}m`}
+                    />
+                    <YAxis 
+                      stroke="#64748b" 
+                      axisLine={false}
+                      tickLine={false}
+                      domain={[30, 70]} 
+                      tick={{ fontSize: 10, fill: '#94a3b8' }} 
+                      tickFormatter={(v) => `${v}°C`}
+                    />
+                    <Tooltip 
+                      content={<VoltNexusChartTooltip unit="°C" />}
+                      cursor={{ stroke: 'rgba(148, 163, 184, 0.3)', strokeWidth: 1.5, strokeDasharray: '4 4' }}
+                    />
+                    <Area 
+                      type="monotone" 
+                      dataKey="tempMaxC" baseValue="dataMin" 
+                      name="Max Core" 
+                      stroke="#f43f5e" 
+                      strokeWidth={2.5} 
+                      fillOpacity={1} 
+                      fill="url(#tempCoreGradient)" 
+                      dot={false} isAnimationActive={false}
+                      activeDot={{ r: 5, stroke: '#f43f5e', strokeWidth: 2, fill: '#0a0e14' }}
+                    />
+                    <Area 
+                      type="monotone" 
+                      dataKey="tempMinC" baseValue="dataMin" 
+                      name="Min Cell" 
+                      stroke="#059669" 
+                      strokeWidth={2} 
+                      fillOpacity={1} 
+                      fill="url(#tempMinGradient)" 
+                      dot={false} isAnimationActive={false}
+                      activeDot={{ r: 4.5, stroke: '#059669', strokeWidth: 2, fill: '#0a0e14' }}
+                    />
+                  </AreaChart>
                 </ResponsiveContainer>
               </div>
             </div>

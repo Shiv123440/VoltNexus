@@ -184,3 +184,16 @@ flowchart TD
 - **Restrained 3D Card Lift:** Polished `.card-lift-3d` to smooth `translateY(-2px)` elevation without excessive scaling or glow.
 - **Graceful Fallback:** Added `@supports not (backdrop-filter)` fallback to ensure clean solid contrast on unsupported browsers.
 - **Strict Scope Preservation:** Zero alterations to component placement, card content, engineering calculations, 3D battery digital twin, or navigation.
+
+
+## 15. Premium Monotone Area Chart Redesign (Workbench Telemetry)
+- **Objective:** Redesign the two VoltNexus workbench telemetry charts ("Terminal Voltage vs. Time" and "Thermal Response (Core vs. Min)") to adopt the visual aesthetics and hover experience of Image 1 while strictly preserving all original engineering calculations, cards, metrics, and data.
+- **Visual Design & Chart Upgrades:**
+  - **Smooth Monotone Curves:** Replaced angular line segments with smooth cubic monotone splines (`type="monotone"`), preserving authentic non-overshooting engineering data trajectories.
+  - **Gradient Area Fills:** Added linear gradient fills beneath each series that gradually fade to 0 opacity at the baseline (`voltageGradient` emerald, `tempCoreGradient` rose, `tempMinGradient` emerald). Used `baseValue="dataMin"` to properly ground the fill to the data baseline without zero-clipping.
+  - **Refined Plotting Surface:** Configured horizontal-only dashed grid lines (`stroke="rgba(255, 255, 255, 0.07)"`, `vertical={false}`) and borderless, tickless clean axis typography with unit-aware formatting (`{v}m`, `{v}V`, `{v}°C`).
+  - **Interactive Hover Experience:**
+    - Vertical crosshair dashed indicator line following the cursor across the chart.
+    - Active dot highlights on the nearest data point for each series with dark center and luminous ring.
+    - Floating translucent glass tooltip (`VoltNexusChartTooltip.jsx`) displaying the selected time in a rounded pill badge, alongside individual series indicator dots, titles, and bold formatted values.
+  - **Strict Scope Preservation:** Preserved chart titles, `46.8V Nom` metric pill, `60°C Ceiling` metric pill, card positioning, card dimensions, glass-card-dense styling, all input sliders, and 13-rule automated conflict checker.

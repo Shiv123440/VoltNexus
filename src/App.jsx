@@ -34,7 +34,15 @@ const TAB_INDEX_MAP = {
 const INDEX_TAB_MAP = ['landing', 'workbench', 'compare'];
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('landing');
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const paramTab = new URLSearchParams(window.location.search).get('tab');
+      if (paramTab && ['landing', 'workbench', 'compare'].includes(paramTab)) {
+        return paramTab;
+      }
+    }
+    return 'landing';
+  });
   const activeIndex = TAB_INDEX_MAP[activeTab] ?? 0;
 
   // Cinematic Initial Page Load & Mouse Parallax System
