@@ -42,7 +42,7 @@ export default function LandingView({
           <div className="lg:col-span-7 space-y-6">
             {/* Step 1: Subtitle Pill */}
             <div 
-              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-950/60 border border-orange-500/35 text-orange-400 text-xs font-mono tracking-wide shadow-sm transition-all duration-700 ${
+              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 border border-orange-300 text-orange-800 font-bold text-xs font-mono tracking-wide shadow-sm transition-all duration-700 ${
                 stage1 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-4 pointer-events-none'
@@ -72,7 +72,7 @@ export default function LandingView({
               </div>
 
               <h1 
-                className={`text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-100 leading-[1.15] transition-all duration-800 delay-200 ${
+                className={`text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-[1.15] transition-all duration-800 delay-200 ${
                   stage2 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-6 pointer-events-none'
@@ -87,7 +87,7 @@ export default function LandingView({
 
             {/* Step 3: Description Paragraph */}
             <p 
-              className={`text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl transition-all duration-800 delay-300 ${
+              className={`text-base sm:text-lg text-slate-700 leading-relaxed font-normal max-w-2xl transition-all duration-800 delay-300 ${
                 stage2 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-6 pointer-events-none'
@@ -118,7 +118,7 @@ export default function LandingView({
                 </button>
               </div>
 
-              <div className="text-xs text-slate-300 font-mono px-3.5 py-2.5 rounded-xl glass-card-subtle flex items-center gap-2">
+              <div className="text-xs text-slate-700 font-mono font-medium px-3.5 py-2.5 rounded-xl glass-card-subtle flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 <span>Frozen Scope: 46.8V Nom, 1.57 kWh (13S8P NMC) • 35°C Ambient</span>
               </div>
@@ -151,15 +151,15 @@ export default function LandingView({
           }`}
         >
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-100 tracking-tight flex items-center gap-2.5">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_#f59e0b]" />
               The Engineering Problem: The "Nominal Sizing" Trap
             </h2>
-            <p className="text-sm text-slate-400 mt-1">
+            <p className="text-sm text-slate-600 mt-1">
               Why traditional nominal battery calculators miss critical real-world failure modes
             </p>
           </div>
-          <span className="text-xs font-mono text-amber-400 bg-amber-950/40 border border-amber-500/35 px-3.5 py-1.5 rounded-full shadow-sm">
+          <span className="text-xs font-mono text-amber-800 bg-amber-100 border border-amber-300 font-bold px-3.5 py-1.5 rounded-full shadow-sm">
             Problem Understanding (15%)
           </span>
         </div>
@@ -177,11 +177,11 @@ export default function LandingView({
             <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400 shadow-sm">
               <Cpu className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-slate-200">1. Cell-to-Cell Variation</h3>
-            <p className="text-sm text-slate-300 leading-relaxed">
+            <h3 className="text-base font-bold text-slate-900">1. Cell-to-Cell Variation</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
               Manufacturing tolerances make every cell physically unique. While nominal tools assume identical cells, real cells exhibit:
             </p>
-            <ul className="text-xs text-slate-400 space-y-1.5 list-disc list-inside font-mono">
+            <ul className="text-xs text-slate-600 space-y-1.5 list-disc list-inside font-mono">
               <li>Capacity spread: σQ = 1.5% [A]</li>
               <li>DCIR resistance spread: σR = 3.0% [A]</li>
               <li>Weakest-cell series bottleneck terminates usable pack capacity prematurely (Zhou et al., 2017)</li>
@@ -199,11 +199,11 @@ export default function LandingView({
             <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center text-rose-400 shadow-sm">
               <Flame className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-slate-200">2. Non-Uniform Thermal Gradients</h3>
-            <p className="text-sm text-slate-300 leading-relaxed">
+            <h3 className="text-base font-bold text-slate-900">2. Non-Uniform Thermal Gradients</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
               Coolant temperature warms as it sweeps from inlet to outlet, creating spatial temperature gradients across the module:
             </p>
-            <ul className="text-xs text-slate-400 space-y-1.5 list-disc list-inside font-mono">
+            <ul className="text-xs text-slate-600 space-y-1.5 list-disc list-inside font-mono">
               <li>Localized core hot spots exceed safe ceilings during 70A cruise discharge</li>
               <li>Imposed 10–40°C thermal gradients accelerate capacity loss trajectory by 25% ± 4% (Cloos & Wetzel, 2025)</li>
             </ul>
@@ -220,11 +220,11 @@ export default function LandingView({
             <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/25 flex items-center justify-center text-teal-400 shadow-sm">
               <Layers className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-slate-200">3. Interacting Physical Constraints</h3>
-            <p className="text-sm text-slate-300 leading-relaxed">
+            <h3 className="text-base font-bold text-slate-900">3. Interacting Physical Constraints</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
               Electrical, thermal, and protection limits are tightly coupled in real battery packs:
             </p>
-            <ul className="text-xs text-slate-400 space-y-1.5 list-disc list-inside font-mono">
+            <ul className="text-xs text-slate-600 space-y-1.5 list-disc list-inside font-mono">
               <li>A 30% cell ΔR produces 60% peak current divergence across parallel branches (Bruen & Marco, 2016)</li>
               <li>Fuse melting I²t must stay safely below busbar adiabatic withstand k²S² (IEC 60364-5-54)</li>
             </ul>
@@ -241,11 +241,11 @@ export default function LandingView({
             <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/25 flex items-center justify-center text-orange-400 shadow-sm">
               <ShieldAlert className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-slate-200">4. Costly Prototyping Loops</h3>
-            <p className="text-sm text-slate-300 leading-relaxed">
+            <h3 className="text-base font-bold text-slate-900">4. Costly Prototyping Loops</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
               Siloed engineering tools (CAD vs. CFD vs. SPICE vs. BMS firmware) hide integration conflicts until physical testing:
             </p>
-            <ul className="text-xs text-slate-400 space-y-1.5 list-disc list-inside font-mono">
+            <ul className="text-xs text-slate-600 space-y-1.5 list-disc list-inside font-mono">
               <li>3 to 6 months of physical prototyping rework and $120k+ capex per vehicle program</li>
               <li>Up to 22% usable energy locked out by thermal derating & weakest-cell disconnect</li>
             </ul>
@@ -270,11 +270,11 @@ export default function LandingView({
               : 'opacity-0 translate-y-6'
           }`}
         >
-          <div className="flex items-center gap-2 text-orange-400 text-xs font-mono font-bold tracking-wider">
+          <div className="flex items-center gap-2 text-orange-700 text-xs font-mono font-bold tracking-wider">
             <FileText className="w-4 h-4" />
             <span>5 VERIFIED PEER-REVIEWED SCIENTIFIC FOUNDATIONS</span>
           </div>
-          <span className="text-[11px] font-mono text-slate-400 hidden sm:inline">
+          <span className="text-[11px] font-mono text-slate-600 hidden sm:inline">
             Directly Encoded Into VoltNexus Simulation Engine
           </span>
         </div>
@@ -289,11 +289,11 @@ export default function LandingView({
                 : 'opacity-0 translate-y-6'
             }`}
           >
-            <div className="text-xs font-bold text-slate-200">Cloos & Wetzel (2025) [Energy Tech]</div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <div className="text-xs font-bold text-slate-900">Cloos & Wetzel (2025) [Energy Tech]</div>
+            <p className="text-xs text-slate-700 leading-relaxed">
               Imposed 10–40°C thermal gradients accelerated capacity fade trajectory by 25% ± 4% in 20Ah pouch cells.
             </p>
-            <div className="text-[10px] text-orange-400 font-mono">DOI: 10.1002/ente.202402409</div>
+            <div className="text-[10px] text-orange-700 font-mono font-semibold">DOI: 10.1002/ente.202402409</div>
           </div>
 
           {/* Paper 2: Bruen & Marco */}
@@ -304,11 +304,11 @@ export default function LandingView({
                 : 'opacity-0 translate-y-6'
             }`}
           >
-            <div className="text-xs font-bold text-slate-200">Bruen & Marco (2016) [J. Power Sources]</div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <div className="text-xs font-bold text-slate-900">Bruen & Marco (2016) [J. Power Sources]</div>
+            <p className="text-xs text-slate-700 leading-relaxed">
               A 30% difference in cell impedance produces up to 60% peak current divergence across parallel cells.
             </p>
-            <div className="text-[10px] text-orange-400 font-mono">DOI: 10.1016/j.jpowsour.2016.01.001</div>
+            <div className="text-[10px] text-orange-700 font-mono font-semibold">DOI: 10.1016/j.jpowsour.2016.01.001</div>
           </div>
 
           {/* Paper 3: Zhou et al. */}
@@ -319,11 +319,11 @@ export default function LandingView({
                 : 'opacity-0 translate-y-6'
             }`}
           >
-            <div className="text-xs font-bold text-slate-200">Zhou et al. (2017) [J. Power Sources]</div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <div className="text-xs font-bold text-slate-900">Zhou et al. (2017) [J. Power Sources]</div>
+            <p className="text-xs text-slate-700 leading-relaxed">
               96S pack capacity is dictated by weakest cell reaching cutoff, not average cell capacity.
             </p>
-            <div className="text-[10px] text-orange-400 font-mono">DOI: 10.1016/j.jpowsour.2017.08.033</div>
+            <div className="text-[10px] text-orange-700 font-mono font-semibold">DOI: 10.1016/j.jpowsour.2017.08.033</div>
           </div>
 
           {/* Paper 4: Pan et al. */}
@@ -334,11 +334,11 @@ export default function LandingView({
                 : 'opacity-0 translate-y-6'
             }`}
           >
-            <div className="text-xs font-bold text-slate-200">Pan et al. (2020) [J. Power Sources]</div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <div className="text-xs font-bold text-slate-900">Pan et al. (2020) [J. Power Sources]</div>
+            <p className="text-xs text-slate-700 leading-relaxed">
               Multi-node electro-thermal model achieves &lt;2K error while slashing computational cost by 90% vs FEM.
             </p>
-            <div className="text-[10px] text-orange-400 font-mono">DOI: 10.1016/j.jpowsour.2020.228070</div>
+            <div className="text-[10px] text-orange-700 font-mono font-semibold">DOI: 10.1016/j.jpowsour.2020.228070</div>
           </div>
 
           {/* Paper 5: Chang et al. */}
@@ -349,11 +349,11 @@ export default function LandingView({
                 : 'opacity-0 translate-y-6'
             }`}
           >
-            <div className="text-xs font-bold text-slate-200">Chang et al. (2023) [Applied Energy]</div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <div className="text-xs font-bold text-slate-900">Chang et al. (2023) [Applied Energy]</div>
+            <p className="text-xs text-slate-700 leading-relaxed">
               Analytical mapping of cell parameter variation to pack-level statistics verified by Monte Carlo.
             </p>
-            <div className="text-[10px] text-orange-400 font-mono">DOI: 10.1016/j.apenergy.2022.120275</div>
+            <div className="text-[10px] text-orange-700 font-mono font-semibold">DOI: 10.1016/j.apenergy.2022.120275</div>
           </div>
 
           {/* Core Engine Card */}
@@ -368,7 +368,7 @@ export default function LandingView({
               <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>VoltNexus Computational Core</span>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-700 leading-relaxed">
               5-Point Unscented Transform (UT) reproduces Monte Carlo thermal statistics in &lt;40ms (12.5x speedup).
             </p>
           </div>

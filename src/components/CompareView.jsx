@@ -50,11 +50,11 @@ export default function CompareView() {
       {/* Header */}
       <div className="p-6 rounded-2xl glass-card-standard flex flex-wrap card-lift-3d items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
+          <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
             <Scale className="w-5 h-5 text-emerald-400" />
             Multi-Design MDO Trade-Off Benchmark
           </h2>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-slate-600">
             Side-by-side trade-off matrix: Baseline vs. Option A vs. Option B at continuous 70A cruise load
           </p>
         </div>
@@ -68,34 +68,34 @@ export default function CompareView() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-white/10 bg-white/[0.03] backdrop-blur-md font-mono text-slate-200">
+              <tr className="border-b border-white/10 bg-stone-100/90 border-b border-slate-200 font-mono text-slate-800">
                 <th className="py-3 px-4 w-1/4">Evaluated Metric / Subsystem</th>
-                <th className="py-3 px-4 w-1/4 text-rose-300">Baseline Design [A]</th>
-                <th className="py-3 px-4 w-1/4 text-emerald-300">Option A (Optimized NMC) [A]</th>
-                <th className="py-3 px-4 w-1/4 text-teal-300">Option B (High-Safety LFP) [A]</th>
+                <th className="py-3 px-4 w-1/4 text-rose-800 font-bold">Baseline Design [A]</th>
+                <th className="py-3 px-4 w-1/4 text-emerald-800 font-bold">Option A (Optimized NMC) [A]</th>
+                <th className="py-3 px-4 w-1/4 text-teal-800 font-bold">Option B (High-Safety LFP) [A]</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-slate-200/80">
               {rows.map((row, idx) => (
-                <tr key={idx} className="hover:bg-white/[0.06] transition-colors">
-                  <td className="py-3 px-4 font-medium text-slate-200">{row.label}</td>
-                  <td className="py-3 px-4 font-mono text-slate-300">
+                <tr key={idx} className="hover:bg-orange-500/[0.04] transition-colors">
+                  <td className="py-3 px-4 font-medium text-slate-900 font-semibold">{row.label}</td>
+                  <td className="py-3 px-4 font-mono text-slate-700 font-medium">
                     {row.base.includes("FAIL") ? (
-                      <span className="text-rose-400 font-bold">{row.base}</span>
+                      <span className="text-rose-700 font-bold">{row.base}</span>
                     ) : (
                       row.base
                     )}
                   </td>
-                  <td className="py-3 px-4 font-mono text-slate-300">
+                  <td className="py-3 px-4 font-mono text-slate-700 font-medium">
                     {row.optA.includes("PASS") || row.optA.includes("+5.6%") ? (
-                      <span className="text-emerald-400 font-bold">{row.optA}</span>
+                      <span className="text-emerald-700 font-bold">{row.optA}</span>
                     ) : (
                       row.optA
                     )}
                   </td>
-                  <td className="py-3 px-4 font-mono text-slate-300">
+                  <td className="py-3 px-4 font-mono text-slate-700 font-medium">
                     {row.optB.includes("PASS") ? (
-                      <span className="text-teal-400 font-bold">{row.optB}</span>
+                      <span className="text-teal-700 font-bold">{row.optB}</span>
                     ) : (
                       row.optB
                     )}
@@ -109,20 +109,20 @@ export default function CompareView() {
 
       {/* Engineering Takeaways Box */}
       <div className="p-6 rounded-2xl glass-card-interactive space-y-3">
-        <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
+        <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
           <FileCheck className="w-4 h-4 text-emerald-400" />
           Key Design Trade-off Insights
         </h3>
-        <p className="text-xs text-slate-300 leading-relaxed">
+        <p className="text-xs text-slate-700 leading-relaxed">
           <strong>1. Baseline Failure Root Cause:</strong> The baseline design fails 4 critical rules: peak cell temperature exceeds 58°C, 
           temperature spread ΔT reaches 6.8°C (violating Cloos & Wetzel's 5°C threshold), thin nickel strips cause a 26.4% current imbalance, 
           and fuse clearing energy exceeds the busbar adiabatic limit.
         </p>
-        <p className="text-xs text-slate-300 leading-relaxed">
+        <p className="text-xs text-slate-700 leading-relaxed">
           <strong>2. The Option A Sweetspot:</strong> Upgrading to a 3.5 m/s forced air duct and 1.2mm pure copper busbars resolves all 4 failures, 
           cuts peak core temperature to 43.2°C, and unlocks <strong>+5.6% more usable energy</strong> for only a 0.9 kg mass and $43 cost delta.
         </p>
-        <p className="text-xs text-slate-300 leading-relaxed">
+        <p className="text-xs text-slate-700 leading-relaxed">
           <strong>3. Option B Longevity Trade-off:</strong> Cylindrical LFP with cold plate provides the highest thermal safety margin (37.1°C), 
           but increases dry module mass to 11.8 kg and requires a precision ±1.5mV AFE (TI BQ76952) to avoid flat-plateau SOC estimation errors.
         </p>

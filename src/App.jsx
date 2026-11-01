@@ -51,7 +51,7 @@ export default function App() {
   const isScrolled = useScrollThreshold(55, 20);
 
   return (
-    <div className="min-h-screen relative text-slate-100 flex flex-col font-sans selection:bg-orange-500/30 selection:text-orange-200">
+    <div className="min-h-screen relative text-slate-900 flex flex-col font-sans selection:bg-orange-500/30 selection:text-orange-950">
       {/* Dynamic Battery Energy Flow Background Environment with Parallax Tracking */}
       <BatteryFlowBackground activeTab={activeTab} mouseCoords={mouseCoords} />
 
@@ -66,8 +66,8 @@ export default function App() {
         <div 
           className={`pointer-events-auto mx-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isScrolled
-              ? 'w-full max-w-[1120px] rounded-full bg-[rgba(15,21,30,0.70)] backdrop-blur-2xl border border-white/12 shadow-[0_16px_40px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.12)] px-2 sm:px-5 py-1 sm:py-1.5'
-              : 'w-full max-w-full rounded-none bg-[rgba(12,17,25,0.75)] backdrop-blur-2xl border-b border-white/10 border-t-transparent border-x-transparent shadow-[0_8px_32px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.08)] px-4 sm:px-6 md:px-8 py-2'
+              ? 'w-full max-w-[1120px] rounded-full bg-[rgba(255,255,255,0.82)] backdrop-blur-2xl border border-white/90 shadow-[0_16px_40px_rgba(70,42,20,0.10),inset_0_1px_0_rgba(255,255,255,1)] px-2 sm:px-5 py-1 sm:py-1.5'
+              : 'w-full max-w-full rounded-none bg-[rgba(245,240,234,0.85)] backdrop-blur-xl border-b border-white/80 border-t-transparent border-x-transparent shadow-[0_4px_20px_-4px_rgba(70,42,20,0.06),inset_0_1px_0_0_rgba(255,255,255,0.95)] px-4 sm:px-6 md:px-8 py-2'
           }`}
         >
           {/* 1. Left Refined Branding Area: Enters from left on bootStage >= 1, glides inward on scroll */}
@@ -76,7 +76,7 @@ export default function App() {
               bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10 pointer-events-none'
             } ${isScrolled ? 'gap-0' : 'gap-3.5'}`}
           >
-            <div className={`relative flex items-center justify-center rounded-xl bg-white/[0.04] backdrop-blur-md border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500 ${
+            <div className={`relative flex items-center justify-center rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-[0_2px_8px_rgba(70,42,20,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-500 ${
               isScrolled ? 'p-0.5 sm:p-1' : 'p-1'
             }`}>
               <img 
@@ -104,16 +104,16 @@ export default function App() {
               />
               
               <div className="flex items-center gap-1.5 whitespace-nowrap">
-                <span className="text-[9.5px] font-mono tracking-[0.16em] uppercase text-slate-400 font-semibold leading-tight">
+                <span className="text-[9.5px] font-mono tracking-[0.16em] uppercase text-slate-600 font-bold leading-tight">
                   TATA ELXSI TELIPORT S4
                 </span>
-                <span className="text-[9px] font-mono text-orange-400/90 font-bold px-1 py-[1px] rounded bg-orange-950/40 border border-orange-500/25">
+                <span className="text-[9px] font-mono text-orange-800 font-bold px-1.5 py-[1px] rounded bg-orange-100 border border-orange-300">
                   IDV-CS2
                 </span>
               </div>
               
-              <span className="text-[11.5px] font-medium tracking-tight text-slate-200 leading-snug whitespace-nowrap">
-                Case Study 2 <span className="text-slate-500 mx-0.5">•</span> <span className="text-slate-300 font-semibold">MBSE Battery Platform</span>
+              <span className="text-[11.5px] font-semibold tracking-tight text-slate-800 leading-snug whitespace-nowrap">
+                Case Study 2 <span className="text-slate-400 mx-0.5">•</span> <span className="text-slate-900 font-bold">MBSE Battery Platform</span>
               </span>
             </div>
           </div>
@@ -131,8 +131,8 @@ export default function App() {
                 const tab = INDEX_TAB_MAP[idx];
                 if (tab) setActiveTab(tab);
               }}
-              tone="dark"
-              className="border border-white/12 shadow-[0_12px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.12)]"
+              tone="light"
+              className="border border-white/80 shadow-md shadow-stone-800/5"
             />
           </div>
 
@@ -142,7 +142,7 @@ export default function App() {
               bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 pointer-events-none'
             }`}
           >
-            <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-white/[0.05] backdrop-blur-xl border border-white/10 shadow-[0_4px_18px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500">
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-white/80 backdrop-blur-xl border border-white/90 shadow-[0_2px_12px_rgba(70,42,20,0.08),inset_0_1px_0_rgba(255,255,255,0.95)] transition-all duration-500">
               {/* Segment A: Version Tag (hidden on extra small screens to maintain flawless proportion) */}
               <div className="hidden sm:flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">
                 <span className="text-[10px] font-mono font-medium text-slate-400 tracking-tight">
@@ -182,7 +182,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-white/10 py-5 px-6 text-center text-xs text-slate-400 font-mono bg-[rgba(12,17,25,0.65)] backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+      <footer className="relative z-10 border-t border-slate-300/60 py-5 px-6 text-center text-xs text-slate-600 font-mono bg-white/50 backdrop-blur-md">
         VoltNexus MBSE Platform • Tata Elxsi TELIPORT Season 4 Hackathon • 13S8P 1.57 kWh Baseline
       </footer>
     </div>
