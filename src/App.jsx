@@ -66,8 +66,8 @@ export default function App() {
         <div 
           className={`pointer-events-auto mx-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isScrolled
-              ? 'w-full max-w-[1120px] rounded-full bg-[#0c1015]/85 backdrop-blur-2xl border border-[#2b394b]/80 shadow-[0_16px_38px_rgba(0,0,0,0.65),0_1px_0_rgba(255,255,255,0.08)] px-2 sm:px-5 py-1 sm:py-1.5'
-              : 'w-full max-w-full rounded-none bg-[#0e1217]/95 backdrop-blur-xl border border-b-[#232c37] border-t-transparent border-x-transparent shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5),0_1px_0_0_rgba(245,240,234,0.06)] px-4 sm:px-6 md:px-8 py-2'
+              ? 'w-full max-w-[1120px] rounded-full bg-[rgba(15,21,30,0.70)] backdrop-blur-2xl border border-white/12 shadow-[0_16px_40px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.12)] px-2 sm:px-5 py-1 sm:py-1.5'
+              : 'w-full max-w-full rounded-none bg-[rgba(12,17,25,0.75)] backdrop-blur-2xl border-b border-white/10 border-t-transparent border-x-transparent shadow-[0_8px_32px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.08)] px-4 sm:px-6 md:px-8 py-2'
           }`}
         >
           {/* 1. Left Refined Branding Area: Enters from left on bootStage >= 1, glides inward on scroll */}
@@ -76,7 +76,7 @@ export default function App() {
               bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10 pointer-events-none'
             } ${isScrolled ? 'gap-0' : 'gap-3.5'}`}
           >
-            <div className={`relative flex items-center justify-center rounded-xl bg-gradient-to-b from-[#182029]/80 to-[#10141a]/90 border border-[#2b3848]/60 shadow-[0_2px_8px_rgba(0,0,0,0.4)] transition-all duration-500 ${
+            <div className={`relative flex items-center justify-center rounded-xl bg-white/[0.04] backdrop-blur-md border border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500 ${
               isScrolled ? 'p-0.5 sm:p-1' : 'p-1'
             }`}>
               <img 
@@ -132,7 +132,7 @@ export default function App() {
                 if (tab) setActiveTab(tab);
               }}
               tone="dark"
-              className="border border-[#263445]/60 shadow-lg shadow-black/40"
+              className="border border-white/12 shadow-[0_12px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.12)]"
             />
           </div>
 
@@ -142,7 +142,7 @@ export default function App() {
               bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 pointer-events-none'
             }`}
           >
-            <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-[#12171e]/85 backdrop-blur-md border border-[#2b3746]/70 shadow-[0_2px_12px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.06)] transition-all duration-500">
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-white/[0.05] backdrop-blur-xl border border-white/10 shadow-[0_4px_18px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500">
               {/* Segment A: Version Tag (hidden on extra small screens to maintain flawless proportion) */}
               <div className="hidden sm:flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">
                 <span className="text-[10px] font-mono font-medium text-slate-400 tracking-tight">
@@ -182,7 +182,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-[#232c37]/60 py-4 px-6 text-center text-xs text-slate-400 font-mono bg-[#0f1317]/70 backdrop-blur-sm">
+      <footer className="relative z-10 border-t border-white/10 py-5 px-6 text-center text-xs text-slate-400 font-mono bg-[rgba(12,17,25,0.65)] backdrop-blur-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
         VoltNexus MBSE Platform • Tata Elxsi TELIPORT Season 4 Hackathon • 13S8P 1.57 kWh Baseline
       </footer>
     </div>

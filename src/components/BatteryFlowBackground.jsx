@@ -24,44 +24,44 @@ export default function BatteryFlowBackground({ activeTab = 'landing', mouseCoor
       aria-hidden="true"
     >
       {/* ======================================================== */}
-      {/* 1. BASE WARM-NEUTRAL FOUNDATION & THERMAL SIMULATION GLOW */}
+      {/* 1. BASE DARK OBSIDIAN FOUNDATION & FUTURISTIC RADIANCE     */}
       {/* ======================================================== */}
       <div 
         className="absolute inset-0 transition-opacity duration-700"
         style={{
           background: `
-            radial-gradient(ellipse 90% 65% at 75% 30%, rgba(244, 119, 33, 0.14) 0%, rgba(244, 119, 33, 0.04) 45%, transparent 75%),
-            radial-gradient(ellipse 80% 55% at 20% 20%, rgba(230, 224, 240, 0.55) 0%, rgba(230, 224, 240, 0.18) 50%, transparent 80%),
-            radial-gradient(ellipse 70% 60% at 50% 90%, rgba(36, 107, 253, 0.08) 0%, transparent 60%),
-            linear-gradient(145deg, #F5F0EA 0%, #EDE7DF 25%, #E5E4E2 55%, #DCD6CE 85%, #D3CCC4 100%)
+            radial-gradient(ellipse 90% 65% at 75% 25%, rgba(244, 119, 33, 0.12) 0%, rgba(244, 119, 33, 0.02) 45%, transparent 70%),
+            radial-gradient(ellipse 80% 55% at 20% 20%, rgba(36, 107, 253, 0.14) 0%, rgba(139, 92, 246, 0.06) 50%, transparent 75%),
+            radial-gradient(ellipse 70% 60% at 50% 85%, rgba(6, 182, 212, 0.10) 0%, transparent 60%),
+            linear-gradient(160deg, #070A0E 0%, #0B1017 35%, #0E1520 70%, #080C12 100%)
           `
         }}
       />
 
-      {/* Atmospheric Thermal Wave (Breathing Simulation Field) */}
+      {/* Atmospheric Thermal Wave (Electric Blue & Violet Volumetric Glow) */}
       <div 
-        className="absolute -top-32 -left-32 w-[650px] h-[650px] rounded-full blur-3xl opacity-40 transition-all duration-1000 animate-[thermalShift_14s_ease-in-out_infinite]"
+        className="absolute -top-32 -left-32 w-[680px] h-[680px] rounded-full blur-3xl opacity-35 transition-all duration-1000 animate-[thermalShift_14s_ease-in-out_infinite]"
         style={{
-          background: 'radial-gradient(circle, #E6E0F0 0%, rgba(230, 224, 240, 0.4) 50%, transparent 75%)',
+          background: 'radial-gradient(circle, rgba(36, 107, 253, 0.25) 0%, rgba(139, 92, 246, 0.15) 50%, transparent 75%)',
         }}
       />
 
       {/* Thermal Dissipation Core (Warm Orange Radiance) */}
       <div 
-        className="absolute top-1/4 -right-28 w-[720px] h-[720px] rounded-full blur-3xl opacity-35 transition-all duration-1000 animate-[thermalShift_18s_ease-in-out_infinite_reverse]"
+        className="absolute top-1/4 -right-28 w-[720px] h-[720px] rounded-full blur-3xl opacity-30 transition-all duration-1000 animate-[thermalShift_18s_ease-in-out_infinite_reverse]"
         style={{
-          background: 'radial-gradient(circle, rgba(244, 119, 33, 0.28) 0%, rgba(244, 119, 33, 0.1) 45%, transparent 75%)',
+          background: 'radial-gradient(circle, rgba(244, 119, 33, 0.24) 0%, rgba(244, 119, 33, 0.08) 45%, transparent 75%)',
         }}
       />
 
-      {/* Subtle Central Scrim to guarantee razor-sharp contrast for foreground dark HUD cards */}
+      {/* Subtle Central Scrim to enhance contrast while keeping background visible */}
       <div 
         className="absolute inset-0 transition-opacity duration-500"
         style={{
           background: `
-            radial-gradient(circle at 50% 45%, rgba(43, 33, 29, 0.35) 0%, rgba(43, 33, 29, 0.52) 65%, rgba(25, 20, 18, 0.68) 100%)
+            radial-gradient(circle at 50% 45%, rgba(10, 15, 22, 0.20) 0%, rgba(7, 10, 15, 0.50) 100%)
           `,
-          opacity: isWorkbench ? 0.60 : isCompare ? 0.52 : 0.44,
+          opacity: isWorkbench ? 0.50 : isCompare ? 0.42 : 0.35,
         }}
       />
 
@@ -69,18 +69,17 @@ export default function BatteryFlowBackground({ activeTab = 'landing', mouseCoor
       {/* 2. PRECISION CAD ENGINEERING GRID & ISOMETRIC GUIDE LINES */}
       {/* ======================================================== */}
       <div 
-        className="absolute inset-0 opacity-45 mix-blend-multiply"
+        className="absolute inset-0 opacity-30"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(111, 78, 55, 0.12) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(111, 78, 55, 0.12) 1px, transparent 1px),
-            linear-gradient(to right, rgba(43, 33, 29, 0.22) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(43, 33, 29, 0.22) 1px, transparent 1px)
+            linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+            linear-gradient(to right, rgba(36, 107, 253, 0.10) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(36, 107, 253, 0.10) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px, 40px 40px, 200px 200px, 200px 200px',
         }}
       />
-
       {/* ======================================================== */}
       {/* 3. DYNAMIC VECTOR CIRCUIT PATHS & ANIMATED ENERGY FLOWS   */}
       {/* ======================================================== */}
@@ -130,7 +129,7 @@ export default function BatteryFlowBackground({ activeTab = 'landing', mouseCoor
         {/* ---------------------------------------------------- */}
         {/* A. PASSIVE STATIC CIRCUIT SCHEMATICS & BUSBAR TRACKS */}
         {/* ---------------------------------------------------- */}
-        <g stroke="#6F4E37" strokeWidth="1.2" strokeOpacity="0.25" fill="none">
+        <g stroke="rgba(148, 163, 184, 0.35)" strokeWidth="1.2" strokeOpacity="0.25" fill="none">
           {/* Top High-Voltage Busbar Infrastructure */}
           <path d="M 60 110 L 780 110 L 850 180 L 1420 180 L 1490 250 L 1860 250" />
           <path d="M 1490 250 L 1490 580 L 1560 650 L 1880 650" />
@@ -163,7 +162,7 @@ export default function BatteryFlowBackground({ activeTab = 'landing', mouseCoor
             height="340" 
             rx="14" 
             fill="none" 
-            stroke="#6F4E37" 
+            stroke="rgba(148, 163, 184, 0.35)" 
             strokeWidth="1.5" 
             strokeDasharray="8 6" 
             strokeOpacity="0.4" 
@@ -184,7 +183,7 @@ export default function BatteryFlowBackground({ activeTab = 'landing', mouseCoor
           <text x="20" y="32" fill="#F47721" fontSize="10" fontFamily="monospace" fontWeight="bold" opacity="0.85">
             [13S8P VOLTNEXUS CORE] • 46.8V NOM • 1.57 kWh
           </text>
-          <text x="20" y="48" fill="#6F4E37" fontSize="8" fontFamily="monospace" opacity="0.7">
+          <text x="20" y="48" fill="rgba(148, 163, 184, 0.65)" fontSize="8" fontFamily="monospace" opacity="0.7">
             THERMAL DUCT: ΔT_FLUID ≤ 5.0°C • AIR CONVECTION h = 38 W/m²K
           </text>
 
@@ -382,7 +381,7 @@ export default function BatteryFlowBackground({ activeTab = 'landing', mouseCoor
         {/* ---------------------------------------------------- */}
         {/* F. ENGINEERING SCHEMATIC ANNOTATIONS & LABELS        */}
         {/* ---------------------------------------------------- */}
-        <g fill="#6F4E37" fontSize="8.5" fontFamily="monospace" letterSpacing="0.8" opacity="0.45">
+        <g fill="rgba(148, 163, 184, 0.65)" fontSize="8.5" fontFamily="monospace" letterSpacing="0.8" opacity="0.45">
           <text x="60" y="98">HIGH_VOLTAGE_RAIL // +46.8V_DC</text>
           <text x="860" y="168">AFE_ADC_SENSE_CH01..13 [SIL-2]</text>
           <text x="120" y="428">BMS_ISOLATION_BARRIER // 2.5kV</text>

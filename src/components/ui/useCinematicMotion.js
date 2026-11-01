@@ -9,7 +9,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
  * Stage 3: Primary CTA button, frozen specs & full interactive state (~1400ms)
  */
 export function useSystemBoot(bootDelay = 500) {
-  const [bootStage, setBootStage] = useState(0);
+  const [bootStage, setBootStage] = useState(3);
 
   useEffect(() => {
     // Check if user prefers reduced motion

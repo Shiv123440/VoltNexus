@@ -91,33 +91,33 @@ export default function WorkbenchView() {
           <span className="text-xs font-mono text-slate-400">DESIGN PRESETS:</span>
           <button
             onClick={() => applyPreset("baseline")}
-            className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[#1c232b] hover:bg-[#252f3a] text-slate-200 border border-[#2e3b49] cursor-pointer"
+            className="px-3 py-1.5 rounded-lg text-xs font-medium glass-button cursor-pointer"
           >
             Baseline (Passive Air)
           </button>
           <button
             onClick={() => applyPreset("optionA")}
-            className="px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-300 border border-emerald-500/30 cursor-pointer"
+            className="px-3 py-1.5 rounded-lg text-xs font-medium glass-badge-pass hover:brightness-110 cursor-pointer transition-all"
           >
             Option A (Forced Duct NMC)
           </button>
           <button
             onClick={() => applyPreset("optionB")}
-            className="px-3 py-1.5 rounded-lg text-xs font-medium bg-teal-950/60 hover:bg-teal-900/60 text-teal-300 border border-teal-500/30 cursor-pointer"
+            className="px-3 py-1.5 rounded-lg text-xs font-medium bg-teal-500/20 text-teal-300 border border-teal-500/40 backdrop-blur-md hover:brightness-110 cursor-pointer transition-all shadow-[0_0_12px_rgba(20,184,166,0.18)]"
           >
             Option B (Cold Plate LFP)
           </button>
         </div>
 
-        <div className="flex items-center gap-3 text-xs font-mono">
-          <span className="flex items-center gap-1.5 text-emerald-400">
-            <CheckCircle className="w-4 h-4" /> {results.passCount} PASS
+        <div className="flex items-center gap-2.5 text-xs font-mono">
+          <span className="glass-badge-pass px-2.5 py-1 rounded-full flex items-center gap-1.5">
+            <CheckCircle className="w-3.5 h-3.5" /> {results.passCount} PASS
           </span>
-          <span className="flex items-center gap-1.5 text-amber-400">
-            <AlertTriangle className="w-4 h-4" /> {results.warnCount} WARN
+          <span className="glass-badge-warn px-2.5 py-1 rounded-full flex items-center gap-1.5">
+            <AlertTriangle className="w-3.5 h-3.5" /> {results.warnCount} WARN
           </span>
-          <span className="flex items-center gap-1.5 text-rose-400">
-            <XCircle className="w-4 h-4" /> {results.failCount} FAIL
+          <span className="glass-badge-fail px-2.5 py-1 rounded-full flex items-center gap-1.5">
+            <XCircle className="w-3.5 h-3.5" /> {results.failCount} FAIL
           </span>
         </div>
       </div>
@@ -127,7 +127,7 @@ export default function WorkbenchView() {
         {/* Left Column: Parameter Controls (4 Cols) */}
         <div className="lg:col-span-4 space-y-6">
           <div className="p-5 rounded-2xl glass-card-dense space-y-5">
-            <div className="flex items-center justify-between border-b border-[#232c37] pb-3">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-2 text-sm font-bold text-slate-200">
                 <Sliders className="w-4 h-4 text-emerald-400" />
                 Subsystem Configuration
@@ -141,7 +141,7 @@ export default function WorkbenchView() {
               <select
                 value={cellId}
                 onChange={(e) => setCellId(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-[#0f1317] border border-[#2a3543] text-xs text-slate-200 focus:outline-none focus:border-emerald-500"
+                className="w-full px-3 py-2 rounded-lg glass-input text-xs text-slate-200 focus:outline-none"
               >
                 {Object.values(CELL_PRESETS).map((c) => (
                   <option key={c.id} value={c.id}>
@@ -161,7 +161,7 @@ export default function WorkbenchView() {
                   max="24"
                   value={nSeries}
                   onChange={(e) => setNSeries(parseInt(e.target.value) || 1)}
-                  className="w-full px-3 py-2 rounded-lg bg-[#0f1317] border border-[#2a3543] text-xs text-slate-200 focus:outline-none focus:border-emerald-500"
+                  className="w-full px-3 py-2 rounded-lg glass-input text-xs text-slate-200 focus:outline-none"
                 />
               </div>
               <div className="space-y-1.5">
@@ -172,7 +172,7 @@ export default function WorkbenchView() {
                   max="16"
                   value={nParallel}
                   onChange={(e) => setNParallel(parseInt(e.target.value) || 1)}
-                  className="w-full px-3 py-2 rounded-lg bg-[#0f1317] border border-[#2a3543] text-xs text-slate-200 focus:outline-none focus:border-emerald-500"
+                  className="w-full px-3 py-2 rounded-lg glass-input text-xs text-slate-200 focus:outline-none"
                 />
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function WorkbenchView() {
               <select
                 value={interconnectId}
                 onChange={(e) => setInterconnectId(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-[#0f1317] border border-[#2a3543] text-xs text-slate-200 focus:outline-none focus:border-emerald-500"
+                className="w-full px-3 py-2 rounded-lg glass-input text-xs text-slate-200 focus:outline-none"
               >
                 {Object.values(INTERCONNECT_PRESETS).map((i) => (
                   <option key={i.id} value={i.id}>
@@ -199,7 +199,7 @@ export default function WorkbenchView() {
               <select
                 value={coolingId}
                 onChange={(e) => setCoolingId(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-[#0f1317] border border-[#2a3543] text-xs text-slate-200 focus:outline-none focus:border-emerald-500"
+                className="w-full px-3 py-2 rounded-lg glass-input text-xs text-slate-200 focus:outline-none"
               >
                 {Object.values(COOLING_PRESETS).map((cl) => (
                   <option key={cl.id} value={cl.id}>
@@ -210,7 +210,7 @@ export default function WorkbenchView() {
             </div>
 
             {/* Operating Sliders */}
-            <div className="space-y-3 pt-2 border-t border-[#232c37]">
+            <div className="space-y-3 pt-2 border-t border-white/10">
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
                   <span className="text-slate-400">Pack Discharge Current:</span>
@@ -282,7 +282,7 @@ export default function WorkbenchView() {
         <div className="lg:col-span-8 space-y-6">
           {/* Key Metric Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="p-4 rounded-xl glass-card-subtle space-y-1 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-interactive space-y-1">
               <span className="text-[11px] font-mono text-slate-400">USABLE ENERGY</span>
               <div className="text-lg sm:text-xl font-bold text-slate-100">
                 {results.usableEnergyKwh} <span className="text-xs font-normal text-slate-400">kWh</span>
@@ -292,7 +292,7 @@ export default function WorkbenchView() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl glass-card-subtle space-y-1 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-interactive space-y-1">
               <span className="text-[11px] font-mono text-slate-400">PEAK CORE TEMP</span>
               <div className={`text-lg sm:text-xl font-bold ${results.maxCoreTempC > 55.0 ? 'text-rose-400' : 'text-slate-100'}`}>
                 {results.maxCoreTempC} <span className="text-xs font-normal text-slate-400">°C</span>
@@ -302,7 +302,7 @@ export default function WorkbenchView() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl glass-card-subtle space-y-1 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-interactive space-y-1">
               <span className="text-[11px] font-mono text-slate-400">TEMP SPREAD (ΔT)</span>
               <div className={`text-lg sm:text-xl font-bold ${results.tempSpreadC > 5.0 ? 'text-amber-400' : 'text-slate-100'}`}>
                 {results.tempSpreadC} <span className="text-xs font-normal text-slate-400">°C</span>
@@ -312,7 +312,7 @@ export default function WorkbenchView() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl glass-card-subtle space-y-1 card-lift-3d">
+            <div className="p-4 rounded-xl glass-card-interactive space-y-1">
               <span className="text-[11px] font-mono text-slate-400">MODULE MASS & BOM</span>
               <div className="text-lg sm:text-xl font-bold text-slate-100">
                 {results.totalMassKg} <span className="text-xs font-normal text-slate-400">kg</span>
@@ -480,34 +480,34 @@ export default function WorkbenchView() {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-[#232c37] text-slate-400 font-mono">
-                    <th className="py-2 px-2">Rule ID</th>
-                    <th className="py-2 px-2">Subsystems</th>
-                    <th className="py-2 px-2">Description</th>
-                    <th className="py-2 px-2">Status</th>
-                    <th className="py-2 px-2">Simulated Metric</th>
-                    <th className="py-2 px-2">Automated Remediation</th>
+                  <tr className="border-b border-white/10 bg-white/[0.03] backdrop-blur-md text-slate-300 font-mono">
+                    <th className="py-2.5 px-3">Rule ID</th>
+                    <th className="py-2.5 px-3">Subsystems</th>
+                    <th className="py-2.5 px-3">Description</th>
+                    <th className="py-2.5 px-3">Status</th>
+                    <th className="py-2.5 px-3">Simulated Metric</th>
+                    <th className="py-2.5 px-3">Automated Remediation</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#1e2631]">
+                <tbody className="divide-y divide-white/5">
                   {results.rules.map((r) => (
-                    <tr key={r.id} className="hover:bg-white/[0.04] transition-colors">
-                      <td className="py-2.5 px-2 font-mono font-bold text-slate-300">{r.id}</td>
-                      <td className="py-2.5 px-2 text-slate-400">{r.subsystems}</td>
-                      <td className="py-2.5 px-2 text-slate-200">{r.name}</td>
-                      <td className="py-2.5 px-2">
-                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold ${
+                    <tr key={r.id} className="hover:bg-white/[0.05] transition-colors">
+                      <td className="py-2.5 px-3 font-mono font-bold text-slate-300">{r.id}</td>
+                      <td className="py-2.5 px-3 text-slate-400">{r.subsystems}</td>
+                      <td className="py-2.5 px-3 text-slate-200">{r.name}</td>
+                      <td className="py-2.5 px-3">
+                        <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
                           r.status === 'PASS' 
-                            ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-500/30' 
+                            ? 'glass-badge-pass' 
                             : r.status === 'WARN'
-                            ? 'bg-amber-950/60 text-amber-400 border border-amber-500/30'
-                            : 'bg-rose-950/60 text-rose-400 border border-rose-500/30'
+                            ? 'glass-badge-warn'
+                            : 'glass-badge-fail'
                         }`}>
                           {r.status}
                         </span>
                       </td>
-                      <td className="py-2.5 px-2 font-mono text-slate-300">{r.metric}</td>
-                      <td className="py-2.5 px-2 text-slate-400 text-[11px]">{r.remediation}</td>
+                      <td className="py-2.5 px-3 font-mono text-slate-300">{r.metric}</td>
+                      <td className="py-2.5 px-3 text-slate-400 text-[11px]">{r.remediation}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -57,7 +57,7 @@ export default function BatteryModule3D({
         </div>
 
         {/* View Mode Toggle: Combined / Electrical / Thermal */}
-        <div className="flex items-center gap-1 p-1 rounded-lg bg-[#0e1318]/90 border border-[#232c37] text-[10px] font-mono">
+        <div className="flex items-center gap-1 p-1 rounded-lg glass-subtle text-[10px] font-mono">
           <button
             type="button"
             onClick={() => setActiveLayer('combined')}
@@ -96,7 +96,7 @@ export default function BatteryModule3D({
 
       {/* Main 3D Module Container */}
       <div 
-        className="relative rounded-2xl bg-gradient-to-b from-[#151c24]/95 via-[#10151c]/90 to-[#0b0e12]/95 border border-[#283647] p-5 shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)] overflow-hidden group"
+        className="relative rounded-2xl glass-card-dense p-5 shadow-[0_20px_50px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.12)] overflow-hidden group"
         style={{
           transform: `rotateX(${rotX}deg) rotateY(${rotY}deg)`,
           transformStyle: 'preserve-3d',

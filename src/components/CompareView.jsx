@@ -58,7 +58,7 @@ export default function CompareView() {
             Side-by-side trade-off matrix: Baseline vs. Option A vs. Option B at continuous 70A cruise load
           </p>
         </div>
-        <div className="text-xs font-mono px-3 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+        <div className="text-xs font-mono px-3.5 py-1.5 rounded-full glass-badge-pass">
           Evaluated Against 13 MBSE Rules
         </div>
       </div>
@@ -68,16 +68,16 @@ export default function CompareView() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-[#232c37]/80 bg-[#101418]/60 font-mono text-slate-300">
+              <tr className="border-b border-white/10 bg-white/[0.03] backdrop-blur-md font-mono text-slate-200">
                 <th className="py-3 px-4 w-1/4">Evaluated Metric / Subsystem</th>
                 <th className="py-3 px-4 w-1/4 text-rose-300">Baseline Design [A]</th>
                 <th className="py-3 px-4 w-1/4 text-emerald-300">Option A (Optimized NMC) [A]</th>
                 <th className="py-3 px-4 w-1/4 text-teal-300">Option B (High-Safety LFP) [A]</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#1e2631]">
+            <tbody className="divide-y divide-white/5">
               {rows.map((row, idx) => (
-                <tr key={idx} className="hover:bg-white/[0.04] transition-colors">
+                <tr key={idx} className="hover:bg-white/[0.06] transition-colors">
                   <td className="py-3 px-4 font-medium text-slate-200">{row.label}</td>
                   <td className="py-3 px-4 font-mono text-slate-300">
                     {row.base.includes("FAIL") ? (
@@ -108,7 +108,7 @@ export default function CompareView() {
       </div>
 
       {/* Engineering Takeaways Box */}
-      <div className="p-6 rounded-2xl glass-card-standard space-y-3 card-lift-3d">
+      <div className="p-6 rounded-2xl glass-card-interactive space-y-3">
         <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2">
           <FileCheck className="w-4 h-4 text-emerald-400" />
           Key Design Trade-off Insights
