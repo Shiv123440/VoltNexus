@@ -51,7 +51,7 @@ export default function App() {
   const isScrolled = useScrollThreshold(55, 20);
 
   return (
-    <div className="min-h-screen relative text-slate-900 flex flex-col font-sans selection:bg-orange-500/30 selection:text-orange-950">
+    <div className="min-h-screen relative text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
       {/* Dynamic Battery Energy Flow Background Environment with Parallax Tracking */}
       <BatteryFlowBackground activeTab={activeTab} mouseCoords={mouseCoords} />
 
@@ -66,8 +66,8 @@ export default function App() {
         <div 
           className={`pointer-events-auto mx-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isScrolled
-              ? 'w-full max-w-[1120px] rounded-full bg-[rgba(255,255,255,0.82)] backdrop-blur-2xl border border-white/90 shadow-[0_16px_40px_rgba(70,42,20,0.10),inset_0_1px_0_rgba(255,255,255,1)] px-2 sm:px-5 py-1 sm:py-1.5'
-              : 'w-full max-w-full rounded-none bg-[rgba(245,240,234,0.85)] backdrop-blur-xl border-b border-white/80 border-t-transparent border-x-transparent shadow-[0_4px_20px_-4px_rgba(70,42,20,0.06),inset_0_1px_0_0_rgba(255,255,255,0.95)] px-4 sm:px-6 md:px-8 py-2'
+              ? 'w-full max-w-[1120px] rounded-full bg-[rgba(10,16,28,0.78)] backdrop-blur-2xl border border-white/14 shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.12)] px-2 sm:px-5 py-1 sm:py-1.5'
+              : 'w-full max-w-full rounded-none bg-[rgba(7,10,18,0.75)] backdrop-blur-xl border-b border-white/10 border-t-transparent border-x-transparent shadow-[0_4px_20px_-4px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.08)] px-4 sm:px-6 md:px-8 py-2'
           }`}
         >
           {/* 1. Left Refined Branding Area: Enters from left on bootStage >= 1, glides inward on scroll */}
@@ -76,13 +76,13 @@ export default function App() {
               bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10 pointer-events-none'
             } ${isScrolled ? 'gap-0' : 'gap-3.5'}`}
           >
-            <div className={`relative flex items-center justify-center rounded-xl bg-white/80 backdrop-blur-md border border-white shadow-[0_2px_8px_rgba(70,42,20,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-500 ${
+            <div className={`relative flex items-center justify-center rounded-xl bg-white/[0.05] backdrop-blur-md border border-white/12 shadow-[0_2px_8px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500 ${
               isScrolled ? 'p-0.5 sm:p-1' : 'p-1'
             }`}>
               <img 
                 src="/voltnexus_logo_transparent.png" 
                 alt="VoltNexus Logo" 
-                className={`w-auto object-contain filter drop-shadow-[0_2px_6px_rgba(244,119,33,0.22)] transition-all duration-500 group-hover:scale-102 ${
+                className={`w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(6,182,212,0.35)] transition-all duration-500 group-hover:scale-102 ${
                   isScrolled ? 'h-6 sm:h-7.5 md:h-8.5' : 'h-8 sm:h-9 md:h-10.5'
                 }`} 
               />
@@ -93,27 +93,27 @@ export default function App() {
               className={`hidden sm:flex flex-col justify-center relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isScrolled 
                   ? 'max-w-0 opacity-0 pl-0 border-l border-transparent pointer-events-none select-none' 
-                  : 'max-w-[320px] opacity-100 pl-3 border-l border-orange-500/35 pointer-events-auto'
+                  : 'max-w-[320px] opacity-100 pl-3 border-l border-cyan-500/35 pointer-events-auto'
               }`}
             >
               {/* Subtle technical accent tick on the separator */}
               <span 
-                className={`absolute -left-[2px] top-1/2 -translate-y-1/2 w-[3px] h-3 bg-gradient-to-b from-orange-400 to-amber-500 rounded-full shadow-[0_0_6px_rgba(244,119,33,0.6)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                className={`absolute -left-[2px] top-1/2 -translate-y-1/2 w-[3px] h-3 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                   isScrolled ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
                 }`} 
               />
               
               <div className="flex items-center gap-1.5 whitespace-nowrap">
-                <span className="text-[9.5px] font-mono tracking-[0.16em] uppercase text-slate-600 font-bold leading-tight">
+                <span className="text-[9.5px] font-mono tracking-[0.16em] uppercase text-slate-400 font-bold leading-tight">
                   TATA ELXSI TELIPORT S4
                 </span>
-                <span className="text-[9px] font-mono text-orange-800 font-bold px-1.5 py-[1px] rounded bg-orange-100 border border-orange-300">
+                <span className="text-[9px] font-mono text-cyan-300 font-bold px-1.5 py-[1px] rounded bg-cyan-950/60 border border-cyan-500/40">
                   IDV-CS2
                 </span>
               </div>
               
-              <span className="text-[11.5px] font-semibold tracking-tight text-slate-800 leading-snug whitespace-nowrap">
-                Case Study 2 <span className="text-slate-400 mx-0.5">•</span> <span className="text-slate-900 font-bold">MBSE Battery Platform</span>
+              <span className="text-[11.5px] font-semibold tracking-tight text-slate-200 leading-snug whitespace-nowrap">
+                Case Study 2 <span className="text-slate-500 mx-0.5">•</span> <span className="text-white font-bold">MBSE Battery Platform</span>
               </span>
             </div>
           </div>
@@ -131,8 +131,8 @@ export default function App() {
                 const tab = INDEX_TAB_MAP[idx];
                 if (tab) setActiveTab(tab);
               }}
-              tone="light"
-              className="border border-white/80 shadow-md shadow-stone-800/5"
+              tone="dark"
+              className="border border-white/12 shadow-lg shadow-black/50"
             />
           </div>
 
@@ -142,16 +142,16 @@ export default function App() {
               bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 pointer-events-none'
             }`}
           >
-            <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-white/80 backdrop-blur-xl border border-white/90 shadow-[0_2px_12px_rgba(70,42,20,0.08),inset_0_1px_0_rgba(255,255,255,0.95)] transition-all duration-500">
-              {/* Segment A: Version Tag (hidden on extra small screens to maintain flawless proportion) */}
-              <div className="hidden sm:flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.06]">
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-slate-900/80 backdrop-blur-xl border border-white/14 shadow-[0_2px_12px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500">
+              {/* Segment A: Version Tag */}
+              <div className="hidden sm:flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/[0.05] border border-white/[0.08]">
                 <span className="text-[10px] font-mono font-medium text-slate-400 tracking-tight">
                   v1.2
                 </span>
               </div>
 
               {/* Hairline Divider */}
-              <div className="hidden sm:block w-[1px] h-3 bg-[#2b3746]" />
+              <div className="hidden sm:block w-[1px] h-3 bg-white/15" />
 
               {/* Segment B: Live Telemetry Indicator with Restrained Breathing Glow */}
               <div className="flex items-center gap-1.5 pr-0.5 sm:pr-1">
@@ -182,7 +182,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-slate-300/60 py-5 px-6 text-center text-xs text-slate-600 font-mono bg-white/50 backdrop-blur-md">
+      <footer className="relative z-10 border-t border-white/10 py-5 px-6 text-center text-xs text-slate-400 font-mono bg-slate-950/60 backdrop-blur-md">
         VoltNexus MBSE Platform • Tata Elxsi TELIPORT Season 4 Hackathon • 13S8P 1.57 kWh Baseline
       </footer>
     </div>

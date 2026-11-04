@@ -48,10 +48,10 @@ export default function BatteryModule3D({
       <div className="flex items-center justify-between mb-3 px-2">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400 shadow-[0_0_8px_#06b6d4]" />
           </span>
-          <span className="text-[11px] font-mono tracking-wider uppercase text-slate-700 font-bold">
+          <span className="text-[11px] font-mono tracking-wider uppercase text-cyan-300 font-bold">
             13S8P DIGITAL TWIN • 46.8V NOMINAL
           </span>
         </div>
@@ -63,8 +63,8 @@ export default function BatteryModule3D({
             onClick={() => setActiveLayer('combined')}
             className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
               activeLayer === 'combined'
-                ? 'bg-orange-500/25 text-orange-300 border border-orange-500/40 font-bold'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-cyan-400 shadow-[0_0_8px_#06b6d4]/25 text-orange-300 border border-orange-500/40 font-bold'
+                : 'text-slate-400 hover:text-white'
             }`}
           >
             ALL
@@ -74,8 +74,8 @@ export default function BatteryModule3D({
             onClick={() => setActiveLayer('electrical')}
             className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
               activeLayer === 'electrical'
-                ? 'bg-blue-500/25 text-blue-300 border border-blue-500/40 font-bold'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-blue-500/25 text-blue-200 border border-blue-500/40 font-bold shadow-[0_0_8px_rgba(37,99,235,0.3)]'
+                : 'text-slate-400 hover:text-white'
             }`}
           >
             BUSBARS
@@ -85,8 +85,8 @@ export default function BatteryModule3D({
             onClick={() => setActiveLayer('thermal')}
             className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
               activeLayer === 'thermal'
-                ? 'bg-rose-500/25 text-rose-300 border border-rose-500/40 font-bold'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-rose-500/25 text-rose-200 border border-rose-500/40 font-bold shadow-[0_0_8px_rgba(244,63,94,0.3)]'
+                : 'text-slate-400 hover:text-white'
             }`}
           >
             THERMAL
