@@ -130,7 +130,7 @@ export function simulatePack({
   sigmaQ = 1.5,
   sigmaR = 3.0,
   bmsAfeAdcErrorMv = 10.0,
-  fuseRatingA = 125.0,
+  _fuseRatingA = 125.0,
   fuseI2t = 18500.0,
   fuseBreakingKa = 2.0
 }) {
@@ -191,7 +191,6 @@ export function simulatePack({
   const timePoints = [];
   const voltageCurve = [];
   const tempCurveMax = [];
-  const tempCurveMin = [];
 
   for (let m = 0; m <= 30; m += 2) {
     const fraction = m / 30.0;

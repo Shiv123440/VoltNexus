@@ -2,324 +2,189 @@
 
 @layer base {
   :root {
-    --bg-warm-ivory: #F5F0EA;
-    --bg-platinum: #E5E4E2;
-    --accent-mocha: #6F4E37;
-    --accent-lavender: #E6E0F0;
-    --accent-electric-blue: #246BFD;
-    --accent-orange: #F47721;
-    --accent-espresso: #2B211D;
-    --card-bg: #14191f;
-    --card-border: #232c37;
+    --vn-canvas: #07090E;
+    --vn-surface-0: #0B0F17;
+    --vn-surface-1: #101622;
+    --vn-surface-2: #162030;
+    --vn-surface-3: #1E2B40;
+    --vn-border-subtle: rgba(255, 255, 255, 0.08);
+    --vn-border-medium: rgba(255, 255, 255, 0.14);
+    --vn-border-glow: rgba(0, 229, 255, 0.35);
+
+    --vn-cyan: #00E5FF;
+    --vn-cyan-dim: #008899;
+    --vn-blue: #2563EB;
+    --vn-emerald: #10B981;
+    --vn-amber: #F59E0B;
+    --vn-rose: #EF4444;
+
+    --vn-text-main: #F1F5F9;
+    --vn-text-muted: #94A3B8;
+    --vn-text-dim: #64748B;
   }
 }
 
 body {
   margin: 0;
-  background-color: #F5F0EA;
-  color: #e2e8f0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #07090E;
+  color: #F1F5F9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  selection-background-color: #00E5FF;
+  selection-color: #07090E;
 }
 
-/* Custom scrollbars with warm engineering accents */
+/* Custom Technical Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #E5E4E2;
+  background: #07090E;
 }
 ::-webkit-scrollbar-thumb {
-  background: #6F4E37;
+  background: rgba(255, 255, 255, 0.16);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2B211D;
+  background: #00E5FF;
 }
 
-/* Battery Energy Flow Continuous Circuit Animations */
-@keyframes energyPulseForward {
-  0% {
-    stroke-dashoffset: 1000;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
+/* Engineering CAD Grid & Circuit Background */
+.vn-cad-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-@keyframes energyPulseReverse {
-  0% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 1000;
-  }
+.vn-dot-matrix {
+  background-image: radial-gradient(rgba(0, 229, 255, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-@keyframes nodeGlowOrange {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(0.92);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.35);
-  }
+/* Card Surface Utility Classes */
+.vn-card {
+  background: linear-gradient(180deg, rgba(16, 22, 34, 0.85) 0%, rgba(11, 15, 23, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes nodeGlowBlue {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(0.92);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.35);
-  }
+.vn-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-@keyframes thermalShift {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.28;
-  }
-  50% {
-    transform: translate(30px, -20px) scale(1.1);
-    opacity: 0.42;
-  }
+.vn-card-highlight {
+  background: linear-gradient(180deg, rgba(22, 32, 48, 0.9) 0%, rgba(13, 18, 28, 0.98) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  box-shadow: 0 12px 35px -8px rgba(0, 229, 255, 0.12), inset 0 1px 0 rgba(0, 229, 255, 0.2);
 }
 
-@keyframes schematicBreathe {
-  0%, 100% {
-    opacity: 0.35;
-  }
-  50% {
-    opacity: 0.85;
-  }
+/* Precision Badges */
+.vn-badge-pass {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+.vn-badge-warn {
+  background: rgba(245, 158, 11, 0.12);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-
-/* ---------------------------------------------------- */
-/* 3D Physical Push-Button Effect (Main CTA)           */
-/* ---------------------------------------------------- */
-.voltnexus-3d-button {
-  display: inline-block;
-  position: relative;
-  padding-bottom: 9px;
+.vn-badge-fail {
+  background: rgba(239, 68, 68, 0.14);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-.voltnexus-primary-cta {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
+.vn-badge-cyan {
+  background: rgba(0, 229, 255, 0.1);
+  color: #00E5FF;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
 
-  padding: 15px 28px;
-  border: 1px solid #FFD18A;
-  border-radius: 10px;
+/* Mechanical Slider Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #162030;
+  border-radius: 9999px;
+  outline: none;
+}
 
-  background: #FFA12B;
-  color: #FFFFFF;
-
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00E5FF;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-
-  box-shadow:
-    inset 0 1px 0 #FFE5C4,
-    0 9px 0 #6F4E37,
-    0 12px 20px rgba(70, 42, 20, 0.28);
-
-  transition:
-    transform 120ms ease,
-    background-color 120ms ease,
-    box-shadow 120ms ease;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.7), inset 0 0 0 2px #07090E;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.voltnexus-primary-cta:hover {
-  background: #FFAB3D;
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 16px #00E5FF, inset 0 0 0 2px #07090E;
 }
 
-.voltnexus-primary-cta:active {
-  transform: translateY(8px);
-  background: #F78900;
-
-  box-shadow:
-    inset 0 1px 0 #FFE5C4,
-    0 1px 0 #6F4E37,
-    0 3px 8px rgba(70, 42, 20, 0.2);
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00E5FF;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.7), inset 0 0 0 2px #07090E;
 }
 
-.voltnexus-primary-cta:focus-visible {
-  outline: 3px solid #246BFD;
-  outline-offset: 5px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .voltnexus-primary-cta {
-    transition: none;
-  }
-}
-
-
-/* ---------------------------------------------------- */
-/* Cinematic System Activation & Scroll Animation Suite */
-/* ---------------------------------------------------- */
-@keyframes batteryFloat {
-  0%, 100% {
-    transform: translateY(0px) rotateX(14deg) rotateY(-12deg);
-  }
-  50% {
-    transform: translateY(-8px) rotateX(15deg) rotateY(-10deg);
-  }
-}
-
+/* Laser scanline animation */
 @keyframes laserScan {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.animate-laser {
+  animation: laserScan 6s linear infinite;
+}
+
+/* Pulse animation */
+@keyframes telemetryPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+.animate-telemetry-pulse {
+  animation: telemetryPulse 2s ease-in-out infinite;
+}
+
+/* Print Styles for PDF / Report Generation */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
   }
-  50% {
-    opacity: 1;
+  header, footer, .no-print {
+    display: none !important;
   }
-  100% {
-    transform: translateX(200%);
-    opacity: 0;
-  }
-}
-
-@keyframes cardGlowPulse {
-  0%, 100% {
-    border-color: rgba(35, 44, 55, 0.8);
-  }
-  50% {
-    border-color: rgba(244, 119, 33, 0.4);
-  }
-}
-
-.animate-laser-scan {
-  animation: laserScan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.transform-style-3d {
-  transform-style: preserve-3d;
-}
-
-/* Stagger transition delay utilities */
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
-.delay-600 { transition-delay: 600ms; }
-.delay-700 { transition-delay: 700ms; }
-.delay-800 { transition-delay: 800ms; }
-
-/* ---------------------------------------------------- */
-/* Premium Translucent Glass Cards Suite                */
-/* ---------------------------------------------------- */
-.glass-panel-hero {
-  background: rgba(22, 28, 36, 0.78);
-  backdrop-filter: blur(14px) saturate(120%);
-  -webkit-backdrop-filter: blur(14px) saturate(120%);
-  border: 1px solid rgba(220, 210, 200, 0.20);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-.glass-panel-hero:hover {
-  background: rgba(25, 32, 41, 0.84);
-  border-color: rgba(220, 210, 200, 0.28);
-}
-
-.glass-card-standard {
-  background: rgba(22, 28, 35, 0.76);
-  backdrop-filter: blur(12px) saturate(115%);
-  -webkit-backdrop-filter: blur(12px) saturate(115%);
-  border: 1px solid rgba(220, 210, 200, 0.18);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-}
-.glass-card-standard:hover {
-  background: rgba(27, 34, 43, 0.84);
-  border-color: rgba(220, 210, 200, 0.32);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-.glass-card-subtle {
-  background: rgba(22, 28, 35, 0.68);
-  backdrop-filter: blur(10px) saturate(115%);
-  -webkit-backdrop-filter: blur(10px) saturate(115%);
-  border: 1px solid rgba(220, 210, 200, 0.14);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-}
-.glass-card-subtle:hover {
-  background: rgba(26, 34, 43, 0.78);
-  border-color: rgba(220, 210, 200, 0.26);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.07);
-}
-
-.glass-card-dense {
-  background: rgba(18, 24, 31, 0.84);
-  backdrop-filter: blur(16px) saturate(115%);
-  -webkit-backdrop-filter: blur(16px) saturate(115%);
-  border: 1px solid rgba(220, 210, 200, 0.18);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-}
-.glass-card-dense:hover {
-  background: rgba(22, 29, 37, 0.90);
-  border-color: rgba(220, 210, 200, 0.28);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.26);
-}
-
-/* Graceful Fallback for non-supporting browsers */
-@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-  .glass-panel-hero,
-  .glass-card-standard,
-  .glass-card-subtle,
-  .glass-card-dense {
-    background: #14191f !important;
-  }
-}
-
-/* 3D Interactive Card Lift (Restrained & Tactile) */
-.card-lift-3d {
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
-  will-change: transform;
-}
-.card-lift-3d:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px -6px rgba(0, 0, 0, 0.35), 0 0 16px rgba(244, 119, 33, 0.08);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-laser-scan,
-  .card-lift-3d {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
+  .vn-card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    color: #0f172a !important;
   }
 }
