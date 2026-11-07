@@ -1,40 +1,11 @@
-import React, { useState } from 'react';
-import LandingView from './components/LandingView';
-import WorkbenchView from './components/WorkbenchView';
-import CompareView from './components/CompareView';
-import BatteryFlowBackground from './components/BatteryFlowBackground';
-import { LiquidNavbar } from '@/components/ui/liquid-glass-navbar';
-import { Layers, Sliders, Scale } from 'lucide-react';
-import { useSystemBoot, useMouseParallax } from './components/ui/useCinematicMotion';
-
-const NAV_ITEMS = [
-  { 
-    label: 'Overview & Research', 
-    shortLabel: 'Overview',
-    icon: <Layers className="w-4 h-4" />, 
-    fx: 'glow' 
-  },
-  { 
-    label: 'Interactive Workbench', 
-    shortLabel: 'Workbench',
-    icon: <Sliders className="w-4 h-4" />, 
-    fx: 'drop' 
-  },
-  { 
-    label: 'Design Trade-offs', 
-    shortLabel: 'Trade-offs',
-    icon: <Scale className="w-4 h-4" />, 
-    fx: 'wave' 
-  },
-];
-
-const TAB_INDEX_MAP = {
-  landing: 0,
-  workbench: 1,
-  compare: 2,
-};
-
-const INDEX_TAB_MAP = ['landing', 'workbench', 'compare'];
+import React, { useState, useEffect, useMemo } from 'react';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import OverviewView from './components/views/OverviewView';
+import WorkbenchView from './components/views/WorkbenchView';
+import CompareView from './components/views/CompareView';
+import ExportReportModal from './components/modals/ExportReportModal';
+import { simulatePack } from './engine/batterySimulator';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState(() => {
@@ -46,117 +17,104 @@ export default function App() {
     }
     return 'landing';
   });
-  const activeIndex = TAB_INDEX_MAP[activeTab] ?? 0;
 
-  // Cinematic Initial Page Load & Mouse Parallax System
-  const bootStage = useSystemBoot(500);
-  const mouseCoords = useMouseParallax(1);
+  const [isReportOpen, setIsReportOpen] = useState(false);
+
+  // Sync tab with URL history
+  const handleSelectTab = (tab) => {
+    setActiveTab(tab);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('tab', tab);
+      window.history.replaceState({}, '', url.toString());
+    }
+  };
+
+  // Keyboard Navigation: [1], [2], [3]
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Ignore if focus is in an input or select
+      if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
+
+      if (e.key === '1') handleSelectTab('landing');
+      if (e.key === '2') handleSelectTab('workbench');
+      if (e.key === '3') handleSelectTab('compare');
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Compute active simulation for report modal and header status
+  const defaultSimulation = useMemo(() => {
+    return simulatePack({
+      cellId: "molicel_p42a",
+      nSeries: 13,
+      nParallel: 8,
+      interconnectId: "copper_12",
+      coolingId: "forced_air",
+      bmsAfeAdcErrorMv: 1.5,
+      packCurrentA: 70.0,
+      ambientTempC: 35.0
+    });
+  }, []);
 
   return (
-    <div className="min-h-screen relative text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
-      {/* Skip to Main Content Landmark Link for Accessibility */}
+    <div className="min-h-screen bg-[#07090E] text-slate-100 flex flex-col font-sans relative selection:bg-cyan-400 selection:text-slate-950">
+      
+      {/* Skip to Main Landmark for Accessibility */}
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-cyan-500 focus:text-slate-950 focus:font-bold focus:rounded-lg focus:shadow-xl focus:outline-none"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-400 focus:text-slate-950 focus:font-bold focus:rounded-lg shadow-xl"
       >
         Skip to main content
       </a>
 
-      {/* Dynamic Battery Energy Flow Background Environment with Parallax Tracking */}
-      <BatteryFlowBackground activeTab={activeTab} mouseCoords={mouseCoords} />
+      {/* Background Engineering Grid Environment */}
+      <div className="fixed inset-0 pointer-events-none vn-cad-grid opacity-30 z-0" />
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-gradient-to-b from-cyan-500/10 via-blue-600/5 to-transparent rounded-full blur-3xl pointer-events-none z-0" />
 
-      {/* Sticky Opaque Glassmorphic Header (Full-width backdrop prevents text overlap on scroll) */}
-      <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-slate-950/85 border-b border-slate-800/50 shadow-lg shadow-black/30 transition-all duration-300">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-6 lg:px-8 py-2 sm:py-2.5">
-          
-          {/* 1. Left Branding: Clean VoltNexus Logo */}
-          <div 
-            className={`flex items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6 pointer-events-none'
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => setActiveTab('landing')}
-              className="relative flex items-center justify-center rounded-xl bg-white/[0.05] backdrop-blur-md border border-white/12 p-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.4)] hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-cyan-400"
-              aria-label="VoltNexus Home"
-            >
-              <img 
-                src="/voltnexus_logo_transparent.png" 
-                alt="VoltNexus Logo" 
-                className="h-7 sm:h-8 md:h-9 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(6,182,212,0.35)]" 
-              />
-            </button>
-          </div>
+      {/* Main Command Header */}
+      <Header 
+        activeTab={activeTab} 
+        onSelectTab={handleSelectTab} 
+        onOpenReport={() => setIsReportOpen(true)}
+        passCount={defaultSimulation.passCount}
+        failCount={defaultSimulation.failCount}
+      />
 
-          {/* 2. Central Liquid Glass Navbar: Compact & Accessible on Mobile */}
-          <div 
-            className={`flex items-center justify-center px-1 sm:px-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
-              bootStage >= 1 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0 pointer-events-none'
-            }`}
-          >
-            <LiquidNavbar
-              items={NAV_ITEMS}
-              active={activeIndex}
-              onChange={(idx) => {
-                const tab = INDEX_TAB_MAP[idx];
-                if (tab) setActiveTab(tab);
-              }}
-              tone="dark"
-              compact={false}
-              className="border border-white/12 shadow-lg shadow-black/50"
-            />
-          </div>
-
-          {/* 3. Right Technical Status Capsule: Telemetry Live Indicator */}
-          <div 
-            className={`hidden md:flex items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6 pointer-events-none'
-            }`}
-          >
-            <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-slate-900/80 backdrop-blur-xl border border-white/14 shadow-[0_2px_12px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500">
-              {/* Segment A: Version Tag */}
-              <div className="hidden sm:flex items-center gap-1 px-1.5 py-0.5 rounded bg-white/[0.05] border border-white/[0.08]">
-                <span className="text-[10px] font-mono font-medium text-slate-400 tracking-tight">
-                  v1.2
-                </span>
-              </div>
-
-              {/* Hairline Divider */}
-              <div className="hidden sm:block w-[1px] h-3 bg-white/15" />
-
-              {/* Segment B: Live Telemetry Indicator with Restrained Breathing Glow */}
-              <div className="flex items-center gap-1.5 pr-0.5 sm:pr-1">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 duration-1000" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_#10b981]" />
-                </span>
-                <span className="text-[10.5px] font-mono font-semibold tracking-wider text-emerald-400 uppercase">
-                  LIVE
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Container with landmark id and ample padding to prevent section clipping */}
-      <main id="main-content" className="relative z-10 flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8 pt-6 sm:pt-8">
+      {/* View Content */}
+      <main id="main-content" className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
         {activeTab === 'landing' && (
-          <LandingView 
-            onNavigateToWorkbench={() => setActiveTab('workbench')} 
-            bootStage={bootStage}
-            mouseCoords={mouseCoords}
-          />
+          <OverviewView onNavigateToWorkbench={() => handleSelectTab('workbench')} />
         )}
-        {activeTab === 'workbench' && <WorkbenchView />}
-        {activeTab === 'compare' && <CompareView />}
+        {activeTab === 'workbench' && (
+          <WorkbenchView />
+        )}
+        {activeTab === 'compare' && (
+          <CompareView />
+        )}
       </main>
 
-      {/* Clean VoltNexus Footer */}
-      <footer className="relative z-10 border-t border-white/10 py-5 px-6 text-center text-xs text-slate-400 font-mono bg-slate-950/80 backdrop-blur-md">
-        VoltNexus MBSE Platform • Advanced Battery Simulation Engine • 13S8P 1.57 kWh Baseline
-      </footer>
+      {/* Footer */}
+      <Footer onSelectTab={handleSelectTab} />
+
+      {/* Export / Verification Report Modal */}
+      <ExportReportModal 
+        isOpen={isReportOpen} 
+        onClose={() => setIsReportOpen(false)} 
+        results={defaultSimulation}
+        parameters={{
+          cellId: "Molicel P42A (NMC)",
+          nSeries: 13,
+          nParallel: 8,
+          interconnectId: "1.2mm Copper Busbar",
+          coolingId: "Forced Air Duct (3.5 m/s)",
+          packCurrentA: 70.0,
+          ambientTempC: 35.0
+        }}
+      />
+
     </div>
   );
 }
