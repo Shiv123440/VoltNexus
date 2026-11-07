@@ -51,7 +51,7 @@ export default function LandingView({
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400 shadow-[0_0_8px_#06b6d4]" />
               </span>
-              <span>TATA ELXSI TELIPORT S4 — CASE STUDY 2 (IDV)</span>
+              <span>DIGITAL MBSE BATTERY SIMULATION PLATFORM</span>
             </div>
 
             {/* Step 2: Branding & Main Headline */}

@@ -5,21 +5,24 @@ import CompareView from './components/CompareView';
 import BatteryFlowBackground from './components/BatteryFlowBackground';
 import { LiquidNavbar } from '@/components/ui/liquid-glass-navbar';
 import { Layers, Sliders, Scale } from 'lucide-react';
-import { useSystemBoot, useMouseParallax, useScrollThreshold } from './components/ui/useCinematicMotion';
+import { useSystemBoot, useMouseParallax } from './components/ui/useCinematicMotion';
 
 const NAV_ITEMS = [
   { 
     label: 'Overview & Research', 
+    shortLabel: 'Overview',
     icon: <Layers className="w-4 h-4" />, 
     fx: 'glow' 
   },
   { 
     label: 'Interactive Workbench', 
+    shortLabel: 'Workbench',
     icon: <Sliders className="w-4 h-4" />, 
     fx: 'drop' 
   },
   { 
-    label: '3-Design Trade-offs', 
+    label: 'Design Trade-offs', 
+    shortLabel: 'Trade-offs',
     icon: <Scale className="w-4 h-4" />, 
     fx: 'wave' 
   },
@@ -48,77 +51,45 @@ export default function App() {
   // Cinematic Initial Page Load & Mouse Parallax System
   const bootStage = useSystemBoot(500);
   const mouseCoords = useMouseParallax(1);
-  const isScrolled = useScrollThreshold(55, 20);
 
   return (
     <div className="min-h-screen relative text-slate-100 flex flex-col font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+      {/* Skip to Main Content Landmark Link for Accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-cyan-500 focus:text-slate-950 focus:font-bold focus:rounded-lg focus:shadow-xl focus:outline-none"
+      >
+        Skip to main content
+      </a>
+
       {/* Dynamic Battery Energy Flow Background Environment with Parallax Tracking */}
       <BatteryFlowBackground activeTab={activeTab} mouseCoords={mouseCoords} />
 
-      {/* Top Integrated Engineering Control Header with SwiftPieces Scroll Transformation */}
-      <header 
-        className={`sticky top-0 z-50 w-full pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          isScrolled 
-            ? 'pt-2 sm:pt-3.5 px-2 sm:px-6 md:px-8' 
-            : 'pt-0 px-0'
-        }`}
-      >
-        <div 
-          className={`pointer-events-auto mx-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            isScrolled
-              ? 'w-full max-w-[1120px] rounded-full bg-[rgba(10,16,28,0.78)] backdrop-blur-2xl border border-white/14 shadow-[0_20px_50px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.12)] px-2 sm:px-5 py-1 sm:py-1.5'
-              : 'w-full max-w-full rounded-none bg-[rgba(7,10,18,0.75)] backdrop-blur-xl border-b border-white/10 border-t-transparent border-x-transparent shadow-[0_4px_20px_-4px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.08)] px-4 sm:px-6 md:px-8 py-2'
-          }`}
-        >
-          {/* 1. Left Refined Branding Area: Enters from left on bootStage >= 1, glides inward on scroll */}
+      {/* Sticky Opaque Glassmorphic Header (Full-width backdrop prevents text overlap on scroll) */}
+      <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-slate-950/85 border-b border-slate-800/50 shadow-lg shadow-black/30 transition-all duration-300">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-3 sm:px-6 lg:px-8 py-2 sm:py-2.5">
+          
+          {/* 1. Left Branding: Clean VoltNexus Logo */}
           <div 
-            className={`flex items-center group transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10 pointer-events-none'
-            } ${isScrolled ? 'gap-0' : 'gap-3.5'}`}
+            className={`flex items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6 pointer-events-none'
+            }`}
           >
-            <div className={`relative flex items-center justify-center rounded-xl bg-white/[0.05] backdrop-blur-md border border-white/12 shadow-[0_2px_8px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500 ${
-              isScrolled ? 'p-0.5 sm:p-1' : 'p-1'
-            }`}>
+            <button
+              type="button"
+              onClick={() => setActiveTab('landing')}
+              className="relative flex items-center justify-center rounded-xl bg-white/[0.05] backdrop-blur-md border border-white/12 p-1.5 shadow-[0_2px_8px_rgba(0,0,0,0.4)] hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-cyan-400"
+              aria-label="VoltNexus Home"
+            >
               <img 
                 src="/voltnexus_logo_transparent.png" 
                 alt="VoltNexus Logo" 
-                className={`w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(6,182,212,0.35)] transition-all duration-500 group-hover:scale-102 ${
-                  isScrolled ? 'h-6 sm:h-7.5 md:h-8.5' : 'h-8 sm:h-9 md:h-10.5'
-                }`} 
+                className="h-7 sm:h-8 md:h-9 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(6,182,212,0.35)]" 
               />
-            </div>
-
-            <div 
-              aria-hidden={isScrolled}
-              className={`hidden sm:flex flex-col justify-center relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                isScrolled 
-                  ? 'max-w-0 opacity-0 pl-0 border-l border-transparent pointer-events-none select-none' 
-                  : 'max-w-[320px] opacity-100 pl-3 border-l border-cyan-500/35 pointer-events-auto'
-              }`}
-            >
-              {/* Subtle technical accent tick on the separator */}
-              <span 
-                className={`absolute -left-[2px] top-1/2 -translate-y-1/2 w-[3px] h-3 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  isScrolled ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
-                }`} 
-              />
-              
-              <div className="flex items-center gap-1.5 whitespace-nowrap">
-                <span className="text-[9.5px] font-mono tracking-[0.16em] uppercase text-slate-400 font-bold leading-tight">
-                  TATA ELXSI TELIPORT S4
-                </span>
-                <span className="text-[9px] font-mono text-cyan-300 font-bold px-1.5 py-[1px] rounded bg-cyan-950/60 border border-cyan-500/40">
-                  IDV-CS2
-                </span>
-              </div>
-              
-              <span className="text-[11.5px] font-semibold tracking-tight text-slate-200 leading-snug whitespace-nowrap">
-                Case Study 2 <span className="text-slate-500 mx-0.5">•</span> <span className="text-white font-bold">MBSE Battery Platform</span>
-              </span>
-            </div>
+            </button>
           </div>
 
-          {/* 2. Central Liquid Glass Navbar: Stays centered with liquid-glass animations intact */}
+          {/* 2. Central Liquid Glass Navbar: Compact & Accessible on Mobile */}
           <div 
             className={`flex items-center justify-center px-1 sm:px-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center ${
               bootStage >= 1 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0 pointer-events-none'
@@ -132,14 +103,15 @@ export default function App() {
                 if (tab) setActiveTab(tab);
               }}
               tone="dark"
+              compact={false}
               className="border border-white/12 shadow-lg shadow-black/50"
             />
           </div>
 
-          {/* 3. Right Technical Status Capsule: Glides inward on scroll, live breathing dot */}
+          {/* 3. Right Technical Status Capsule: Telemetry Live Indicator */}
           <div 
-            className={`flex items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10 pointer-events-none'
+            className={`hidden md:flex items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              bootStage >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6 pointer-events-none'
             }`}
           >
             <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-full bg-slate-900/80 backdrop-blur-xl border border-white/14 shadow-[0_2px_12px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.10)] transition-all duration-500">
@@ -168,8 +140,8 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main Container */}
-      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8">
+      {/* Main Container with landmark id and ample padding to prevent section clipping */}
+      <main id="main-content" className="relative z-10 flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8 pt-6 sm:pt-8">
         {activeTab === 'landing' && (
           <LandingView 
             onNavigateToWorkbench={() => setActiveTab('workbench')} 
@@ -181,9 +153,9 @@ export default function App() {
         {activeTab === 'compare' && <CompareView />}
       </main>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-white/10 py-5 px-6 text-center text-xs text-slate-400 font-mono bg-slate-950/60 backdrop-blur-md">
-        VoltNexus MBSE Platform • Tata Elxsi TELIPORT Season 4 Hackathon • 13S8P 1.57 kWh Baseline
+      {/* Clean VoltNexus Footer */}
+      <footer className="relative z-10 border-t border-white/10 py-5 px-6 text-center text-xs text-slate-400 font-mono bg-slate-950/80 backdrop-blur-md">
+        VoltNexus MBSE Platform • Advanced Battery Simulation Engine • 13S8P 1.57 kWh Baseline
       </footer>
     </div>
   );

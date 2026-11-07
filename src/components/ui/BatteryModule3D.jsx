@@ -56,38 +56,45 @@ export default function BatteryModule3D({
           </span>
         </div>
 
-        {/* View Mode Toggle: Combined / Electrical / Thermal */}
-        <div className="flex items-center gap-1 p-1 rounded-lg glass-subtle text-[10px] font-mono">
+        {/* View Mode Toggle: Combined / Electrical / Thermal (WCAG 2.5.8 compliant >= 44px touch targets) */}
+        <div 
+          className="flex items-center gap-1.5 p-1 rounded-xl glass-subtle text-xs font-mono"
+          role="group"
+          aria-label="3D Module Layer View Modes"
+        >
           <button
             type="button"
             onClick={() => setActiveLayer('combined')}
-            className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
+            className={`min-h-[44px] min-w-[52px] px-3.5 py-2.5 rounded-lg transition-all duration-200 cursor-pointer flex items-center justify-center font-bold text-xs select-none shadow-xs hover:-translate-y-0.5 active:translate-y-0 active:scale-95 focus-visible:outline-2 focus-visible:outline-cyan-400 ${
               activeLayer === 'combined'
-                ? 'bg-cyan-400 shadow-[0_0_8px_#06b6d4]/25 text-orange-300 border border-orange-500/40 font-bold'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-cyan-400 text-slate-950 border border-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.45)]'
+                : 'text-slate-300 hover:text-white hover:bg-white/[0.08]'
             }`}
+            aria-pressed={activeLayer === 'combined'}
           >
             ALL
           </button>
           <button
             type="button"
             onClick={() => setActiveLayer('electrical')}
-            className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
+            className={`min-h-[44px] min-w-[70px] px-3.5 py-2.5 rounded-lg transition-all duration-200 cursor-pointer flex items-center justify-center font-bold text-xs select-none shadow-xs hover:-translate-y-0.5 active:translate-y-0 active:scale-95 focus-visible:outline-2 focus-visible:outline-blue-400 ${
               activeLayer === 'electrical'
-                ? 'bg-blue-500/25 text-blue-200 border border-blue-500/40 font-bold shadow-[0_0_8px_rgba(37,99,235,0.3)]'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-blue-600 text-white border border-blue-400 shadow-[0_0_12px_rgba(37,99,235,0.45)]'
+                : 'text-slate-300 hover:text-white hover:bg-white/[0.08]'
             }`}
+            aria-pressed={activeLayer === 'electrical'}
           >
             BUSBARS
           </button>
           <button
             type="button"
             onClick={() => setActiveLayer('thermal')}
-            className={`px-2 py-0.5 rounded transition-all cursor-pointer ${
+            className={`min-h-[44px] min-w-[70px] px-3.5 py-2.5 rounded-lg transition-all duration-200 cursor-pointer flex items-center justify-center font-bold text-xs select-none shadow-xs hover:-translate-y-0.5 active:translate-y-0 active:scale-95 focus-visible:outline-2 focus-visible:outline-rose-400 ${
               activeLayer === 'thermal'
-                ? 'bg-rose-500/25 text-rose-200 border border-rose-500/40 font-bold shadow-[0_0_8px_rgba(244,63,94,0.3)]'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-rose-600 text-white border border-rose-400 shadow-[0_0_12px_rgba(244,63,94,0.45)]'
+                : 'text-slate-300 hover:text-white hover:bg-white/[0.08]'
             }`}
+            aria-pressed={activeLayer === 'thermal'}
           >
             THERMAL
           </button>

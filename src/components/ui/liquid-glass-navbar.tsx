@@ -16,6 +16,7 @@ export type NimbusFx = "plane" | "drop" | "spin" | "glow" | "wave" | "pop" | "no
 
 export type LiquidNavItem = {
   label: string
+  shortLabel?: string
   href?: string
   icon?: React.ReactNode
   /** the little scene the icon plays when tapped */
@@ -109,7 +110,16 @@ const NIMBUS_CSS = `
 @keyframes nvWave{0%{transform:none}20%{transform:rotate(-15deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}100%{transform:translateY(-1px) scale(1.08)}}
 .nimbus-nav[data-compact="true"] .nimbus-item{padding:0 13px}
 .nimbus-nav[data-compact="true"] .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (max-width:520px){.nimbus-nav:not([data-compact="false"]) .nimbus-item{padding:0 13px}.nimbus-nav:not([data-compact="false"]) .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+@media (max-width:640px){
+  .nimbus-nav{padding:4px;gap:2px}
+  .nimbus-item{min-height:38px;height:38px;padding:0 10px;gap:6px;font-size:12px;font-weight:600}
+  .nimbus-full-label{display:none}
+  .nimbus-short-label{display:inline}
+}
+@media (min-width:641px){
+  .nimbus-full-label{display:inline}
+  .nimbus-short-label{display:none}
+}
 @media (prefers-reduced-motion:reduce){.nv-ico svg,.nv-ico::before,.nv-ico::after,.nv-door{animation:none!important;transition:none}}
 `
 
@@ -562,7 +572,7 @@ export function LiquidNavbar({
                 {it.icon}
               </span>
             )}
-            <span className="nimbus-label">{it.label}</span>
+            <span className="nimbus-label"><span className="nimbus-full-label">{it.label}</span><span className="nimbus-short-label">{it.shortLabel || it.label}</span></span>
           </>
         )
         return it.href ? (
