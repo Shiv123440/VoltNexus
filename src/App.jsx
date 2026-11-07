@@ -1,23 +1,39 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
-import OverviewView from './components/views/OverviewView';
-import WorkbenchView from './components/views/WorkbenchView';
-import CompareView from './components/views/CompareView';
-import ExportReportModal from './components/modals/ExportReportModal';
+import StudioHeader from './components/studio/StudioHeader';
+import StudioFooter from './components/studio/StudioFooter';
+import ResearchView from './components/views/ResearchView';
+import DigitalTwinView from './components/views/DigitalTwinView';
+import WorkbenchStudioView from './components/views/WorkbenchStudioView';
+import TradeoffBenchmarkView from './components/views/TradeoffBenchmarkView';
+import EngineeringReportModal from './components/modals/EngineeringReportModal';
 import { simulatePack } from './engine/batterySimulator';
+import { DESIGN_PRESETS } from './services/batteryPhysicsService';
+
+const DEFAULT_CONFIG = {
+  cellId: "molicel_p42a",
+  nSeries: 13,
+  nParallel: 8,
+  interconnectId: "copper_12",
+  coolingId: "forced_air",
+  packCurrentA: 70.0,
+  ambientTempC: 35.0,
+  soh: 0.98,
+  bmsAfeAdcErrorMv: 1.5,
+  fuseBreakingKa: 3.0
+};
 
 export default function App() {
   const [activeTab, setActiveTab] = useState(() => {
     if (typeof window !== 'undefined') {
       const paramTab = new URLSearchParams(window.location.search).get('tab');
-      if (paramTab && ['landing', 'workbench', 'compare'].includes(paramTab)) {
+      if (paramTab && ['research', 'digitalTwin', 'workbench', 'benchmark'].includes(paramTab)) {
         return paramTab;
       }
     }
-    return 'landing';
+    return 'workbench';
   });
 
+  const [currentConfig, setCurrentConfig] = useState(DEFAULT_CONFIG);
   const [isReportOpen, setIsReportOpen] = useState(false);
 
   // Sync tab with URL history
@@ -30,89 +46,104 @@ export default function App() {
     }
   };
 
-  // Keyboard Navigation: [1], [2], [3]
+  // Keyboard navigation: [1], [2], [3], [4]
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Ignore if focus is in an input or select
-      if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) return;
-
-      if (e.key === '1') handleSelectTab('landing');
-      if (e.key === '2') handleSelectTab('workbench');
-      if (e.key === '3') handleSelectTab('compare');
+      if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target?.tagName)) return;
+      if (e.key === '1') handleSelectTab('research');
+      if (e.key === '2') handleSelectTab('digitalTwin');
+      if (e.key === '3') handleSelectTab('workbench');
+      if (e.key === '4') handleSelectTab('benchmark');
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Compute active simulation for report modal and header status
-  const defaultSimulation = useMemo(() => {
-    return simulatePack({
-      cellId: "molicel_p42a",
-      nSeries: 13,
-      nParallel: 8,
-      interconnectId: "copper_12",
-      coolingId: "forced_air",
-      bmsAfeAdcErrorMv: 1.5,
-      packCurrentA: 70.0,
-      ambientTempC: 35.0
-    });
-  }, []);
+  // Preset Applicator
+  const handleApplyPreset = (presetKey) => {
+    if (DESIGN_PRESETS[presetKey]) {
+      const p = DESIGN_PRESETS[presetKey].config;
+      setCurrentConfig((prev) => ({
+        ...prev,
+        ...p,
+        fuseBreakingKa: (p.interconnectId === 'copper_12' || p.interconnectId === 'copper_20') ? 3.0 : 2.0
+      }));
+    }
+  };
+
+  // Generic Parameter Update
+  const handleUpdateConfig = (updater) => {
+    setCurrentConfig((prev) => (typeof updater === 'function' ? updater(prev) : { ...prev, ...updater }));
+  };
+
+  // Real-Time Electro-Thermal Simulation
+  const activeSimulation = useMemo(() => {
+    return simulatePack(currentConfig);
+  }, [currentConfig]);
 
   return (
-    <div className="min-h-screen bg-[#07090E] text-slate-100 flex flex-col font-sans relative selection:bg-cyan-400 selection:text-slate-950">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
       
       {/* Skip to Main Landmark for Accessibility */}
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-400 focus:text-slate-950 focus:font-bold focus:rounded-lg shadow-xl"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:font-bold focus:rounded-lg shadow-xl"
       >
         Skip to main content
       </a>
 
-      {/* Background Engineering Grid Environment */}
-      <div className="fixed inset-0 pointer-events-none vn-cad-grid opacity-30 z-0" />
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-gradient-to-b from-cyan-500/10 via-blue-600/5 to-transparent rounded-full blur-3xl pointer-events-none z-0" />
-
-      {/* Main Command Header */}
-      <Header 
+      {/* Main Studio Command Header */}
+      <StudioHeader 
         activeTab={activeTab} 
         onSelectTab={handleSelectTab} 
         onOpenReport={() => setIsReportOpen(true)}
-        passCount={defaultSimulation.passCount}
-        failCount={defaultSimulation.failCount}
+        onApplyPreset={handleApplyPreset}
+        passCount={activeSimulation.passCount}
+        failCount={activeSimulation.failCount}
       />
 
-      {/* View Content */}
-      <main id="main-content" className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
-        {activeTab === 'landing' && (
-          <OverviewView onNavigateToWorkbench={() => handleSelectTab('workbench')} />
+      {/* Active Workspace View */}
+      <main id="main-content" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {activeTab === 'research' && (
+          <ResearchView 
+            onNavigateToWorkbench={() => handleSelectTab('workbench')} 
+            onNavigateToTwin={() => handleSelectTab('digitalTwin')} 
+          />
+        )}
+        {activeTab === 'digitalTwin' && (
+          <DigitalTwinView 
+            nSeries={currentConfig.nSeries}
+            nParallel={currentConfig.nParallel}
+            ambientTempC={currentConfig.ambientTempC}
+            maxCoreTempC={activeSimulation.maxCoreTempC}
+            tempSpreadC={activeSimulation.tempSpreadC}
+            interconnectId={currentConfig.interconnectId}
+            coolingId={currentConfig.coolingId}
+            packCurrentA={currentConfig.packCurrentA}
+          />
         )}
         {activeTab === 'workbench' && (
-          <WorkbenchView />
+          <WorkbenchStudioView 
+            currentConfig={currentConfig}
+            onUpdateConfig={handleUpdateConfig}
+            onApplyPreset={handleApplyPreset}
+          />
         )}
-        {activeTab === 'compare' && (
-          <CompareView />
+        {activeTab === 'benchmark' && (
+          <TradeoffBenchmarkView />
         )}
       </main>
 
-      {/* Footer */}
-      <Footer onSelectTab={handleSelectTab} />
+      {/* Engineering Studio Footer */}
+      <StudioFooter />
 
-      {/* Export / Verification Report Modal */}
-      <ExportReportModal 
+      {/* Verification & Certification Report Modal */}
+      <EngineeringReportModal 
         isOpen={isReportOpen} 
         onClose={() => setIsReportOpen(false)} 
-        results={defaultSimulation}
-        parameters={{
-          cellId: "Molicel P42A (NMC)",
-          nSeries: 13,
-          nParallel: 8,
-          interconnectId: "1.2mm Copper Busbar",
-          coolingId: "Forced Air Duct (3.5 m/s)",
-          packCurrentA: 70.0,
-          ambientTempC: 35.0
-        }}
+        results={activeSimulation}
+        parameters={currentConfig}
       />
 
     </div>
