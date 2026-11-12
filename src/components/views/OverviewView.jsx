@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { 
   ArrowRight, 
   Cpu, 
@@ -10,7 +10,8 @@ import {
   Sparkles,
   Zap
 } from 'lucide-react';
-import DigitalTwinViewer from '../ui/DigitalTwinViewer';
+
+const DigitalTwin3DView = lazy(() => import('../ui/DigitalTwin3DView'));
 
 export default function OverviewView({ onNavigateToWorkbench }) {
   const literature = [
@@ -115,10 +116,10 @@ export default function OverviewView({ onNavigateToWorkbench }) {
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left Hero Brief (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Hero Brief (6 Cols) */}
+          <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full vn-badge-cyan text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
               <span>DIGITAL MBSE BATTERY SIMULATION PLATFORM</span>
@@ -173,17 +174,24 @@ export default function OverviewView({ onNavigateToWorkbench }) {
             </div>
           </div>
 
-          {/* Right 3D Digital Twin Viewer Preview (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
-            <DigitalTwinViewer 
-              ambientTempC={35.0} 
-              maxCoreTempC={43.2} 
-              tempSpreadC={3.2}
-              nSeries={13}
-              nParallel={8}
-              interconnectId="copper_12"
-              activeCooling="forced_air"
-            />
+          {/* Right 3D Digital Twin Viewer Preview (6 Cols) */}
+          <div className="lg:col-span-6 flex flex-col justify-center">
+            <Suspense
+              fallback={
+                <div className="w-full h-[540px] bg-[#070A11] border border-white/10 rounded-2xl flex items-center justify-center text-xs font-mono text-slate-400">
+                  Loading 3D CAD Digital Twin...
+                </div>
+              }
+            >
+              <DigitalTwin3DView 
+                ambientTempC={35.0} 
+                maxCoreTempC={43.2} 
+                nSeries={13}
+                nParallel={8}
+                interconnectId="copper_12"
+                activeCooling="forced_air"
+              />
+            </Suspense>
           </div>
         </div>
       </section>
