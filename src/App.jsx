@@ -62,7 +62,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F4F5F6] text-[#2B2D31] flex flex-col md:flex-row font-sans relative selection:bg-[#FFC93C] selection:text-[#2B2D31] overflow-x-clip">
+    <div className="min-h-screen bg-[#2B2D31] text-[#D9DADC] flex flex-col md:flex-row font-sans relative selection:bg-[#FFC93C] selection:text-[#2B2D31] overflow-x-clip">
       
       {/* Skip to Main Landmark for Accessibility */}
       <a 

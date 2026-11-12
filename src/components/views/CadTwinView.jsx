@@ -94,35 +94,35 @@ export default function CadTwinView({ onNavigateToWorkbench }) {
       {/* 1. TOP PRESET & LIVE TWIN TELEMETRY BAR */}
       <div className="p-4 rounded-2xl vn-card flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-mono font-bold text-[#2B2D31] uppercase tracking-wider mr-1 flex items-center gap-1.5">
-            <Box className="w-4 h-4 text-[#D97706]" />
+          <span className="text-xs font-mono font-bold text-[#FFC93C] uppercase tracking-wider mr-1 flex items-center gap-1.5">
+            <Box className="w-4 h-4" />
             3D CAD Twin:
           </span>
           <button
             type="button"
             onClick={() => applyPreset('baseline')}
-            className="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-[#EAEBED] hover:bg-[#D9DADC] text-[#2B2D31] border border-[#D9DADC] transition-colors cursor-pointer"
+            className="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-[#232529] hover:bg-white/10 text-[#D9DADC] border border-white/15 transition-colors cursor-pointer"
           >
             Baseline (Passive Air)
           </button>
           <button
             type="button"
             onClick={() => applyPreset('optionA')}
-            className="px-3 py-1.5 rounded-lg text-xs font-mono font-medium vn-badge-pass hover:brightness-95 transition-all cursor-pointer"
+            className="px-3 py-1.5 rounded-lg text-xs font-mono font-medium vn-badge-pass hover:brightness-110 transition-all cursor-pointer"
           >
             Option A (Forced Duct NMC)
           </button>
           <button
             type="button"
             onClick={() => applyPreset('optionB')}
-            className="px-3 py-1.5 rounded-lg text-xs font-mono font-medium vn-badge-cyan hover:brightness-95 transition-all cursor-pointer"
+            className="px-3 py-1.5 rounded-lg text-xs font-mono font-medium vn-badge-cyan hover:brightness-110 transition-all cursor-pointer"
           >
             Option B (Cold Plate LFP)
           </button>
           <button
             type="button"
             onClick={() => applyPreset('optionA')}
-            className="p-1.5 rounded-lg text-[#555860] hover:text-[#2B2D31] hover:bg-[#EAEBED] transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-[#D9DADC]/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             title="Reset CAD Twin to Option A"
             aria-label="Reset CAD Twin to Option A"
           >
@@ -153,28 +153,28 @@ export default function CadTwinView({ onNavigateToWorkbench }) {
         {/* LEFT COLUMN: 3D MODULE GEOMETRY & OPERATING CONTROLS (3 COLS) */}
         <div className="lg:col-span-3 space-y-5">
           <div className="p-5 rounded-2xl vn-card space-y-4">
-            <div className="flex items-center justify-between border-b border-[#D9DADC] pb-3">
-              <div className="flex items-center gap-2 text-sm font-bold text-[#2B2D31]">
-                <Sliders className="w-4 h-4 text-[#D97706]" />
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <div className="flex items-center gap-2 text-sm font-bold text-white">
+                <Sliders className="w-4 h-4 text-[#FFC93C]" />
                 <span>CAD Assembly Inputs</span>
               </div>
-              <span className="text-[10px] font-mono text-[#2B2D31] bg-[#FFC93C]/35 px-2 py-0.5 rounded border border-[#FFC93C] font-semibold">
+              <span className="text-[10px] font-mono text-[#FFC93C] bg-[#FFC93C]/15 px-2 py-0.5 rounded border border-[#FFC93C]/40 font-semibold">
                 LIVE SYNC
               </span>
             </div>
 
             {/* Cell Preset */}
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-[#2B2D31] block">
+              <label className="text-xs font-semibold text-[#D9DADC] block">
                 Cell Form Factor &amp; Chemistry
               </label>
               <select
                 value={cellId}
                 onChange={(e) => setCellId(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9DADC] text-xs text-[#2B2D31] focus:border-[#2B2D31] focus:outline-none cursor-pointer"
+                className="w-full px-3 py-2 rounded-lg bg-[#232529] border border-white/15 text-xs text-white focus:border-[#FFC93C] focus:outline-none cursor-pointer"
               >
                 {Object.values(CELL_PRESETS).map((c) => (
-                  <option key={c.id} value={c.id}>
+                  <option key={c.id} value={c.id} className="bg-[#232529] text-white">
                     {c.name} ({c.chemistry})
                   </option>
                 ))}
@@ -184,41 +184,41 @@ export default function CadTwinView({ onNavigateToWorkbench }) {
             {/* Series & Parallel Array Geometry */}
             <div className="grid grid-cols-2 gap-2.5">
               <div className="space-y-1">
-                <label className="text-[11px] font-semibold text-[#555860] block">Series (Ns)</label>
+                <label className="text-[11px] font-semibold text-[#D9DADC]/80 block">Series (Ns)</label>
                 <input
                   type="number"
                   min="4"
                   max="20"
                   value={nSeries}
                   onChange={(e) => setNSeries(Math.max(4, Math.min(20, parseInt(e.target.value, 10) || 4)))}
-                  className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-[#D9DADC] text-xs font-mono font-bold text-[#2B2D31] focus:border-[#2B2D31] focus:outline-none"
+                  className="w-full px-2.5 py-1.5 rounded-lg bg-[#232529] border border-white/15 text-xs font-mono font-bold text-[#FFC93C] focus:border-[#FFC93C] focus:outline-none"
                 />
               </div>
               <div className="space-y-1">
-                <label className="text-[11px] font-semibold text-[#555860] block">Parallel (Np)</label>
+                <label className="text-[11px] font-semibold text-[#D9DADC]/80 block">Parallel (Np)</label>
                 <input
                   type="number"
                   min="1"
                   max="12"
                   value={nParallel}
                   onChange={(e) => setNParallel(Math.max(1, Math.min(12, parseInt(e.target.value, 10) || 1)))}
-                  className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-[#D9DADC] text-xs font-mono font-bold text-[#2B2D31] focus:border-[#2B2D31] focus:outline-none"
+                  className="w-full px-2.5 py-1.5 rounded-lg bg-[#232529] border border-white/15 text-xs font-mono font-bold text-[#FFC93C] focus:border-[#FFC93C] focus:outline-none"
                 />
               </div>
             </div>
 
             {/* Interconnect Hardware */}
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-[#2B2D31] block">
+              <label className="text-xs font-semibold text-[#D9DADC] block">
                 Busbar / Interconnect
               </label>
               <select
                 value={interconnectId}
                 onChange={(e) => setInterconnectId(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9DADC] text-xs text-[#2B2D31] focus:border-[#2B2D31] focus:outline-none cursor-pointer"
+                className="w-full px-3 py-2 rounded-lg bg-[#232529] border border-white/15 text-xs text-white focus:border-[#FFC93C] focus:outline-none cursor-pointer"
               >
                 {Object.values(INTERCONNECT_PRESETS).map((i) => (
-                  <option key={i.id} value={i.id}>
+                  <option key={i.id} value={i.id} className="bg-[#232529] text-white">
                     {i.name}
                   </option>
                 ))}
@@ -227,16 +227,16 @@ export default function CadTwinView({ onNavigateToWorkbench }) {
 
             {/* Cooling Duct / Plate */}
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-[#2B2D31] block">
+              <label className="text-xs font-semibold text-[#D9DADC] block">
                 Thermal Duct / Cold Plate
               </label>
               <select
                 value={coolingId}
                 onChange={(e) => setCoolingId(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-white border border-[#D9DADC] text-xs text-[#2B2D31] focus:border-[#2B2D31] focus:outline-none cursor-pointer"
+                className="w-full px-3 py-2 rounded-lg bg-[#232529] border border-white/15 text-xs text-white focus:border-[#FFC93C] focus:outline-none cursor-pointer"
               >
                 {Object.values(COOLING_PRESETS).map((cl) => (
-                  <option key={cl.id} value={cl.id}>
+                  <option key={cl.id} value={cl.id} className="bg-[#232529] text-white">
                     {cl.name}
                   </option>
                 ))}
@@ -244,11 +244,11 @@ export default function CadTwinView({ onNavigateToWorkbench }) {
             </div>
 
             {/* Operational Thermal Stress Sliders */}
-            <div className="space-y-3 pt-2 border-t border-[#D9DADC]">
+            <div className="space-y-3 pt-2 border-t border-white/10">
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="text-[#555860] font-medium">Load Current:</span>
-                  <span className="font-mono text-[#2B2D31] font-bold">{packCurrentA} A</span>
+                  <span className="text-[#D9DADC]/80 font-medium">Load Current:</span>
+                  <span className="font-mono text-[#FFC93C] font-bold">{packCurrentA} A</span>
                 </div>
                 <input
                   type="range"
@@ -263,8 +263,8 @@ export default function CadTwinView({ onNavigateToWorkbench }) {
 
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="text-[#555860] font-medium">Ambient Inlet:</span>
-                  <span className="font-mono text-amber-700 font-bold">{ambientTempC} °C</span>
+                  <span className="text-[#D9DADC]/80 font-medium">Ambient Inlet:</span>
+                  <span className="font-mono text-[#FFC93C] font-bold">{ambientTempC} °C</span>
                 </div>
                 <input
                   type="range"
@@ -281,38 +281,38 @@ export default function CadTwinView({ onNavigateToWorkbench }) {
 
           {/* Physical Packaging & Live Telemetry Card */}
           <div className="p-5 rounded-2xl vn-card space-y-3">
-            <h3 className="text-xs font-mono font-bold text-[#2B2D31] uppercase tracking-wider border-b border-[#D9DADC] pb-2">
+            <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider border-b border-white/10 pb-2">
               Module Spatial Telemetry
             </h3>
 
             <div className="space-y-2 text-xs font-mono">
               <div className="flex justify-between">
-                <span className="text-[#555860] flex items-center gap-1.5">
-                  <Cpu className="w-3.5 h-3.5 text-[#2B2D31]" /> Array Layout:
+                <span className="text-[#D9DADC]/70 flex items-center gap-1.5">
+                  <Cpu className="w-3.5 h-3.5 text-[#FFC93C]" /> Array Layout:
                 </span>
-                <span className="text-[#2B2D31] font-bold">{nSeries * nParallel} Cells ({nSeries}S{nParallel}P)</span>
+                <span className="text-white font-bold">{nSeries * nParallel} Cells ({nSeries}S{nParallel}P)</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#555860] flex items-center gap-1.5">
-                  <Zap className="w-3.5 h-3.5 text-[#D97706]" /> Pack Potential:
+                <span className="text-[#D9DADC]/70 flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5 text-[#FFC93C]" /> Pack Potential:
                 </span>
-                <span className="text-[#2B2D31] font-bold">{results.nominalVoltageV} V ({results.nominalEnergyKwh} kWh)</span>
+                <span className="text-[#FFC93C] font-bold">{results.nominalVoltageV} V ({results.nominalEnergyKwh} kWh)</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#555860] flex items-center gap-1.5">
-                  <Thermometer className="w-3.5 h-3.5 text-rose-600" /> Peak Core / ΔT:
+                <span className="text-[#D9DADC]/70 flex items-center gap-1.5">
+                  <Thermometer className="w-3.5 h-3.5 text-rose-400" /> Peak Core / ΔT:
                 </span>
-                <span className={`font-bold ${results.maxCoreTempC > 55 ? 'text-rose-600' : 'text-emerald-700'}`}>
+                <span className={`font-bold ${results.maxCoreTempC > 55 ? 'text-rose-400' : 'text-emerald-300'}`}>
                   {results.maxCoreTempC}°C / {results.tempSpreadC}°C
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#555860]">Form Factor:</span>
-                <span className="text-[#2B2D31]">{selectedCell.formFactor}</span>
+                <span className="text-[#D9DADC]/70">Form Factor:</span>
+                <span className="text-white">{selectedCell.formFactor}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#555860]">Module Mass:</span>
-                <span className="text-[#2B2D31] font-bold">{results.totalMassKg} kg</span>
+                <span className="text-[#D9DADC]/70">Module Mass:</span>
+                <span className="text-white font-bold">{results.totalMassKg} kg</span>
               </div>
             </div>
 
@@ -320,7 +320,7 @@ export default function CadTwinView({ onNavigateToWorkbench }) {
               <button
                 type="button"
                 onClick={onNavigateToWorkbench}
-                className="w-full mt-2 px-3 py-2 rounded-xl bg-[#EAEBED] hover:bg-[#D9DADC] border border-[#D9DADC] text-xs font-mono text-[#2B2D31] font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full mt-2 px-3 py-2 rounded-xl bg-[#232529] hover:bg-white/10 border border-white/15 text-xs font-mono text-[#FFC93C] font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Open Full Rules Workbench</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -333,7 +333,7 @@ export default function CadTwinView({ onNavigateToWorkbench }) {
         <div className="lg:col-span-9 min-w-0">
           <Suspense
             fallback={
-              <div className="w-full h-[640px] bg-white border border-[#D9DADC] rounded-2xl flex items-center justify-center text-xs font-mono text-[#555860]">
+              <div className="w-full h-[640px] bg-[#33363B] border border-white/15 rounded-2xl flex items-center justify-center text-xs font-mono text-[#D9DADC]">
                 Initializing Full-Scale 3D WebGL CAD Assembly...
               </div>
             }

@@ -2,30 +2,30 @@
 
 @layer base {
   :root {
-    --vn-canvas: #F4F5F6;
+    --vn-canvas: #2B2D31;
     --vn-sidebar: #2B2D31;
-    --vn-surface: #FFFFFF;
-    --vn-surface-muted: #EAEBED;
-    --vn-border: #D9DADC;
-    --vn-border-subtle: #E6E7E9;
+    --vn-surface: #33363B;
+    --vn-surface-muted: #232529;
+    --vn-border: rgba(217, 218, 220, 0.15);
+    --vn-border-subtle: rgba(217, 218, 220, 0.08);
 
     --vn-gray: #2B2D31;
     --vn-silver: #D9DADC;
     --vn-yellow: #FFC93C;
-    --vn-emerald: #059669;
-    --vn-amber: #D97706;
-    --vn-rose: #DC2626;
+    --vn-emerald: #10B981;
+    --vn-amber: #F59E0B;
+    --vn-rose: #EF4444;
 
-    --vn-text-main: #2B2D31;
-    --vn-text-muted: #555860;
-    --vn-text-dim: #737780;
+    --vn-text-main: #F4F5F6;
+    --vn-text-muted: #D9DADC;
+    --vn-text-dim: #9EA2AA;
   }
 }
 
 body {
   margin: 0;
-  background-color: #F4F5F6;
-  color: #2B2D31;
+  background-color: #2B2D31;
+  color: #D9DADC;
   font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,75 +38,75 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #EAEBED;
+  background: #232529;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B8BBC0;
+  background: rgba(217, 218, 220, 0.25);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2B2D31;
+  background: #FFC93C;
 }
 
 /* Subtle Engineering Millimeter Grid */
 .vn-cad-grid {
   background-image:
-    linear-gradient(to right, rgba(43, 45, 49, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(43, 45, 49, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(217, 218, 220, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 218, 220, 0.04) 1px, transparent 1px);
   background-size: 36px 36px;
 }
 
 .vn-dot-matrix {
-  background-image: radial-gradient(rgba(43, 45, 49, 0.16) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(217, 218, 220, 0.14) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 /* Studio Card Surface */
 .vn-card {
-  background: #FFFFFF;
-  border: 1px solid #D9DADC;
+  background: #33363B;
+  border: 1px solid rgba(217, 218, 220, 0.14);
   border-radius: 1rem;
-  box-shadow: 0 1px 2px 0 rgba(43, 45, 49, 0.05);
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.28);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .vn-card:hover {
-  border-color: #B4B7BC;
-  box-shadow: 0 4px 12px -2px rgba(43, 45, 49, 0.08);
+  border-color: rgba(217, 218, 220, 0.26);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.36);
 }
 
 .vn-card-highlight {
-  background: #FFFFFF;
-  border: 1px solid #FFC93C;
-  box-shadow: 0 4px 16px -4px rgba(255, 201, 60, 0.2);
+  background: #33363B;
+  border: 1px solid rgba(255, 201, 60, 0.45);
+  box-shadow: 0 6px 20px -6px rgba(255, 201, 60, 0.16);
 }
 
 /* Precision Semantic Badges */
 .vn-badge-pass {
-  background: #ECFDF5;
-  color: #065F46;
-  border: 1px solid #A7F3D0;
+  background: rgba(16, 185, 129, 0.14);
+  color: #6EE7B7;
+  border: 1px solid rgba(16, 185, 129, 0.35);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .vn-badge-warn {
-  background: #FFFBEB;
-  color: #92400E;
-  border: 1px solid #FDE68A;
+  background: rgba(245, 158, 11, 0.14);
+  color: #FCD34D;
+  border: 1px solid rgba(245, 158, 11, 0.35);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .vn-badge-fail {
-  background: #FEF2F2;
-  color: #991B1B;
-  border: 1px solid #FECACA;
+  background: rgba(239, 68, 68, 0.14);
+  color: #FCA5A5;
+  border: 1px solid rgba(239, 68, 68, 0.35);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .vn-badge-cyan {
-  background: #FFF8E1;
-  color: #2B2D31;
-  border: 1px solid #FFC93C;
+  background: rgba(255, 201, 60, 0.14);
+  color: #FFC93C;
+  border: 1px solid rgba(255, 201, 60, 0.4);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -115,7 +115,7 @@ input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   height: 6px;
-  background: #D9DADC;
+  background: #232529;
   border-radius: 9999px;
   outline: none;
 }
@@ -129,13 +129,13 @@ input[type="range"]::-webkit-slider-thumb {
   background: #FFC93C;
   cursor: pointer;
   border: 2px solid #2B2D31;
-  box-shadow: 0 1px 4px rgba(43, 45, 49, 0.25);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.12);
-  background: #F5B800;
+  background: #FFD666;
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -145,7 +145,7 @@ input[type="range"]::-moz-range-thumb {
   background: #FFC93C;
   cursor: pointer;
   border: 2px solid #2B2D31;
-  box-shadow: 0 1px 4px rgba(43, 45, 49, 0.25);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* Print Styles for PDF / Report Generation */

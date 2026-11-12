@@ -57,11 +57,11 @@ export default function CompareView() {
       {/* 1. Header Banner */}
       <div className="p-5 sm:p-6 rounded-2xl vn-card flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-[#2B2D31] flex items-center gap-2.5">
-            <Scale className="w-6 h-6 text-[#D97706]" />
+          <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
+            <Scale className="w-6 h-6 text-[#FFC93C]" />
             <span>Multi-Design MDO Trade-Off Benchmark</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[#555860] mt-1">
+          <p className="text-xs sm:text-sm text-[#D9DADC]/70 mt-1">
             Side-by-side multi-disciplinary optimization matrix: Baseline vs. Option A vs. Option B at continuous 70A cruise load
           </p>
         </div>
@@ -75,97 +75,97 @@ export default function CompareView() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         
         {/* Baseline Card */}
-        <div className="p-6 rounded-2xl bg-white border border-rose-200 shadow-xs space-y-4">
+        <div className="p-6 rounded-2xl bg-[#33363B] border border-rose-400/35 shadow-sm space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono font-bold text-rose-700 uppercase tracking-wider">Baseline Design</span>
+            <span className="text-xs font-mono font-bold text-rose-300 uppercase tracking-wider">Baseline Design</span>
             <span className="px-2 py-0.5 rounded text-[10px] font-mono vn-badge-fail font-bold">4 VIOLATIONS</span>
           </div>
-          <div className="text-lg font-bold text-[#2B2D31]">Passive Air NMC 13S8P</div>
+          <div className="text-lg font-bold text-white">Passive Air NMC 13S8P</div>
           <div className="space-y-2 text-xs font-mono">
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Usable Energy:</span>
-              <span className="text-[#2B2D31] font-bold">{baseline.usableEnergyKwh} kWh</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Usable Energy:</span>
+              <span className="text-white font-bold">{baseline.usableEnergyKwh} kWh</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Peak Core Temp:</span>
-              <span className="text-rose-600 font-bold">{baseline.maxCoreTempC}°C</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Peak Core Temp:</span>
+              <span className="text-rose-400 font-bold">{baseline.maxCoreTempC}°C</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Spatial Spread (ΔT):</span>
-              <span className="text-rose-600 font-bold">{baseline.tempSpreadC}°C</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Spatial Spread (ΔT):</span>
+              <span className="text-rose-400 font-bold">{baseline.tempSpreadC}°C</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Current Imbalance:</span>
-              <span className="text-rose-600 font-bold">26.4%</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Current Imbalance:</span>
+              <span className="text-rose-400 font-bold">26.4%</span>
             </div>
             <div className="flex justify-between py-1.5">
-              <span className="text-[#555860]">BOM Cost:</span>
-              <span className="text-[#2B2D31] font-bold">${baseline.totalBomUsd} USD</span>
+              <span className="text-[#D9DADC]/70">BOM Cost:</span>
+              <span className="text-white font-bold">${baseline.totalBomUsd} USD</span>
             </div>
           </div>
         </div>
 
         {/* Option A Card (Sweetspot) */}
-        <div className="p-6 rounded-2xl bg-white border-2 border-[#FFC93C] shadow-sm space-y-4 relative overflow-hidden">
+        <div className="p-6 rounded-2xl bg-[#33363B] border-2 border-[#FFC93C] shadow-md space-y-4 relative overflow-hidden">
           <div className="absolute top-0 right-0 px-3 py-0.5 bg-[#FFC93C] text-[#2B2D31] text-[10px] font-mono font-bold uppercase rounded-bl-lg">
             Recommended Sweetspot
           </div>
           <div className="flex items-center justify-between pt-1">
-            <span className="text-xs font-mono font-bold text-emerald-700 uppercase tracking-wider">Option A (Optimized)</span>
+            <span className="text-xs font-mono font-bold text-emerald-300 uppercase tracking-wider">Option A (Optimized)</span>
             <span className="px-2 py-0.5 rounded text-[10px] font-mono vn-badge-pass font-bold">ALL 13 PASS</span>
           </div>
-          <div className="text-lg font-bold text-[#2B2D31]">Forced Duct NMC 13S8P</div>
+          <div className="text-lg font-bold text-white">Forced Duct NMC 13S8P</div>
           <div className="space-y-2 text-xs font-mono">
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Usable Energy:</span>
-              <span className="text-emerald-700 font-bold">{optionA.usableEnergyKwh} kWh (+5.6%)</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Usable Energy:</span>
+              <span className="text-emerald-300 font-bold">{optionA.usableEnergyKwh} kWh (+5.6%)</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Peak Core Temp:</span>
-              <span className="text-emerald-700 font-bold">{optionA.maxCoreTempC}°C</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Peak Core Temp:</span>
+              <span className="text-emerald-300 font-bold">{optionA.maxCoreTempC}°C</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Spatial Spread (ΔT):</span>
-              <span className="text-emerald-700 font-bold">{optionA.tempSpreadC}°C</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Spatial Spread (ΔT):</span>
+              <span className="text-emerald-300 font-bold">{optionA.tempSpreadC}°C</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Current Imbalance:</span>
-              <span className="text-emerald-700 font-bold">8.2%</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Current Imbalance:</span>
+              <span className="text-emerald-300 font-bold">8.2%</span>
             </div>
             <div className="flex justify-between py-1.5">
-              <span className="text-[#555860]">BOM Cost:</span>
-              <span className="text-[#2B2D31] font-bold">${optionA.totalBomUsd} USD</span>
+              <span className="text-[#D9DADC]/70">BOM Cost:</span>
+              <span className="text-white font-bold">${optionA.totalBomUsd} USD</span>
             </div>
           </div>
         </div>
 
         {/* Option B Card */}
-        <div className="p-6 rounded-2xl bg-white border border-[#D9DADC] shadow-xs space-y-4">
+        <div className="p-6 rounded-2xl bg-[#33363B] border border-white/15 shadow-sm space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono font-bold text-[#2B2D31] uppercase tracking-wider">Option B (High Safety)</span>
+            <span className="text-xs font-mono font-bold text-[#FFC93C] uppercase tracking-wider">Option B (High Safety)</span>
             <span className="px-2 py-0.5 rounded text-[10px] font-mono vn-badge-pass font-bold">ALL 13 PASS</span>
           </div>
-          <div className="text-lg font-bold text-[#2B2D31]">Cold Plate LFP 16S4P</div>
+          <div className="text-lg font-bold text-white">Cold Plate LFP 16S4P</div>
           <div className="space-y-2 text-xs font-mono">
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Usable Energy:</span>
-              <span className="text-[#2B2D31] font-bold">{optionB.usableEnergyKwh} kWh</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Usable Energy:</span>
+              <span className="text-white font-bold">{optionB.usableEnergyKwh} kWh</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Peak Core Temp:</span>
-              <span className="text-[#2B2D31] font-bold">{optionB.maxCoreTempC}°C</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Peak Core Temp:</span>
+              <span className="text-white font-bold">{optionB.maxCoreTempC}°C</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Spatial Spread (ΔT):</span>
-              <span className="text-[#2B2D31] font-bold">{optionB.tempSpreadC}°C</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Spatial Spread (ΔT):</span>
+              <span className="text-white font-bold">{optionB.tempSpreadC}°C</span>
             </div>
-            <div className="flex justify-between py-1.5 border-b border-[#E6E7E9]">
-              <span className="text-[#555860]">Current Imbalance:</span>
-              <span className="text-[#2B2D31] font-bold">6.5%</span>
+            <div className="flex justify-between py-1.5 border-b border-white/10">
+              <span className="text-[#D9DADC]/70">Current Imbalance:</span>
+              <span className="text-white font-bold">6.5%</span>
             </div>
             <div className="flex justify-between py-1.5">
-              <span className="text-[#555860]">BOM Cost:</span>
-              <span className="text-[#2B2D31] font-bold">${optionB.totalBomUsd} USD</span>
+              <span className="text-[#D9DADC]/70">BOM Cost:</span>
+              <span className="text-white font-bold">${optionB.totalBomUsd} USD</span>
             </div>
           </div>
         </div>
@@ -177,34 +177,34 @@ export default function CompareView() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-[#D9DADC] bg-[#2B2D31] font-mono text-[#D9DADC]">
+              <tr className="border-b border-white/10 bg-[#232529] font-mono text-[#D9DADC]">
                 <th className="py-3 px-4 w-1/4">Evaluated Metric / Subsystem</th>
                 <th className="py-3 px-4 w-1/4 text-rose-300 font-bold">Baseline Design</th>
                 <th className="py-3 px-4 w-1/4 text-[#FFC93C] font-bold">Option A (Optimized NMC)</th>
                 <th className="py-3 px-4 w-1/4 text-white font-bold">Option B (High-Safety LFP)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E6E7E9]">
+            <tbody className="divide-y divide-white/5">
               {rows.map((row, idx) => (
-                <tr key={idx} className="hover:bg-[#F4F5F6] transition-colors">
-                  <td className="py-3 px-4 font-medium text-[#2B2D31]">{row.label}</td>
-                  <td className="py-3 px-4 font-mono text-[#555860]">
+                <tr key={idx} className="hover:bg-white/[0.03] transition-colors">
+                  <td className="py-3 px-4 font-medium text-white">{row.label}</td>
+                  <td className="py-3 px-4 font-mono text-[#D9DADC]/80">
                     {row.base.includes("FAIL") ? (
-                      <span className="text-rose-700 font-bold">{row.base}</span>
+                      <span className="text-rose-400 font-bold">{row.base}</span>
                     ) : (
                       row.base
                     )}
                   </td>
-                  <td className="py-3 px-4 font-mono text-[#555860]">
+                  <td className="py-3 px-4 font-mono text-[#D9DADC]/80">
                     {row.optA.includes("PASS") || row.optA.includes("+5.6%") ? (
-                      <span className="text-emerald-700 font-bold">{row.optA}</span>
+                      <span className="text-emerald-300 font-bold">{row.optA}</span>
                     ) : (
                       row.optA
                     )}
                   </td>
-                  <td className="py-3 px-4 font-mono text-[#555860]">
+                  <td className="py-3 px-4 font-mono text-[#D9DADC]/80">
                     {row.optB.includes("PASS") ? (
-                      <span className="text-[#2B2D31] font-bold">{row.optB}</span>
+                      <span className="text-[#FFC93C] font-bold">{row.optB}</span>
                     ) : (
                       row.optB
                     )}
@@ -219,29 +219,29 @@ export default function CompareView() {
       {/* 4. Deep Engineering Takeaways */}
       <div className="p-6 rounded-2xl vn-card space-y-4">
         <div className="flex items-center gap-2">
-          <FileCheck className="w-5 h-5 text-[#D97706]" />
-          <h3 className="text-sm font-bold text-[#2B2D31] tracking-tight">
+          <FileCheck className="w-5 h-5 text-[#FFC93C]" />
+          <h3 className="text-sm font-bold text-white tracking-tight">
             Key Design Trade-Off Synthesis
           </h3>
         </div>
 
-        <div className="space-y-3 text-xs text-[#555860] leading-relaxed font-sans">
-          <div className="p-3.5 rounded-xl bg-rose-50/60 border border-rose-200/80 space-y-1">
-            <strong className="text-rose-700 font-mono block">1. Baseline Failure Root Cause Analysis:</strong>
+        <div className="space-y-3 text-xs text-[#D9DADC]/80 leading-relaxed font-sans">
+          <div className="p-3.5 rounded-xl bg-[#232529] border border-rose-400/25 space-y-1">
+            <strong className="text-rose-300 font-mono block">1. Baseline Failure Root Cause Analysis:</strong>
             <p>
               The baseline design fails 4 critical rules: peak cell temperature reaches 58.4°C, spatial thermal gradient ΔT reaches 6.8°C (violating Cloos &amp; Wetzel's 5°C threshold), thin 0.15mm nickel strips cause a 26.4% current imbalance, and fuse clearing energy exceeds the busbar adiabatic withstand limit.
             </p>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#FFF8E1] border border-[#FFC93C] space-y-1">
-            <strong className="text-[#2B2D31] font-mono block">2. The Option A Sweetspot:</strong>
+          <div className="p-3.5 rounded-xl bg-[#232529] border border-[#FFC93C]/35 space-y-1">
+            <strong className="text-[#FFC93C] font-mono block">2. The Option A Sweetspot:</strong>
             <p>
-              Upgrading to a 3.5 m/s forced air duct and 1.2mm pure copper busbars resolves all 4 rule failures, cuts peak core temperature to 43.2°C, and recovers <strong className="text-[#2B2D31]">+5.6% more usable discharge energy</strong> for only a 0.9 kg mass and $43 BOM cost delta.
+              Upgrading to a 3.5 m/s forced air duct and 1.2mm pure copper busbars resolves all 4 rule failures, cuts peak core temperature to 43.2°C, and recovers <strong className="text-white">+5.6% more usable discharge energy</strong> for only a 0.9 kg mass and $43 BOM cost delta.
             </p>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#F4F5F6] border border-[#D9DADC] space-y-1">
-            <strong className="text-[#2B2D31] font-mono block">3. Option B Longevity Trade-Off:</strong>
+          <div className="p-3.5 rounded-xl bg-[#232529] border border-white/10 space-y-1">
+            <strong className="text-white font-mono block">3. Option B Longevity Trade-Off:</strong>
             <p>
               Cylindrical LFP cells with a liquid cold plate deliver the highest thermal safety margin (37.1°C peak core), but increase dry module mass to 11.8 kg and require a precision ±1.5mV BMS AFE (TI BQ76952) to avoid flat-plateau SOC estimation errors.
             </p>

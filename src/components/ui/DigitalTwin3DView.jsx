@@ -531,16 +531,16 @@ export default function DigitalTwin3DView({
     <div
       className={
         isFullscreen
-          ? 'fixed inset-0 z-50 bg-white flex flex-col overflow-hidden select-none'
-          : `relative w-full ${heightClass} bg-white border border-[#D9DADC] rounded-2xl flex flex-col overflow-hidden select-none shadow-sm`
+          ? 'fixed inset-0 z-50 bg-[#2B2D31] flex flex-col overflow-hidden select-none'
+          : `relative w-full ${heightClass} bg-[#33363B] border border-white/15 rounded-2xl flex flex-col overflow-hidden select-none shadow-lg`
       }
     >
       {/* Top Control Bar */}
-      <div className="shrink-0 z-20 p-2.5 bg-[#F4F5F6] border-b border-[#D9DADC] flex flex-wrap items-center justify-between gap-2">
+      <div className="shrink-0 z-20 p-2.5 bg-[#232529] border-b border-white/10 flex flex-wrap items-center justify-between gap-2">
         {/* Layer Selector Buttons */}
-        <div className="flex flex-wrap items-center gap-1 bg-white p-1 rounded-lg border border-[#D9DADC]">
-          <span className="text-[10px] font-mono text-[#555860] px-1.5 flex items-center gap-1">
-            <Layers className="w-3 h-3 text-[#2B2D31]" />
+        <div className="flex flex-wrap items-center gap-1 bg-[#2B2D31] p-1 rounded-lg border border-white/10">
+          <span className="text-[10px] font-mono text-[#D9DADC]/70 px-1.5 flex items-center gap-1">
+            <Layers className="w-3 h-3 text-[#FFC93C]" />
             X-RAY:
           </span>
 
@@ -549,8 +549,8 @@ export default function DigitalTwin3DView({
             onClick={() => setLayer('assembly')}
             className={`px-2 py-1 rounded text-[11px] font-mono transition-all cursor-pointer ${
               layer === 'assembly'
-                ? 'bg-[#2B2D31] text-[#FFC93C] font-semibold'
-                : 'text-[#555860] hover:text-[#2B2D31] hover:bg-[#EAEBED]'
+                ? 'bg-[#FFC93C] text-[#2B2D31] font-bold'
+                : 'text-[#D9DADC]/75 hover:text-white hover:bg-white/10'
             }`}
           >
             1. Assembly
@@ -561,8 +561,8 @@ export default function DigitalTwin3DView({
             onClick={() => setLayer('busbars')}
             className={`px-2 py-1 rounded text-[11px] font-mono transition-all flex items-center gap-1 cursor-pointer ${
               layer === 'busbars'
-                ? 'bg-[#FFC93C] text-[#2B2D31] font-semibold'
-                : 'text-[#555860] hover:text-[#2B2D31] hover:bg-[#EAEBED]'
+                ? 'bg-[#FFC93C] text-[#2B2D31] font-bold'
+                : 'text-[#D9DADC]/75 hover:text-white hover:bg-white/10'
             }`}
           >
             <Zap className="w-3 h-3" />
@@ -575,7 +575,7 @@ export default function DigitalTwin3DView({
             className={`px-2 py-1 rounded text-[11px] font-mono transition-all flex items-center gap-1 cursor-pointer ${
               layer === 'thermal'
                 ? 'bg-rose-600 text-white font-semibold'
-                : 'text-[#555860] hover:text-[#2B2D31] hover:bg-[#EAEBED]'
+                : 'text-[#D9DADC]/75 hover:text-white hover:bg-white/10'
             }`}
           >
             <Thermometer className="w-3 h-3" />
@@ -587,8 +587,8 @@ export default function DigitalTwin3DView({
             onClick={() => setLayer('bms')}
             className={`px-2 py-1 rounded text-[11px] font-mono transition-all flex items-center gap-1 cursor-pointer ${
               layer === 'bms'
-                ? 'bg-[#2B2D31] text-white font-semibold'
-                : 'text-[#555860] hover:text-[#2B2D31] hover:bg-[#EAEBED]'
+                ? 'bg-white text-[#2B2D31] font-bold'
+                : 'text-[#D9DADC]/75 hover:text-white hover:bg-white/10'
             }`}
           >
             <Cpu className="w-3 h-3" />
@@ -597,9 +597,9 @@ export default function DigitalTwin3DView({
         </div>
 
         {/* Exploded View Slider, Reset & Fullscreen */}
-        <div className="flex items-center gap-2.5 px-2.5 py-1 bg-white border border-[#D9DADC] rounded-lg">
+        <div className="flex items-center gap-2.5 px-2.5 py-1 bg-[#2B2D31] border border-white/10 rounded-lg">
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] font-mono text-[#555860]">EXPLODE:</span>
+            <span className="text-[10px] font-mono text-[#D9DADC]/70">EXPLODE:</span>
             <input
               type="range"
               min="0"
@@ -608,18 +608,18 @@ export default function DigitalTwin3DView({
               onChange={(e) => setExplodedPct(Number(e.target.value))}
               className="w-16 sm:w-20 cursor-pointer"
             />
-            <span className="text-[11px] font-mono text-[#2B2D31] font-semibold min-w-[3ch]">
+            <span className="text-[11px] font-mono text-[#FFC93C] font-semibold min-w-[3ch]">
               {explodedPct}%
             </span>
           </div>
 
-          <div className="h-3.5 w-px bg-[#D9DADC]" />
+          <div className="h-3.5 w-px bg-white/15" />
 
           <button
             type="button"
             onClick={resetCamera}
             title="Reset 3D Camera View"
-            className="p-1 rounded hover:bg-[#EAEBED] text-[#555860] hover:text-[#2B2D31] transition-colors cursor-pointer"
+            className="p-1 rounded hover:bg-white/10 text-[#D9DADC]/70 hover:text-[#FFC93C] transition-colors cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
@@ -628,7 +628,7 @@ export default function DigitalTwin3DView({
             type="button"
             onClick={() => setIsFullscreen((v) => !v)}
             title={isFullscreen ? 'Exit Fullscreen (Esc)' : 'Expand 3D CAD Viewport'}
-            className="p-1 rounded hover:bg-[#EAEBED] text-[#555860] hover:text-[#2B2D31] transition-colors cursor-pointer"
+            className="p-1 rounded hover:bg-white/10 text-[#D9DADC]/70 hover:text-[#FFC93C] transition-colors cursor-pointer"
           >
             {isFullscreen ? (
               <Minimize2 className="w-3.5 h-3.5" />
@@ -675,13 +675,13 @@ export default function DigitalTwin3DView({
       </div>
 
       {/* Bottom Telemetry & Inspection Footer */}
-      <div className="shrink-0 z-20 p-3 bg-[#F4F5F6] border-t border-[#D9DADC] flex flex-wrap items-center justify-between gap-3">
+      <div className="shrink-0 z-20 p-3 bg-[#232529] border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
         {/* Per-Cell Telemetry Readout */}
         <div className="flex-1 min-w-[230px]">
           <div className="flex items-center justify-between mb-1.5">
             <div className="flex items-center gap-1.5">
-              <Activity className="w-3.5 h-3.5 text-[#D97706] animate-pulse" />
-              <span className="text-[11px] font-mono font-semibold text-[#2B2D31]">
+              <Activity className="w-3.5 h-3.5 text-[#FFC93C] animate-pulse" />
+              <span className="text-[11px] font-mono font-semibold text-white">
                 {activeCell
                   ? `CELL TELEMETRY [S${activeCell.seriesIdx}:P${activeCell.parallelIdx}]`
                   : `${simData.nSeries}S${simData.nParallel}P CAD TWIN • ${totalCells} CELLS • ${simData.vNom}V`}
@@ -696,37 +696,37 @@ export default function DigitalTwin3DView({
 
           {activeCell ? (
             <div className="grid grid-cols-4 gap-1.5 text-[11px] font-mono">
-              <div className="bg-white px-2 py-1 rounded border border-[#D9DADC]">
-                <div className="text-[9px] text-[#737780]">TEMP</div>
+              <div className="bg-[#2B2D31] px-2 py-1 rounded border border-white/10">
+                <div className="text-[9px] text-[#D9DADC]/55">TEMP</div>
                 <div
                   className={`font-bold ${
                     activeCell.temp > 52
-                      ? 'text-rose-600'
+                      ? 'text-rose-400'
                       : activeCell.temp > 45
-                      ? 'text-amber-600'
-                      : 'text-emerald-600'
+                      ? 'text-[#FFC93C]'
+                      : 'text-emerald-300'
                   }`}
                 >
                   {activeCell.temp}°C
                 </div>
               </div>
-              <div className="bg-white px-2 py-1 rounded border border-[#D9DADC]">
-                <div className="text-[9px] text-[#737780]">VOLT</div>
-                <div className="font-bold text-[#2B2D31]">{activeCell.voltage}V</div>
+              <div className="bg-[#2B2D31] px-2 py-1 rounded border border-white/10">
+                <div className="text-[9px] text-[#D9DADC]/55">VOLT</div>
+                <div className="font-bold text-[#FFC93C]">{activeCell.voltage}V</div>
               </div>
-              <div className="bg-white px-2 py-1 rounded border border-[#D9DADC]">
-                <div className="text-[9px] text-[#737780]">CURRENT</div>
-                <div className="font-bold text-[#2B2D31]">
+              <div className="bg-[#2B2D31] px-2 py-1 rounded border border-white/10">
+                <div className="text-[9px] text-[#D9DADC]/55">CURRENT</div>
+                <div className="font-bold text-white">
                   {activeCell.currentShare}A
                 </div>
               </div>
-              <div className="bg-white px-2 py-1 rounded border border-[#D9DADC]">
-                <div className="text-[9px] text-[#737780]">DCIR</div>
-                <div className="font-bold text-[#2B2D31]">{activeCell.dcir}mΩ</div>
+              <div className="bg-[#2B2D31] px-2 py-1 rounded border border-white/10">
+                <div className="text-[9px] text-[#D9DADC]/55">DCIR</div>
+                <div className="font-bold text-white">{activeCell.dcir}mΩ</div>
               </div>
             </div>
           ) : (
-            <div className="text-[11px] text-[#555860] font-mono">
+            <div className="text-[11px] text-[#D9DADC]/65 font-mono">
               Drag to orbit, scroll to zoom, or hover/click any of the {totalCells} cells to inspect local telemetry.
             </div>
           )}
@@ -734,17 +734,17 @@ export default function DigitalTwin3DView({
 
         {/* Thermal Gradient Legend (Layer 3) */}
         {layer === 'thermal' && (
-          <div className="bg-white border border-[#D9DADC] rounded-lg px-3 py-2 shrink-0">
-            <div className="text-[10px] font-mono text-[#2B2D31] mb-1 font-semibold flex items-center gap-1">
-              <Thermometer className="w-3 h-3 text-rose-600" />
+          <div className="bg-[#2B2D31] border border-white/10 rounded-lg px-3 py-2 shrink-0">
+            <div className="text-[10px] font-mono text-white mb-1 font-semibold flex items-center gap-1">
+              <Thermometer className="w-3 h-3 text-rose-400" />
               THERMAL GRADIENT
             </div>
             <div className="w-44 h-2 rounded-full bg-gradient-to-r from-blue-600 via-emerald-500 via-amber-500 to-red-600 mb-1" />
-            <div className="flex justify-between text-[9px] font-mono text-[#555860]">
+            <div className="flex justify-between text-[9px] font-mono text-[#D9DADC]/65">
               <span>≤35°C</span>
               <span>42°C</span>
               <span>50°C</span>
-              <span className="text-rose-600 font-bold">&gt;52°C</span>
+              <span className="text-rose-400 font-bold">&gt;52°C</span>
             </div>
           </div>
         )}
