@@ -41,8 +41,8 @@ export default function Footer({ onSelectTab: _onSelectTab }) {
             <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
               <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Key [1]: Overview</span>
               <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Key [2]: Workbench</span>
-              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Key [3]: Trade-Offs</span>
-              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Key [R]: Reset</span>
+              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Key [3]: 3D CAD Twin</span>
+              <span className="px-2 py-1 rounded bg-white/5 border border-white/10">Key [4]: Trade-Offs</span>
             </div>
           </div>
         </div>

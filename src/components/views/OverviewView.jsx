@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { 
   ArrowRight, 
   Cpu, 
@@ -8,12 +8,11 @@ import {
   FileText, 
   CheckCircle2,
   Sparkles,
-  Zap
+  Zap,
+  Box
 } from 'lucide-react';
 
-const DigitalTwin3DView = lazy(() => import('../ui/DigitalTwin3DView'));
-
-export default function OverviewView({ onNavigateToWorkbench }) {
+export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }) {
   const literature = [
     {
       authors: "Cloos & Wetzel (2025)",
@@ -118,8 +117,8 @@ export default function OverviewView({ onNavigateToWorkbench }) {
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left Hero Brief (6 Cols) */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* Left Hero Brief (7 Cols) */}
+          <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full vn-badge-cyan text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
               <span>DIGITAL MBSE BATTERY SIMULATION PLATFORM</span>
@@ -157,8 +156,8 @@ export default function OverviewView({ onNavigateToWorkbench }) {
               </div>
             </div>
 
-            {/* Primary Action Button */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            {/* Primary Action Buttons */}
+            <div className="pt-2 flex flex-wrap items-center gap-3.5">
               <button
                 type="button"
                 onClick={onNavigateToWorkbench}
@@ -168,30 +167,53 @@ export default function OverviewView({ onNavigateToWorkbench }) {
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <span className="text-xs text-slate-400 font-mono">
-                Coupled Thevenin 1-RC Engine • 13 Automatic Rules
-              </span>
+              {onNavigateToTwin && (
+                <button
+                  type="button"
+                  onClick={onNavigateToTwin}
+                  className="px-5 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-cyan-300 border border-cyan-500/30 font-bold text-sm flex items-center gap-2 transition-all cursor-pointer"
+                >
+                  <Box className="w-4 h-4 text-cyan-400" />
+                  <span>Open 3D CAD Twin</span>
+                </button>
+              )}
             </div>
           </div>
 
-          {/* Right 3D Digital Twin Viewer Preview (6 Cols) */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
-            <Suspense
-              fallback={
-                <div className="w-full h-[540px] bg-[#070A11] border border-white/10 rounded-2xl flex items-center justify-center text-xs font-mono text-slate-400">
-                  Loading 3D CAD Digital Twin...
+          {/* Right Executive MBSE Engine Summary (5 Cols) */}
+          <div className="lg:col-span-5 space-y-3">
+            <div className="p-5 rounded-2xl bg-slate-950/80 border border-white/10 space-y-4">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
+                <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">
+                  Multi-Physics Solver Stack
+                </span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">
+                  &lt;40ms CLIENT SOLVE
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-3 text-xs font-mono">
+                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
+                  <span className="text-slate-400 block text-[10px]">ECM SOLVER</span>
+                  <span className="text-white font-bold block">1-RC Thevenin</span>
+                  <span className="text-[10px] text-cyan-400">Arrhenius DCIR</span>
                 </div>
-              }
-            >
-              <DigitalTwin3DView 
-                ambientTempC={35.0} 
-                maxCoreTempC={43.2} 
-                nSeries={13}
-                nParallel={8}
-                interconnectId="copper_12"
-                activeCooling="forced_air"
-              />
-            </Suspense>
+                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
+                  <span className="text-slate-400 block text-[10px]">THERMAL DUCT</span>
+                  <span className="text-white font-bold block">Cloos &amp; Wetzel</span>
+                  <span className="text-[10px] text-amber-400">ΔT ≤ 5.0°C Check</span>
+                </div>
+                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
+                  <span className="text-slate-400 block text-[10px]">PARALLEL SHARE</span>
+                  <span className="text-white font-bold block">Bruen &amp; Marco</span>
+                  <span className="text-[10px] text-sky-400">Kirchhoff Spread</span>
+                </div>
+                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
+                  <span className="text-slate-400 block text-[10px]">VERIFICATION</span>
+                  <span className="text-white font-bold block">13 MBSE Rules</span>
+                  <span className="text-[10px] text-emerald-400">IEC / UL / AIS-156</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

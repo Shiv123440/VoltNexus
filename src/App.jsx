@@ -3,6 +3,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import OverviewView from './components/views/OverviewView';
 import WorkbenchView from './components/views/WorkbenchView';
+import CadTwinView from './components/views/CadTwinView';
 import CompareView from './components/views/CompareView';
 import ExportReportModal from './components/modals/ExportReportModal';
 import { simulatePack } from './engine/batterySimulator';
@@ -11,7 +12,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState(() => {
     if (typeof window !== 'undefined') {
       const paramTab = new URLSearchParams(window.location.search).get('tab');
-      if (paramTab && ['landing', 'workbench', 'compare'].includes(paramTab)) {
+      if (paramTab && ['landing', 'workbench', 'cadTwin', 'compare'].includes(paramTab)) {
         return paramTab;
       }
     }
@@ -30,7 +31,7 @@ export default function App() {
     }
   };
 
-  // Keyboard Navigation: [1], [2], [3]
+  // Keyboard Navigation: [1], [2], [3], [4]
   useEffect(() => {
     const handleKeyDown = (e) => {
       // Ignore if focus is in an input or select
@@ -38,7 +39,8 @@ export default function App() {
 
       if (e.key === '1') handleSelectTab('landing');
       if (e.key === '2') handleSelectTab('workbench');
-      if (e.key === '3') handleSelectTab('compare');
+      if (e.key === '3') handleSelectTab('cadTwin');
+      if (e.key === '4') handleSelectTab('compare');
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -86,10 +88,16 @@ export default function App() {
       {/* View Content */}
       <main id="main-content" className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
         {activeTab === 'landing' && (
-          <OverviewView onNavigateToWorkbench={() => handleSelectTab('workbench')} />
+          <OverviewView 
+            onNavigateToWorkbench={() => handleSelectTab('workbench')} 
+            onNavigateToTwin={() => handleSelectTab('cadTwin')}
+          />
         )}
         {activeTab === 'workbench' && (
           <WorkbenchView />
+        )}
+        {activeTab === 'cadTwin' && (
+          <CadTwinView onNavigateToWorkbench={() => handleSelectTab('workbench')} />
         )}
         {activeTab === 'compare' && (
           <CompareView />

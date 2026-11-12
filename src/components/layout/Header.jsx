@@ -2,6 +2,7 @@ import React from 'react';
 import { 
   Layers, 
   Sliders, 
+  Box,
   Scale, 
   FileDown, 
   Zap
@@ -14,9 +15,10 @@ export default function Header({
   failCount = 0
 }) {
   const tabs = [
-    { id: 'landing', label: 'Overview & Twin', icon: Layers, keyHint: '1' },
+    { id: 'landing', label: 'Overview', icon: Layers, keyHint: '1' },
     { id: 'workbench', label: 'Interactive Workbench', icon: Sliders, keyHint: '2' },
-    { id: 'compare', label: 'Design Trade-Offs', icon: Scale, keyHint: '3' },
+    { id: 'cadTwin', label: '3D CAD Twin', icon: Box, keyHint: '3' },
+    { id: 'compare', label: 'Design Trade-Offs', icon: Scale, keyHint: '4' },
   ];
 
   return (
@@ -73,7 +75,7 @@ export default function Header({
               >
                 <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-cyan-400' : 'text-slate-500'}`} />
                 <span className="hidden sm:inline">{tab.label}</span>
-                <span className="sm:hidden">{tab.id === 'landing' ? 'Overview' : (tab.id === 'workbench' ? 'Workbench' : 'Compare')}</span>
+                <span className="sm:hidden">{tab.id === 'landing' ? 'Overview' : (tab.id === 'workbench' ? 'Workbench' : (tab.id === 'cadTwin' ? '3D Twin' : 'Compare'))}</span>
                 <kbd className="hidden md:inline-block text-[9px] font-mono opacity-50 px-1 rounded bg-black/40 border border-white/10">
                   {tab.keyHint}
                 </kbd>

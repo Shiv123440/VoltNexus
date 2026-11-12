@@ -460,7 +460,8 @@ export default function DigitalTwin3DView({
   maxCoreTempC = 43.2,
   vNom = 46.8,
   iPeakCellA = 9.47,
-  r0NomMOhm = 12.32
+  r0NomMOhm = 12.32,
+  heightClass = 'h-[540px]'
 }) {
   const [layer, setLayer] = useState('thermal');
   const [explodedPct, setExplodedPct] = useState(0);
@@ -531,7 +532,7 @@ export default function DigitalTwin3DView({
       className={
         isFullscreen
           ? 'fixed inset-0 z-50 bg-[#070A11] flex flex-col overflow-hidden select-none'
-          : 'relative w-full h-[540px] bg-[#070A11] border border-white/10 rounded-2xl flex flex-col overflow-hidden select-none shadow-2xl'
+          : `relative w-full ${heightClass} bg-[#070A11] border border-white/10 rounded-2xl flex flex-col overflow-hidden select-none shadow-2xl`
       }
     >
       {/* Top Control Bar */}
