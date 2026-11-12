@@ -50,12 +50,12 @@ export default function Sidebar({
   const activeItem = NAV_ITEMS.find((item) => item.id === activeTab) || NAV_ITEMS[0];
 
   const renderSidebarBody = (isCollapsed, isMobileDrawer = false) => (
-    <div className="flex flex-col h-full bg-[#F1F5F9] text-slate-900 select-none">
+    <div className="flex flex-col h-full bg-[#2B2D31] text-[#D9DADC] select-none">
       {/* 1. Brand Section */}
       <div
         className={`flex items-center ${
           isCollapsed ? 'justify-center px-2 py-4' : 'justify-between px-4 py-4'
-        } border-b border-slate-200/80 shrink-0`}
+        } border-b border-white/10 shrink-0`}
       >
         <button
           type="button"
@@ -65,20 +65,20 @@ export default function Sidebar({
           }`}
           title="VoltNexus — Battery Digital Twin Studio"
         >
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white shadow-xs shrink-0 group-hover:brightness-105 transition-all">
+          <div className="relative w-9 h-9 rounded-xl bg-[#FFC93C] flex items-center justify-center text-[#2B2D31] shadow-xs shrink-0 group-hover:brightness-105 transition-all">
             <BatteryCharging className="w-5 h-5" strokeWidth={2.2} />
           </div>
           {!isCollapsed && (
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <span className="text-[15px] font-bold tracking-tight text-slate-900 truncate">
+                <span className="text-[15px] font-bold tracking-tight text-white truncate">
                   VoltNexus
                 </span>
-                <span className="text-[10px] font-mono font-semibold text-blue-700 bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded-md leading-none">
+                <span className="text-[10px] font-mono font-semibold text-[#2B2D31] bg-[#FFC93C] px-1.5 py-0.5 rounded-md leading-none">
                   v2.0
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 font-medium truncate mt-0.5">
+              <p className="text-[11px] text-[#D9DADC]/70 font-medium truncate mt-0.5">
                 Battery Digital Twin Studio
               </p>
             </div>
@@ -89,7 +89,7 @@ export default function Sidebar({
           <button
             type="button"
             onClick={() => setMobileOpen(false)}
-            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-[#D9DADC]/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Close navigation menu"
           >
             <X className="w-4 h-4" />
@@ -99,7 +99,7 @@ export default function Sidebar({
             <button
               type="button"
               onClick={() => setCollapsed(true)}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/70 transition-colors cursor-pointer shrink-0"
+              className="p-1.5 rounded-lg text-[#D9DADC]/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer shrink-0"
               title="Collapse sidebar"
               aria-label="Collapse sidebar"
             >
@@ -115,7 +115,7 @@ export default function Sidebar({
           <button
             type="button"
             onClick={() => setCollapsed(false)}
-            className="w-10 h-9 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 transition-colors cursor-pointer"
+            className="w-10 h-9 rounded-lg flex items-center justify-center text-[#D9DADC]/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             title="Expand sidebar"
             aria-label="Expand sidebar"
           >
@@ -130,7 +130,7 @@ export default function Sidebar({
         className="flex-1 overflow-y-auto px-2.5 py-4 space-y-1"
       >
         {!isCollapsed && (
-          <div className="px-2.5 pb-1.5 text-[10px] font-mono font-semibold uppercase tracking-wider text-slate-400">
+          <div className="px-2.5 pb-1.5 text-[10px] font-mono font-semibold uppercase tracking-wider text-[#D9DADC]/50">
             Workspace
           </div>
         )}
@@ -150,15 +150,15 @@ export default function Sidebar({
                 isCollapsed ? 'justify-center px-0 py-2.5' : 'justify-between px-3 py-2.5'
               } rounded-xl text-[13px] transition-all duration-150 cursor-pointer group ${
                 isActive
-                  ? 'bg-white text-blue-700 font-semibold shadow-[0_1px_2px_rgba(15,23,42,0.05)] ring-1 ring-slate-200/90'
-                  : 'text-slate-600 font-medium hover:bg-slate-200/60 hover:text-slate-900'
+                  ? 'bg-white/10 text-white font-semibold ring-1 ring-white/15'
+                  : 'text-[#D9DADC]/80 font-medium hover:bg-white/5 hover:text-white'
               }`}
             >
               {/* Left Accent Indicator */}
               {isActive && (
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-r-full bg-blue-600"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-r-full bg-[#FFC93C]"
                 />
               )}
 
@@ -166,8 +166,8 @@ export default function Sidebar({
                 <Icon
                   className={`w-[17px] h-[17px] shrink-0 transition-colors ${
                     isActive
-                      ? 'text-blue-600'
-                      : 'text-slate-500 group-hover:text-slate-800'
+                      ? 'text-[#FFC93C]'
+                      : 'text-[#D9DADC]/70 group-hover:text-white'
                   }`}
                 />
                 {!isCollapsed && <span className="truncate">{item.label}</span>}
@@ -177,8 +177,8 @@ export default function Sidebar({
                 <span
                   className={`text-[10px] font-mono px-1.5 py-0.5 rounded border transition-colors ${
                     isActive
-                      ? 'bg-blue-50 text-blue-600 border-blue-200/80'
-                      : 'bg-slate-200/50 text-slate-400 border-transparent group-hover:text-slate-600'
+                      ? 'bg-[#FFC93C] text-[#2B2D31] border-[#FFC93C] font-bold'
+                      : 'bg-white/5 text-[#D9DADC]/60 border-transparent group-hover:text-white'
                   }`}
                 >
                   {item.keyHint}
@@ -190,7 +190,7 @@ export default function Sidebar({
       </nav>
 
       {/* 3. Bottom Utility Section */}
-      <div className="shrink-0 border-t border-slate-200/80 p-3 space-y-2.5">
+      <div className="shrink-0 border-t border-white/10 p-3 space-y-2.5">
         {/* Live MBSE Compliance Status */}
         <div
           title={
@@ -202,14 +202,14 @@ export default function Sidebar({
             isCollapsed ? 'justify-center p-2' : 'justify-between px-3 py-2'
           } rounded-xl border text-[11px] font-mono font-semibold ${
             failCount === 0
-              ? 'bg-emerald-50/90 border-emerald-200 text-emerald-700'
-              : 'bg-rose-50/90 border-rose-200 text-rose-700'
+              ? 'bg-emerald-500/15 border-emerald-400/30 text-emerald-300'
+              : 'bg-rose-500/15 border-rose-400/30 text-rose-300'
           }`}
         >
           <span className="flex items-center gap-2">
             <span
               className={`w-2 h-2 rounded-full shrink-0 ${
-                failCount === 0 ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500 animate-pulse'
+                failCount === 0 ? 'bg-emerald-400 animate-pulse' : 'bg-rose-400 animate-pulse'
               }`}
             />
             {!isCollapsed && (
@@ -235,7 +235,7 @@ export default function Sidebar({
           title={isCollapsed ? 'Export Verification Report' : undefined}
           className={`w-full flex items-center justify-center gap-2 ${
             isCollapsed ? 'p-2.5' : 'px-3 py-2.5'
-          } rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shadow-xs transition-all active:scale-[0.99] cursor-pointer`}
+          } rounded-xl bg-[#FFC93C] hover:brightness-105 text-[#2B2D31] text-xs font-bold shadow-xs transition-all active:scale-[0.99] cursor-pointer`}
         >
           <Download className="w-3.5 h-3.5 shrink-0" />
           {!isCollapsed && <span>Export Report</span>}
@@ -243,12 +243,12 @@ export default function Sidebar({
 
         {/* Version Footnote */}
         {!isCollapsed ? (
-          <div className="pt-1 px-1 flex items-center justify-between text-[10px] font-mono text-slate-400">
+          <div className="pt-1 px-1 flex items-center justify-between text-[10px] font-mono text-[#D9DADC]/50">
             <span>MBSE Studio v2.0</span>
             <span>1-RC ECM</span>
           </div>
         ) : (
-          <div className="text-center text-[9px] font-mono text-slate-400">
+          <div className="text-center text-[9px] font-mono text-[#D9DADC]/50">
             v2.0
           </div>
         )}
@@ -259,25 +259,25 @@ export default function Sidebar({
   return (
     <>
       {/* Mobile Compact Drawer Bar (< md only) */}
-      <div className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-2.5 bg-white/95 backdrop-blur-md border-b border-slate-200 no-print">
+      <div className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 py-2.5 bg-[#2B2D31] text-[#D9DADC] border-b border-white/10 no-print">
         <div className="flex items-center gap-2.5 min-w-0">
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            className="p-2 -ml-1 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
+            className="p-2 -ml-1 rounded-lg text-[#D9DADC] hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Open navigation sidebar"
           >
             <Menu className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-2 min-w-0">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white shrink-0">
+            <div className="w-7 h-7 rounded-lg bg-[#FFC93C] flex items-center justify-center text-[#2B2D31] shrink-0">
               <BatteryCharging className="w-4 h-4" />
             </div>
             <div className="min-w-0">
-              <div className="text-xs font-bold text-slate-900 leading-tight truncate">
+              <div className="text-xs font-bold text-white leading-tight truncate">
                 VoltNexus
               </div>
-              <div className="text-[10px] font-mono text-blue-600 truncate">
+              <div className="text-[10px] font-mono text-[#FFC93C] truncate">
                 {activeItem.label}
               </div>
             </div>
@@ -287,7 +287,7 @@ export default function Sidebar({
         <button
           type="button"
           onClick={onOpenReport}
-          className="px-2.5 py-1.5 rounded-lg bg-slate-900 text-white text-[11px] font-semibold flex items-center gap-1.5 shrink-0 cursor-pointer"
+          className="px-2.5 py-1.5 rounded-lg bg-[#FFC93C] text-[#2B2D31] text-[11px] font-bold flex items-center gap-1.5 shrink-0 cursor-pointer"
         >
           <Download className="w-3 h-3" />
           <span>Report</span>
@@ -298,13 +298,13 @@ export default function Sidebar({
       {mobileOpen && (
         <div className="fixed inset-0 z-50 md:hidden flex no-print">
           <div
-            className="fixed inset-0 bg-slate-900/35 backdrop-blur-[2px]"
+            className="fixed inset-0 bg-[#2B2D31]/60 backdrop-blur-[2px]"
             onClick={() => setMobileOpen(false)}
             aria-hidden="true"
           />
           <aside
             aria-label="Mobile Navigation Sidebar"
-            className="relative w-[260px] max-w-[82vw] h-full border-r border-slate-200 shadow-xl z-10"
+            className="relative w-[260px] max-w-[82vw] h-full border-r border-white/10 shadow-xl z-10"
           >
             {renderSidebarBody(false, true)}
           </aside>
@@ -314,7 +314,7 @@ export default function Sidebar({
       {/* Desktop & Tablet Persistent Left Vertical Sidebar */}
       <aside
         aria-label="Primary Sidebar"
-        className={`hidden md:flex flex-col shrink-0 h-screen sticky top-0 border-r border-slate-200/80 transition-[width] duration-200 ease-out no-print z-20 ${
+        className={`hidden md:flex flex-col shrink-0 h-screen sticky top-0 border-r border-white/10 transition-[width] duration-200 ease-out no-print z-20 ${
           collapsed ? 'w-[72px]' : 'w-[256px]'
         }`}
       >

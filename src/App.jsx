@@ -62,12 +62,12 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex flex-col md:flex-row font-sans relative selection:bg-blue-100 selection:text-blue-900 overflow-x-clip">
+    <div className="min-h-screen bg-[#F4F5F6] text-[#2B2D31] flex flex-col md:flex-row font-sans relative selection:bg-[#FFC93C] selection:text-[#2B2D31] overflow-x-clip">
       
       {/* Skip to Main Landmark for Accessibility */}
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:font-semibold focus:rounded-lg shadow-md"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#FFC93C] focus:text-[#2B2D31] focus:font-semibold focus:rounded-lg shadow-md"
       >
         Skip to main content
       </a>
