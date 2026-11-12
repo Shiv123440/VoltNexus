@@ -2,104 +2,125 @@
 
 @layer base {
   :root {
-    --vn-canvas: #F8FAFC;
-    --vn-surface: #FFFFFF;
-    --vn-surface-muted: #F1F5F9;
-    --vn-surface-hover: #F8FAFC;
-    --vn-border: #E2E8F0;
-    --vn-border-subtle: #EDF2F7;
-    --vn-border-focus: #3B82F6;
+    --vn-canvas: #07090E;
+    --vn-surface-0: #0B0F17;
+    --vn-surface-1: #101622;
+    --vn-surface-2: #162030;
+    --vn-surface-3: #1E2B40;
+    --vn-border-subtle: rgba(255, 255, 255, 0.08);
+    --vn-border-medium: rgba(255, 255, 255, 0.14);
+    --vn-border-glow: rgba(0, 229, 255, 0.35);
 
-    --vn-ink-primary: #0F172A;
-    --vn-ink-secondary: #475569;
-    --vn-ink-muted: #64748B;
-    --vn-ink-dim: #94A3B8;
-
+    --vn-cyan: #00E5FF;
+    --vn-cyan-dim: #008899;
     --vn-blue: #2563EB;
-    --vn-blue-light: #EFF6FF;
-    --vn-emerald: #059669;
-    --vn-emerald-light: #ECFDF5;
-    --vn-amber: #D97706;
-    --vn-amber-light: #FFFBEB;
-    --vn-rose: #DC2626;
-    --vn-rose-light: #FEF2F2;
+    --vn-emerald: #10B981;
+    --vn-amber: #F59E0B;
+    --vn-rose: #EF4444;
+
+    --vn-text-main: #F1F5F9;
+    --vn-text-muted: #94A3B8;
+    --vn-text-dim: #64748B;
   }
 }
 
 body {
   margin: 0;
-  background-color: #F8FAFC;
-  color: #0F172A;
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #07090E;
+  color: #F1F5F9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  selection-background-color: #BFDBFE;
-  selection-color: #1E3A8A;
+  selection-background-color: #00E5FF;
+  selection-color: #07090E;
 }
 
-/* Engineering Technical Millimeter Grid */
-.vn-blueprint-grid {
+/* Custom Technical Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #07090E;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00E5FF;
+}
+
+/* Engineering CAD Grid & Circuit Background */
+.vn-cad-grid {
   background-image: 
-    linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.vn-dot-grid {
-  background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
-  background-size: 20px 20px;
+.vn-dot-matrix {
+  background-image: radial-gradient(rgba(0, 229, 255, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Studio Surface Cards */
-.vn-panel {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 0.875rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+/* Card Surface Utility Classes */
+.vn-card {
+  background: linear-gradient(180deg, rgba(16, 22, 34, 0.85) 0%, rgba(11, 15, 23, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.vn-panel:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+.vn-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-/* Light Engineering Status Badges */
+.vn-card-highlight {
+  background: linear-gradient(180deg, rgba(22, 32, 48, 0.9) 0%, rgba(13, 18, 28, 0.98) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  box-shadow: 0 12px 35px -8px rgba(0, 229, 255, 0.12), inset 0 1px 0 rgba(0, 229, 255, 0.2);
+}
+
+/* Precision Badges */
 .vn-badge-pass {
-  background-color: #ECFDF5;
-  color: #065F46;
-  border: 1px solid #A7F3D0;
+  background: rgba(16, 185, 129, 0.12);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .vn-badge-warn {
-  background-color: #FFFBEB;
-  color: #92400E;
-  border: 1px solid #FDE68A;
+  background: rgba(245, 158, 11, 0.12);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .vn-badge-fail {
-  background-color: #FEF2F2;
-  color: #991B1B;
-  border: 1px solid #FECACA;
+  background: rgba(239, 68, 68, 0.14);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-.vn-badge-blue {
-  background-color: #EFF6FF;
-  color: #1E40AF;
-  border: 1px solid #BFDBFE;
+.vn-badge-cyan {
+  background: rgba(0, 229, 255, 0.1);
+  color: #00E5FF;
+  border: 1px solid rgba(0, 229, 255, 0.3);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Precision Light Sliders */
+/* Mechanical Slider Styling */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  height: 5px;
-  background: #E2E8F0;
+  height: 6px;
+  background: #162030;
   border-radius: 9999px;
   outline: none;
 }
@@ -110,53 +131,60 @@ input[type="range"]::-webkit-slider-thumb {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #2563EB;
+  background: #00E5FF;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 0 0 2px #FFFFFF;
-  transition: transform 0.15s ease, background-color 0.15s ease;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.7), inset 0 0 0 2px #07090E;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
-  background: #1D4ED8;
+  transform: scale(1.2);
+  box-shadow: 0 0 16px #00E5FF, inset 0 0 0 2px #07090E;
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #2563EB;
+  background: #00E5FF;
   cursor: pointer;
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.7), inset 0 0 0 2px #07090E;
 }
 
-/* Clean Technical Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #F8FAFC;
-}
-::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+/* Laser scanline animation */
+@keyframes laserScan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
 }
 
-/* Print Styles */
+.animate-laser {
+  animation: laserScan 6s linear infinite;
+}
+
+/* Pulse animation */
+@keyframes telemetryPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+.animate-telemetry-pulse {
+  animation: telemetryPulse 2s ease-in-out infinite;
+}
+
+/* Print Styles for PDF / Report Generation */
 @media print {
   body {
-    background: #FFFFFF !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
   }
-  header, footer, nav, .no-print {
+  header, footer, .no-print {
     display: none !important;
   }
-  .vn-panel {
+  .vn-card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
     box-shadow: none !important;
-    border: 1px solid #CBD5E1 !important;
+    color: #0f172a !important;
   }
 }

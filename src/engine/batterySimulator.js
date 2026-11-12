@@ -132,14 +132,11 @@ export function simulatePack({
   bmsAfeAdcErrorMv = 10.0,
   _fuseRatingA = 125.0,
   fuseI2t = 18500.0,
-  fuseBreakingKa = null
+  fuseBreakingKa = 2.0
 }) {
   const cell = CELL_PRESETS[cellId] || CELL_PRESETS.molicel_p42a;
   const inter = INTERCONNECT_PRESETS[interconnectId] || INTERCONNECT_PRESETS.nickel_015;
   const cooling = COOLING_PRESETS[coolingId] || COOLING_PRESETS.natural_air;
-  const actualFuseBreakingKa = (fuseBreakingKa !== null && fuseBreakingKa !== undefined)
-    ? fuseBreakingKa 
-    : (interconnectId && interconnectId.startsWith("copper") ? 3.0 : 2.0);
 
   const nTotalCells = nSeries * nParallel;
   const nominalEnergyKwh = (nSeries * cell.nominalVoltage * nParallel * cell.ratedCapacityAh) / 1000.0;
@@ -282,9 +279,9 @@ export function simulatePack({
       id: "R07",
       name: "Fuse Breaking Capacity vs I_sc",
       subsystems: "Protection ↔ Electrical",
-      metric: `Breaking: ${(actualFuseBreakingKa * 1000).toLocaleString()}A vs I_sc: ${Math.round(prospectiveShortCircuitA).toLocaleString()}A`,
-      margin: `+${((actualFuseBreakingKa * 1000) - prospectiveShortCircuitA).toFixed(0)}A`,
-      status: (actualFuseBreakingKa * 1000) < prospectiveShortCircuitA ? "FAIL" : "PASS",
+      metric: `Breaking: ${(fuseBreakingKa * 1000).toLocaleString()}A vs I_sc: ${Math.round(prospectiveShortCircuitA).toLocaleString()}A`,
+      margin: `+${((fuseBreakingKa * 1000) - prospectiveShortCircuitA).toFixed(0)}A`,
+      status: (fuseBreakingKa * 1000) < prospectiveShortCircuitA ? "FAIL" : "PASS",
       remediation: "Interrupt capacity prevents sustained arc flashover."
     },
     {
