@@ -2,125 +2,119 @@
 
 @layer base {
   :root {
-    --vn-canvas: #07090E;
-    --vn-surface-0: #0B0F17;
-    --vn-surface-1: #101622;
-    --vn-surface-2: #162030;
-    --vn-surface-3: #1E2B40;
-    --vn-border-subtle: rgba(255, 255, 255, 0.08);
-    --vn-border-medium: rgba(255, 255, 255, 0.14);
-    --vn-border-glow: rgba(0, 229, 255, 0.35);
+    --vn-canvas: #F8FAFC;
+    --vn-sidebar: #F1F5F9;
+    --vn-surface: #FFFFFF;
+    --vn-surface-muted: #F1F5F9;
+    --vn-border: #E2E8F0;
+    --vn-border-subtle: #EDF2F7;
 
-    --vn-cyan: #00E5FF;
-    --vn-cyan-dim: #008899;
+    --vn-cyan: #0284C7;
     --vn-blue: #2563EB;
-    --vn-emerald: #10B981;
-    --vn-amber: #F59E0B;
-    --vn-rose: #EF4444;
+    --vn-emerald: #059669;
+    --vn-amber: #D97706;
+    --vn-rose: #DC2626;
 
-    --vn-text-main: #F1F5F9;
-    --vn-text-muted: #94A3B8;
+    --vn-text-main: #0F172A;
+    --vn-text-muted: #475569;
     --vn-text-dim: #64748B;
   }
 }
 
 body {
   margin: 0;
-  background-color: #07090E;
-  color: #F1F5F9;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  selection-background-color: #00E5FF;
-  selection-color: #07090E;
 }
 
-/* Custom Technical Scrollbar */
+/* Custom Clean Light Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #07090E;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.16);
-  border-radius: 3px;
+  background: #CBD5E1;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00E5FF;
+  background: #94A3B8;
 }
 
-/* Engineering CAD Grid & Circuit Background */
+/* Subtle Engineering Millimeter Grid */
 .vn-cad-grid {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.14) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.14) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
 .vn-dot-matrix {
-  background-image: radial-gradient(rgba(0, 229, 255, 0.12) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(148, 163, 184, 0.28) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-/* Card Surface Utility Classes */
+/* Studio Light Card Surface */
 .vn-card {
-  background: linear-gradient(180deg, rgba(16, 22, 34, 0.85) 0%, rgba(11, 15, 23, 0.95) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 1rem;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.07);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .vn-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
 }
 
 .vn-card-highlight {
-  background: linear-gradient(180deg, rgba(22, 32, 48, 0.9) 0%, rgba(13, 18, 28, 0.98) 100%);
-  border: 1px solid rgba(0, 229, 255, 0.25);
-  box-shadow: 0 12px 35px -8px rgba(0, 229, 255, 0.12), inset 0 1px 0 rgba(0, 229, 255, 0.2);
+  background: #FFFFFF;
+  border: 1px solid #BFDBFE;
+  box-shadow: 0 4px 16px -4px rgba(37, 99, 235, 0.1);
 }
 
-/* Precision Badges */
+/* Precision Light Semantic Badges */
 .vn-badge-pass {
-  background: rgba(16, 185, 129, 0.12);
-  color: #34D399;
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .vn-badge-warn {
-  background: rgba(245, 158, 11, 0.12);
-  color: #FBBF24;
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: #FFFBEB;
+  color: #92400E;
+  border: 1px solid #FDE68A;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .vn-badge-fail {
-  background: rgba(239, 68, 68, 0.14);
-  color: #F87171;
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .vn-badge-cyan {
-  background: rgba(0, 229, 255, 0.1);
-  color: #00E5FF;
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Mechanical Slider Styling */
+/* Clean Studio Range Slider */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   height: 6px;
-  background: #162030;
+  background: #E2E8F0;
   border-radius: 9999px;
   outline: none;
 }
@@ -128,48 +122,29 @@ input[type="range"] {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: #00E5FF;
+  background: #0284C7;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.7), inset 0 0 0 2px #07090E;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25);
+  transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 16px #00E5FF, inset 0 0 0 2px #07090E;
+  transform: scale(1.12);
+  background: #2563EB;
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: #00E5FF;
+  background: #0284C7;
   cursor: pointer;
-  border: none;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.7), inset 0 0 0 2px #07090E;
-}
-
-/* Laser scanline animation */
-@keyframes laserScan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(1000%); }
-}
-
-.animate-laser {
-  animation: laserScan 6s linear infinite;
-}
-
-/* Pulse animation */
-@keyframes telemetryPulse {
-  0%, 100% { opacity: 0.8; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.08); }
-}
-
-.animate-telemetry-pulse {
-  animation: telemetryPulse 2s ease-in-out infinite;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25);
 }
 
 /* Print Styles for PDF / Report Generation */
@@ -178,7 +153,7 @@ input[type="range"]::-moz-range-thumb {
     background: #ffffff !important;
     color: #0f172a !important;
   }
-  header, footer, .no-print {
+  aside, header, footer, .no-print {
     display: none !important;
   }
   .vn-card {

@@ -54,9 +54,9 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
   const failureModes = [
     {
       icon: Cpu,
-      color: "text-amber-400",
-      borderColor: "border-amber-500/30",
-      bgColor: "bg-amber-500/10",
+      color: "text-amber-600",
+      borderColor: "border-amber-200",
+      bgColor: "bg-amber-50",
       title: "1. Cell-to-Cell Variation",
       summary: "Manufacturing variations create individual cell disparities that nominal calculators ignore.",
       details: [
@@ -67,9 +67,9 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
     },
     {
       icon: Flame,
-      color: "text-rose-400",
-      borderColor: "border-rose-500/30",
-      bgColor: "bg-rose-500/10",
+      color: "text-rose-600",
+      borderColor: "border-rose-200",
+      bgColor: "bg-rose-50",
       title: "2. Non-Uniform Thermal Gradients",
       summary: "Coolant temperature heats from inlet to outlet, inducing severe intra-pack thermal gradients.",
       details: [
@@ -80,9 +80,9 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
     },
     {
       icon: Layers,
-      color: "text-cyan-400",
-      borderColor: "border-cyan-500/30",
-      bgColor: "bg-cyan-500/10",
+      color: "text-sky-600",
+      borderColor: "border-sky-200",
+      bgColor: "bg-sky-50",
       title: "3. Interacting Physical Constraints",
       summary: "Electrical, thermal, and protection boundaries are non-linearly coupled.",
       details: [
@@ -93,9 +93,9 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
     },
     {
       icon: ShieldAlert,
-      color: "text-blue-400",
-      borderColor: "border-blue-500/30",
-      bgColor: "bg-blue-500/10",
+      color: "text-blue-600",
+      borderColor: "border-blue-200",
+      bgColor: "bg-blue-50",
       title: "4. Costly Prototyping Loops",
       summary: "Siloed engineering tools delay interface defect discovery until late hardware testing.",
       details: [
@@ -107,61 +107,61 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
   ];
 
   return (
-    <div className="space-y-16 pb-16">
+    <div className="space-y-12 pb-12">
       
       {/* 1. HERO COMMAND SECTION */}
-      <section className="relative rounded-3xl vn-card p-6 sm:p-10 lg:p-12 overflow-hidden border border-white/10">
-        {/* Glow backdrop accents */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative rounded-2xl vn-card p-6 sm:p-9 lg:p-11 overflow-hidden">
+        {/* Restrained soft corner tint */}
+        <div className="absolute -top-24 -right-24 w-80 h-80 bg-blue-50 rounded-full blur-3xl opacity-80 pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-sky-50 rounded-full blur-3xl opacity-80 pointer-events-none" />
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left Hero Brief (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full vn-badge-cyan text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+          <div className="lg:col-span-7 space-y-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full vn-badge-cyan text-[11px] font-semibold">
+              <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
               <span>DIGITAL MBSE BATTERY SIMULATION PLATFORM</span>
             </div>
 
-            <div className="space-y-2">
-              <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+            <div className="space-y-2.5">
+              <h1 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.12]">
                 Reusable Digital MBSE Platform for{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
                   Battery Energy Systems
                 </span>
               </h1>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl">
                 Virtually configure, test, and cross-validate high-voltage battery module designs across electrical, thermal, protection, sensing, and control boundaries. Eliminates physical prototyping rework by identifying cross-subsystem interface conflicts in sub-second runtimes.
               </p>
             </div>
 
             {/* Frozen Scope Specs */}
-            <div className="p-3.5 rounded-xl bg-slate-950/70 border border-white/10 flex flex-wrap items-center gap-4 text-xs font-mono">
-              <div className="flex items-center gap-1.5 text-cyan-300">
-                <Zap className="w-4 h-4 text-cyan-400" />
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-wrap items-center gap-3.5 text-xs font-mono">
+              <div className="flex items-center gap-1.5 text-blue-700">
+                <Zap className="w-4 h-4 text-blue-600" />
                 <span className="font-bold">46.8V Nominal</span>
               </div>
-              <div className="text-slate-500">•</div>
-              <div className="text-slate-300">
-                <span className="font-bold text-white">1.57 kWh</span> (13S8P NMC)
+              <div className="text-slate-300">•</div>
+              <div className="text-slate-600">
+                <span className="font-bold text-slate-900">1.57 kWh</span> (13S8P NMC)
               </div>
-              <div className="text-slate-500">•</div>
-              <div className="text-slate-300">
-                <span className="font-bold text-amber-400">35°C</span> Ambient
+              <div className="text-slate-300">•</div>
+              <div className="text-slate-600">
+                <span className="font-bold text-amber-600">35°C</span> Ambient
               </div>
-              <div className="text-slate-500">•</div>
-              <div className="text-slate-300">
-                <span className="font-bold text-emerald-400">70A</span> Cruise Discharge
+              <div className="text-slate-300">•</div>
+              <div className="text-slate-600">
+                <span className="font-bold text-emerald-600">70A</span> Cruise Discharge
               </div>
             </div>
 
             {/* Primary Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-3.5">
+            <div className="pt-1 flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={onNavigateToWorkbench}
-                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 text-slate-950 font-bold text-sm flex items-center gap-2.5 shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_28px_rgba(0,229,255,0.6)] hover:brightness-110 active:scale-98 transition-all cursor-pointer"
+                className="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm flex items-center gap-2 shadow-xs transition-all active:scale-[0.99] cursor-pointer"
               >
                 <span>Launch Interactive Workbench</span>
                 <ArrowRight className="w-4 h-4" />
@@ -171,9 +171,9 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
                 <button
                   type="button"
                   onClick={onNavigateToTwin}
-                  className="px-5 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-cyan-300 border border-cyan-500/30 font-bold text-sm flex items-center gap-2 transition-all cursor-pointer"
+                  className="px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-sm flex items-center gap-2 shadow-2xs transition-all cursor-pointer"
                 >
-                  <Box className="w-4 h-4 text-cyan-400" />
+                  <Box className="w-4 h-4 text-blue-600" />
                   <span>Open 3D CAD Twin</span>
                 </button>
               )}
@@ -181,36 +181,36 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
           </div>
 
           {/* Right Executive MBSE Engine Summary (5 Cols) */}
-          <div className="lg:col-span-5 space-y-3">
-            <div className="p-5 rounded-2xl bg-slate-950/80 border border-white/10 space-y-4">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-                <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider">
+          <div className="lg:col-span-5">
+            <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                <span className="text-xs font-mono font-bold text-slate-800 uppercase tracking-wider">
                   Multi-Physics Solver Stack
                 </span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">
                   &lt;40ms CLIENT SOLVE
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
+                <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                   <span className="text-slate-400 block text-[10px]">ECM SOLVER</span>
-                  <span className="text-white font-bold block">1-RC Thevenin</span>
-                  <span className="text-[10px] text-cyan-400">Arrhenius DCIR</span>
+                  <span className="text-slate-900 font-bold block">1-RC Thevenin</span>
+                  <span className="text-[10px] text-blue-600">Arrhenius DCIR</span>
                 </div>
-                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
+                <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                   <span className="text-slate-400 block text-[10px]">THERMAL DUCT</span>
-                  <span className="text-white font-bold block">Cloos &amp; Wetzel</span>
-                  <span className="text-[10px] text-amber-400">ΔT ≤ 5.0°C Check</span>
+                  <span className="text-slate-900 font-bold block">Cloos &amp; Wetzel</span>
+                  <span className="text-[10px] text-amber-600">ΔT ≤ 5.0°C Check</span>
                 </div>
-                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
+                <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                   <span className="text-slate-400 block text-[10px]">PARALLEL SHARE</span>
-                  <span className="text-white font-bold block">Bruen &amp; Marco</span>
-                  <span className="text-[10px] text-sky-400">Kirchhoff Spread</span>
+                  <span className="text-slate-900 font-bold block">Bruen &amp; Marco</span>
+                  <span className="text-[10px] text-sky-600">Kirchhoff Spread</span>
                 </div>
-                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] space-y-1">
+                <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1">
                   <span className="text-slate-400 block text-[10px]">VERIFICATION</span>
-                  <span className="text-white font-bold block">13 MBSE Rules</span>
-                  <span className="text-[10px] text-emerald-400">IEC / UL / AIS-156</span>
+                  <span className="text-slate-900 font-bold block">13 MBSE Rules</span>
+                  <span className="text-[10px] text-emerald-600">IEC / UL / AIS-156</span>
                 </div>
               </div>
             </div>
@@ -219,38 +219,38 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
       </section>
 
       {/* 2. THE ENGINEERING PROBLEM: "NOMINAL SIZING" TRAP */}
-      <section className="space-y-6">
+      <section className="space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00e5ff]" />
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600" />
               The Engineering Problem: The "Nominal Sizing" Trap
             </h2>
-            <p className="text-sm text-slate-400 mt-1">
+            <p className="text-sm text-slate-500 mt-1">
               Why traditional single-domain calculators miss critical multi-physical battery failure modes
             </p>
           </div>
-          <span className="text-xs font-mono vn-badge-cyan px-3 py-1.5 rounded-full">
+          <span className="text-xs font-mono vn-badge-cyan px-3 py-1 rounded-full">
             Problem Understanding (15%)
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {failureModes.map((fm, idx) => {
             const Icon = fm.icon;
             return (
               <div 
                 key={idx} 
-                className={`p-6 rounded-2xl vn-card space-y-3.5 border ${fm.borderColor} hover:border-opacity-60 transition-all`}
+                className="p-5 sm:p-6 rounded-2xl vn-card space-y-3"
               >
-                <div className={`w-10 h-10 rounded-xl ${fm.bgColor} border ${fm.borderColor} flex items-center justify-center ${fm.color} shadow-sm`}>
+                <div className={`w-10 h-10 rounded-xl ${fm.bgColor} border ${fm.borderColor} flex items-center justify-center ${fm.color}`}>
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white">{fm.title}</h3>
-                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">{fm.summary}</p>
+                  <h3 className="text-base font-bold text-slate-900">{fm.title}</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">{fm.summary}</p>
                 </div>
-                <ul className="text-xs text-slate-400 space-y-1.5 list-disc list-inside font-mono pt-1">
+                <ul className="text-xs text-slate-500 space-y-1.5 list-disc list-inside font-mono pt-1">
                   {fm.details.map((detail, dIdx) => (
                     <li key={dIdx} className="leading-snug">{detail}</li>
                   ))}
@@ -262,16 +262,13 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
       </section>
 
       {/* 3. VERIFIED SCIENTIFIC LITERATURE FOUNDATIONS */}
-      <section className="p-6 sm:p-8 rounded-3xl vn-card space-y-6 border border-white/10 relative overflow-hidden">
-        {/* Subtle top laser scanning accent */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" />
-
+      <section className="p-6 sm:p-8 rounded-2xl vn-card space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5 text-cyan-400 text-xs font-mono font-bold tracking-wider uppercase">
+          <div className="flex items-center gap-2 text-blue-700 text-xs font-mono font-bold tracking-wider uppercase">
             <FileText className="w-4 h-4" />
             <span>5 Verified Peer-Reviewed Scientific Foundations</span>
           </div>
-          <span className="text-xs font-mono text-slate-400">
+          <span className="text-xs font-mono text-slate-500">
             Directly Encoded Into VoltNexus Physics Engine
           </span>
         </div>
@@ -280,26 +277,26 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
           {literature.map((lit, idx) => (
             <div 
               key={idx} 
-              className="p-5 rounded-2xl bg-slate-950/60 border border-white/10 hover:border-cyan-500/30 transition-all space-y-2.5 flex flex-col justify-between"
+              className="p-5 rounded-xl bg-slate-50/70 border border-slate-200/80 hover:border-blue-300 transition-colors space-y-2.5 flex flex-col justify-between"
             >
               <div className="space-y-1.5">
-                <div className="text-xs font-bold text-white flex items-center justify-between">
+                <div className="text-xs font-bold text-slate-900 flex items-center justify-between gap-2">
                   <span>{lit.authors}</span>
-                  <span className="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-1.5 py-0.5 rounded border border-cyan-500/30">
+                  <span className="text-[10px] font-mono text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200 shrink-0">
                     {lit.journal}
                   </span>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   {lit.finding}
                 </p>
               </div>
 
-              <div className="pt-2 border-t border-white/5 space-y-1">
-                <div className="text-[10.5px] font-mono text-emerald-400 flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3" />
+              <div className="pt-2 border-t border-slate-200/80 space-y-1">
+                <div className="text-[10.5px] font-mono text-emerald-700 flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 shrink-0" />
                   <span>{lit.ruleImpact}</span>
                 </div>
-                <div className="text-[10px] font-mono text-slate-500">
+                <div className="text-[10px] font-mono text-slate-400">
                   DOI: {lit.doi}
                 </div>
               </div>
@@ -307,15 +304,15 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
           ))}
 
           {/* Core Unscented Transform Card */}
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-cyan-950/40 via-slate-950/60 to-blue-950/40 border border-cyan-500/40 space-y-2.5 flex flex-col justify-center">
-            <div className="flex items-center gap-2 text-xs font-bold text-cyan-300">
-              <Sparkles className="w-4 h-4 text-cyan-400" />
+          <div className="p-5 rounded-xl bg-gradient-to-br from-blue-50 via-white to-sky-50 border border-blue-200 space-y-2.5 flex flex-col justify-center">
+            <div className="flex items-center gap-2 text-xs font-bold text-blue-800">
+              <Sparkles className="w-4 h-4 text-blue-600" />
               <span>VoltNexus Computational Core</span>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-600 leading-relaxed">
               5-Point Unscented Transform (UT) coupled with non-linear Thevenin ECM reproduces Monte Carlo electro-thermal statistics in &lt;40ms (12.5x speedup over FEM/SPICE co-simulation).
             </p>
-            <div className="text-[10.5px] font-mono text-cyan-400 pt-1">
+            <div className="text-[10.5px] font-mono text-blue-700 font-semibold pt-1">
               Sub-Millisecond In-Browser Solvers
             </div>
           </div>
@@ -323,39 +320,39 @@ export default function OverviewView({ onNavigateToWorkbench, onNavigateToTwin }
       </section>
 
       {/* 4. CROSS-SUBSYSTEM MBSE DATA FLOW ARCHITECTURE */}
-      <section className="p-6 sm:p-8 rounded-3xl vn-card space-y-6 border border-white/10">
+      <section className="p-6 sm:p-8 rounded-2xl vn-card space-y-5">
         <div className="space-y-1">
-          <h3 className="text-lg font-bold text-white">Coupled Systems Engineering Workflow</h3>
-          <p className="text-xs text-slate-400">
+          <h3 className="text-lg font-bold text-slate-900">Coupled Systems Engineering Workflow</h3>
+          <p className="text-xs text-slate-500">
             How VoltNexus integrates electrical, thermal, mechanical, protection, and sensing boundaries in real-time
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs font-mono">
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-white/10 space-y-2">
-            <div className="text-cyan-400 font-bold">1. PARAMETRIC INPUTS</div>
-            <div className="text-slate-300 text-[11px] leading-relaxed">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <div className="text-blue-700 font-bold">1. PARAMETRIC INPUTS</div>
+            <div className="text-slate-600 text-[11px] leading-relaxed font-sans">
               Cell Chemistry (NMC/LFP), Topology (Ns x Np), Busbar Material, Cooling Mechanism, SOH Aging.
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-white/10 space-y-2">
-            <div className="text-blue-400 font-bold">2. THEVENIN ECM SOLVER</div>
-            <div className="text-slate-300 text-[11px] leading-relaxed">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <div className="text-sky-700 font-bold">2. THEVENIN ECM SOLVER</div>
+            <div className="text-slate-600 text-[11px] leading-relaxed font-sans">
               Arrhenius temperature dynamics, Bruen-Marco parallel current divergence, and non-linear OCV splines.
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-white/10 space-y-2">
-            <div className="text-amber-400 font-bold">3. THERMAL NETWORK</div>
-            <div className="text-slate-300 text-[11px] leading-relaxed">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <div className="text-amber-700 font-bold">3. THERMAL NETWORK</div>
+            <div className="text-slate-600 text-[11px] leading-relaxed font-sans">
               Cloos-Wetzel convective duct gradient, localized core hotspots, and fluid temperature rise.
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-white/10 space-y-2">
-            <div className="text-emerald-400 font-bold">4. 13-RULE VERIFIER</div>
-            <div className="text-slate-300 text-[11px] leading-relaxed">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <div className="text-emerald-700 font-bold">4. 13-RULE VERIFIER</div>
+            <div className="text-slate-600 text-[11px] leading-relaxed font-sans">
               Automatic standard compliance checks (IEC 60364-5-54, UL 2580, AIS-156) with automated remediation.
             </div>
           </div>
